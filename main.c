@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "util.h"
+#include "init.h"
+#include "gestion_manche.h"
+#include "affichage.h"
 
 int main()
 {
