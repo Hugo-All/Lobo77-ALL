@@ -31,9 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="affichage.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="affichage.h" />
+		<Unit filename="gestion_manche.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gestion_manche.h" />
+		<Unit filename="init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="init.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="util.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
