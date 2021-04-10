@@ -6,7 +6,7 @@ void color (int couleurDuTexte, int couleurDuFond)
      SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
 
-void gets_limite(int limite, char *sortie)
+void gets_limite(char *sortie, int limite)
 {
      fflush(stdin);
      fgets(sortie,limite, stdin);
