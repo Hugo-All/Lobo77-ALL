@@ -48,3 +48,9 @@ void initialiser_pile(int pile[DIM_pile])
     }
     pile[55]=76;
 }
+
+void initialiser_defausse(int defausse[DIM_pile])
+{
+    for(int i = 0; i < DIM_pile; i++)
+        defausse[i] = CARTE_NULLE;
+}

@@ -9,4 +9,6 @@
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs);
 
 void initialiser_pile(int pile[DIM_pile]);
+void initialiser_defausse(int defausse[DIM_pile]);
+
 #endif
