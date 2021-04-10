@@ -26,7 +26,7 @@ typedef enum E_couleurs couleurs;
 
 void color (int couleurDuTexte, int couleurDuFond);
 
-void gets_limite(int limite, char *sortie);
+void gets_limite(char *sortie, int limite);
 
 void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 

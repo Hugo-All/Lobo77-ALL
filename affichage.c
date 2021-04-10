@@ -15,8 +15,8 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
 {
     for(int i = 0; i < nb_joueurs; i++)
     {
-        printf("%-10s",joueurs[i].nom);
-        if(index_donneur==i)
+        printf("%-10s", joueurs[i].nom);
+        if(index_donneur == i)
         {
             printf("(D) ");
         }else
