@@ -12,8 +12,8 @@
 
 typedef struct joueur{
     char nom[DIM_STR];
-    int cartes[5];
-    int nb_jetons;
+    char cartes[5];
+    char nb_jetons;
 } S_joueur;
 
 int pile[DIM_pile];
