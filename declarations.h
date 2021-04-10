@@ -10,8 +10,11 @@ typedef struct joueur{
     char nom[DIM_STR];
     int cartes[5];
     int nb_jetons;
-} joueur;
+} S_joueur;
 
 int pile[DIM_pile];
 int defausse[DIM_pile];
+S_joueur joueurs[NB_max_joueurs];
+int nb_joueurs;
+
 #endif
