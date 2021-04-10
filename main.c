@@ -4,7 +4,7 @@
 #include "init.h"
 #include "gestion_manche.h"
 #include "affichage.h"
-#include "types.h"
+#include "declarations.h"
 
 int main()
 {
