@@ -5,9 +5,15 @@
 #include "gestion_manche.h"
 #include "affichage.h"
 #include "declarations.h"
+#include <time.h>
 
 int main()
 {
-    printf("Hello world!\n");
+    srand(time(NULL));
+    index_donneur=0;
+    banniere();
+    initialiser_joueurs(joueurs, &nb_joueurs);
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs, index_donneur);
     return 0;
 }
