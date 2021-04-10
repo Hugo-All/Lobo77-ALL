@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "declarations.h"
 
 enum E_couleurs{noir,
             bleu_fonce,
@@ -26,5 +27,7 @@ typedef enum E_couleurs couleurs;
 void color (int couleurDuTexte, int couleurDuFond);
 
 void gets_limite(int limite, char *sortie);
+
+void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 
 #endif
