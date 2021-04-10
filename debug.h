@@ -6,5 +6,4 @@
 #include "declarations.h"
 
 void afficher_pile(int pile[DIM_pile]);
-
 #endif
