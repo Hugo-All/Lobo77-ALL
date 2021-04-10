@@ -11,11 +11,22 @@
 int main()
 {
     srand(time(NULL));
+    index_donneur=0;
+    index_pile=DIM_pile;
+    index_defausse=0;
+    initialiser_joueurs_DEBUG(joueurs, &nb_joueurs);
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs, index_donneur);
     initialiser_pile(pile);
     initialiser_defausse(defausse);
-    index_donneur=0;
-    /*initialiser_joueurs(joueurs, &nb_joueurs);
-    system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur);*/
+    afficher_pile(defausse);
+    melanger_pile(pile,index_pile);
+    afficher_pile(pile);
+    distribuer_cartes(pile, index_pile, joueurs, nb_joueurs, index_donneur);
+    /*system("pause");
+    for(int i = 0; i<10000;i++){
+        melanger_pile(pile, 40);
+        afficher_pile(pile);
+    }*/
     return 0;
 }
