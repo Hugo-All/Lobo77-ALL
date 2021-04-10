@@ -14,22 +14,14 @@ void gets_limite(int limite, char *sortie)
      fflush(stdin);
 }
 
-void melanger_pile(int cartes[DIM_pile],char nb_cartes)//Mélange les nb_cartes premières cartes d'une pile
+void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_cartes premières cartes d'une pile
 {
-     int temp_pile[DIM_pile];
-     for(int i = 0; i < DIM_pile; i++)
-          temp_pile[i]=CARTE_NULLE;
+     int i, index_aleatoire, carte_temp;
 
-     int index_aleatoire;
-     for(int i = 0; i < nb_cartes; i++)//Sélectionne chaque carte de la pile à mélanger
-     {
-          do{
-               index_aleatoire = rand() % nb_cartes;//Sélectionne un index au hasard
-          }while(temp_pile[index_aleatoire] != CARTE_NULLE);//Vérifie que la case sélectionnée au hasard est vide
-
-          temp_pile[index_aleatoire] = cartes[i];//Place la carte sélectionner dans la case aléatoire
+     for (i = nb_cartes - 1; i > 0; i--) { // Parcours toute les cartes de la pile de la nb_cartes vers le début
+         index_aleatoire = rand() % (i + 1); // Trouve une case aléatoire
+         carte_temp = cartes[index_aleatoire]; // Echange la case choisie aléatoirement avec la case en cours
+         cartes[index_aleatoire] = cartes[i];
+         cartes[i] = carte_temp;
      }
-
-     for(int i = 0; i < nb_cartes; i++)
-          cartes[i]=temp_pile[i];
 }
