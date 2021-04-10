@@ -35,6 +35,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="affichage.h" />
+		<Unit filename="declarations.h" />
 		<Unit filename="gestion_manche.c">
 			<Option compilerVar="CC" />
 		</Unit>
