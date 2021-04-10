@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="affichage.h" />
+		<Unit filename="debug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="debug.h" />
 		<Unit filename="declarations.h" />
 		<Unit filename="gestion_manche.c">
 			<Option compilerVar="CC" />
