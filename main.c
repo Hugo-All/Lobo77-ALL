@@ -11,11 +11,11 @@
 int main()
 {
     srand(time(NULL));
+    initialiser_pile(pile);
+    initialiser_defausse(defausse);
     index_donneur=0;
     /*initialiser_joueurs(joueurs, &nb_joueurs);
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs, index_donneur);*/
-    initialiser_pile(pile);
-    afficher_pile(pile);
     return 0;
 }
