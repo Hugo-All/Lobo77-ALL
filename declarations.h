@@ -3,7 +3,7 @@
 
 #define DIM_STR 10
 #define DIM_pile 56
-#define DIM_main_joeur 5
+#define DIM_main_joueur 5
 #define NB_max_joueurs 8
 
 #define CARTE_NULLE 100
@@ -21,5 +21,7 @@ int defausse[DIM_pile];
 S_joueur joueurs[NB_max_joueurs];
 int nb_joueurs;
 int index_donneur;
+int index_pile;
+int index_defausse;
 
 #endif
