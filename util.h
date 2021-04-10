@@ -1,4 +1,6 @@
 #include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 enum E_couleurs{noir,
             bleu_fonce,
