@@ -3,11 +3,11 @@
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
 {
     do{
-        printf("Combien de joueurs autour de la table ? (1-8) ");
+        printf("Combien de joueurs autour de la table ? (2-8) ");
         scanf("%d", nb_joueurs);
         fflush(stdin);//Au cas où l'utilisateur n'écrit pas un entier
-    }while(*nb_joueurs < 1 || *nb_joueurs > NB_max_joueurs);
-    
+    }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs);
+
     system("pause");
     system("cls");
 
@@ -21,7 +21,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
 
         for(int j=0; j<DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
             joueurs[i].cartes[j]=CARTE_NULLE;
-        
+
         joueurs[i].nb_jetons = 3;
     }
 }
