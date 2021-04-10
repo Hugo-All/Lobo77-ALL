@@ -25,6 +25,6 @@ typedef enum E_couleurs couleurs;
 
 void color (int couleurDuTexte, int couleurDuFond);
 
-void gets_limite(int limite, char *sortie)
+void gets_limite(int limite, char *sortie);
 
 #endif

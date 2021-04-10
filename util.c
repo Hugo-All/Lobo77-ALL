@@ -8,6 +8,7 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void gets_limite(int limite, char *sortie)
 {
+     fflush(stdin);
      fgets(sortie,limite, stdin);
      fflush(stdin);
 }
