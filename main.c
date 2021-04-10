@@ -11,7 +11,6 @@ int main()
 {
     srand(time(NULL));
     index_donneur=0;
-    banniere();
     initialiser_joueurs(joueurs, &nb_joueurs);
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs, index_donneur);
