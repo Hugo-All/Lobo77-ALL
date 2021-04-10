@@ -1,3 +1,5 @@
+#ifndef INCLUDE_UTIL_H
+#define INCLUDE_UTIL_H
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,3 +24,5 @@ enum E_couleurs{noir,
 typedef enum E_couleurs couleurs;
 
 void color (int couleurDuTexte, int couleurDuFond);
+
+#endif

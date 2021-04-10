@@ -1,3 +1,6 @@
+#ifndef INCLUDE_DECLARATIONS_H
+#define INCLUDE_DECLARATIONS_H
+
 #define DIM_STR 10
 #define DIM_pile 56
 #define DIM_main_joeur 5
@@ -11,4 +14,4 @@ typedef struct joueur{
 
 int pile[DIM_pile];
 int defausse[DIM_pile];
-joueur joueurs[NB_max_joueurs];
+#endif
