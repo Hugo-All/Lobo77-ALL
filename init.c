@@ -14,5 +14,10 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
         printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n",i+1,DIM_STR);
         gets_limite(DIM_STR,joueurs[i].nom);
         printf("Le joueur %d s'appelle: %s\n", i+1, joueurs[i].nom);
+
+        for(int j=0; j<DIM_main_joeur; j++)//Initialisation des cartes à CARTE_NULLE
+            joueurs[i].cartes[j]=CARTE_NULLE;
+        
+        joueurs[i].nb_jetons=3;
     }
 }
