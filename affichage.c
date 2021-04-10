@@ -24,7 +24,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
             printf("( ) ");
         }
 
-        for(int j = 0; j < DIM_main_joeur; j++)
+        for(int j = 0; j < DIM_main_joueur; j++)
         {
             if(joueurs[i].cartes[j] == CARTE_NULLE)
             {
