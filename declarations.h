@@ -16,5 +16,6 @@ int pile[DIM_pile];
 int defausse[DIM_pile];
 S_joueur joueurs[NB_max_joueurs];
 int nb_joueurs;
+int index_donneur=0;
 
 #endif
