@@ -6,4 +6,5 @@
 #include "declarations.h"
 
 void afficher_pile(int pile[DIM_pile]);
+void initialiser_joueurs_DEBUG(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs);
 #endif
