@@ -6,6 +6,10 @@
 #define DIM_main_joeur 5
 #define NB_max_joueurs 8
 
+#define CARTE_NULLE 100
+#define CARTE_X2 101
+#define CARTE_SENS 102
+
 typedef struct joueur{
     char nom[DIM_STR];
     int cartes[5];
