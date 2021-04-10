@@ -4,17 +4,17 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
 {
     do{
         printf("Combien de joueurs autour de la table ? (1-8) ");
-        scanf("%d",nb_joueurs);
+        scanf("%d", nb_joueurs);
         fflush(stdin);//Au cas où l'utilisateur n'écrit pas un entier
-    }while(*nb_joueurs<1 || *nb_joueurs>NB_max_joueurs);
+    }while(*nb_joueurs < 1 || *nb_joueurs > NB_max_joueurs);
     
     system("pause");
     system("cls");
 
-    for(int i=0; i<*nb_joueurs; i++)
+    for(int i = 0; i < *nb_joueurs; i++)
     {
-        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n",i+1,DIM_STR);
-        gets_limite(DIM_STR,joueurs[i].nom);
+        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);
+        gets_limite(DIM_STR, joueurs[i].nom);
         printf("Le joueur %d s'appelle: %s\n\n", i+1, joueurs[i].nom);
         system("pause");
         system("cls");
@@ -22,17 +22,17 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
         for(int j=0; j<DIM_main_joeur; j++)//Initialisation des cartes à CARTE_NULLE
             joueurs[i].cartes[j]=CARTE_NULLE;
         
-        joueurs[i].nb_jetons=3;
+        joueurs[i].nb_jetons = 3;
     }
 }
 
 void initialiser_pile(int pile[DIM_pile])
 {
-    for(int i=0;i<4; i++)//4 cartes 0
+    for(int i = 0; i < 4; i++)//4 cartes 0
         pile[i]=0;
-    for(int i=0;i<4; i++)//4 cartes -10
+    for(int i = 0; i < 4; i++)//4 cartes -10
         pile[i+4]=-10;//i prend des valeurs de 0 à 4 donc i+5 de 5 à 8
-    for(int i=0;i<4; i++)//4 cartes x2
+    for(int i = 0; i < 4; i++)//4 cartes x2
         pile[i+8]=CARTE_X2;
     for(int i=0;i<5; i++)//5 cartes sens
         pile[i+12]=CARTE_SENS;
