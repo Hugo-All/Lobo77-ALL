@@ -23,5 +23,6 @@ int nb_joueurs;
 int index_donneur;
 int index_pile;
 int index_defausse;
+int sens_jeu;//1=sens horaire, -1=sens anti-horaire
 
 #endif
