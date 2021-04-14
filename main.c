@@ -11,6 +11,8 @@
 int main()
 {
     srand(time(NULL));
+    SetConsoleOutputCP(1252);
+    
     index_donneur=0;
     index_pile=DIM_pile;
     index_defausse=0;
