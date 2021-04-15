@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <conio.h>
 #include "declarations.h"
 
 enum E_couleurs{noir,
@@ -29,5 +31,7 @@ void color (int couleurDuTexte, int couleurDuFond);
 void gets_limite(char *sortie, int limite);
 
 void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
+
+int attend_touche(int timeout);
 
 #endif

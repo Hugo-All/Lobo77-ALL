@@ -25,3 +25,13 @@ void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_carte
          cartes[i] = carte_temp;
      }
 }
+
+int attend_touche(int timeout)
+{
+     int start=time(NULL);
+     while (time(NULL)-start<timeout)
+          if(kbhit()!=0)
+               return 1;//Une touche a été pressée dans le temps imparti
+
+     return 0;//Pas de touche pressée
+}
