@@ -29,6 +29,7 @@ void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_carte
 int attend_touche(int timeout)
 {
      int start=time(NULL);
+     fflush(stdin);//S'assure que le buffer est vide avant d'attendre la pression d'une touche
      while (time(NULL)-start<timeout)
           if(kbhit()!=0)
                return 1;//Une touche a été pressée dans le temps imparti
