@@ -21,11 +21,13 @@ int main()
     afficher_joueurs(joueurs, nb_joueurs, index_donneur);
     initialiser_pile(pile);
     initialiser_defausse(defausse);
-    afficher_pile(defausse);
+    afficher_pile(pile);
     melanger_pile(pile,index_pile);
     afficher_pile(pile);
-    distribuer_cartes(pile, index_pile, joueurs, nb_joueurs, index_donneur);
-    /*system("pause");
+    //distribuer_cartes(pile, index_pile, joueurs, nb_joueurs, index_donneur);
+    printf("%d\n",attend_touche());
+    system("pause");
+    /*
     for(int i = 0; i<10000;i++){
         melanger_pile(pile, 40);
         afficher_pile(pile);
