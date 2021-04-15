@@ -8,8 +8,10 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void gets_limite(char *sortie, int limite)
 {
+     fflush(stdin);
      fgets(sortie,limite, stdin);
      strtok(sortie, "\n");//Enlève le retour à la ligne à la fin du nom
+     fflush(stdin);
 }
 
 void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_cartes premières cartes d'une pile
