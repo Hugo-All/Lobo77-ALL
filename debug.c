@@ -23,9 +23,9 @@ void initialiser_joueurs_DEBUG(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs
     {
         sprintf(joueurs[i].nom,"joueur%d",i);
 
-        for(int j=0; j<DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
+        for(int j = 0; j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
             joueurs[i].cartes[j]=CARTE_NULLE;
-        
+
         joueurs[i].nb_jetons = 3;
     }
 }

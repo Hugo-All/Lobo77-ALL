@@ -19,7 +19,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
         system("pause");
         system("cls");
 
-        for(int j=0; j<DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
+        for(int j=0;  j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
             joueurs[i].cartes[j]=CARTE_NULLE;
 
         joueurs[i].nb_jetons = 3;
@@ -29,24 +29,26 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
 void initialiser_pile(int pile[DIM_pile])
 {
     for(int i = 0; i < 4; i++)//4 cartes 0
-        pile[i]=0;
-    for(int i = 0; i < 4; i++)//4 cartes -10
-        pile[i+4]=-10;//i prend des valeurs de 0 à 4 donc i+5 de 5 à 8
-    for(int i = 0; i < 4; i++)//4 cartes x2
-        pile[i+8]=CARTE_X2;
-    for(int i=0;i<5; i++)//5 cartes sens
-        pile[i+12]=CARTE_SENS;
-    for(int i=0;i<6; i++)//6 cartes multiple de 11
-        pile[i+17]=(i+1)*11;//i prend des valeurs de 0 à 5 donc i+1 de 1 à 6
-    for(int i=0;i<8; i++)//8 cartes 10
-        pile[i+23]=10;
+        pile[i] = 0;
 
-    for(int i=0;i<8;i++)
+    for(int i = 0; i < 4; i++)//4 cartes -10
+        pile[ i + 4 ] = -10;//i prend des valeurs de 0 à 4 donc i+5 de 5 à 8
+
+    for(int i = 0; i < 4; i++)//4 cartes x2
+        pile[ i + 8 ] = CARTE_X2;
+    for(int i = 0 ; i < 5; i++)//5 cartes sens
+        pile[ i + 12 ] = CARTE_SENS;
+    for(int i = 0; i < 6 ; i++)//6 cartes multiple de 11
+        pile[ i + 17 ] = (i+1)*11;//i prend des valeurs de 0 à 5 donc i+1 de 1 à 6
+    for(int i = 0; i < 8; i++)//8 cartes 10
+        pile[ i + 23 ] = 10;
+
+    for(int i = 0; i < 8; i++)
     {
-        for(int j=0;j<3;j++)
-            pile[i*3+31+j]=i+2;//i+2 prend des valeurs de 2 à 9
+        for(int j = 0; j < 3; j++)
+            pile[ i*3 + 31 + j] = i+2;//i+2 prend des valeurs de 2 à 9
     }
-    pile[55]=76;
+    pile[55] = 76;
 }
 
 void initialiser_defausse(int defausse[DIM_pile])
