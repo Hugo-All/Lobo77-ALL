@@ -1,19 +1,19 @@
 #include "init.h"
 
-void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
+void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sous-programme pour initialiser les joueurs en début de partie
 {
     do{
-        printf("Combien de joueurs autour de la table ? (2-8) ");
+        printf("Combien de joueurs autour de la table ? (2-8) ");//entré du nombre de joueurs
         scanf("%d", nb_joueurs);
         fflush(stdin);//Au cas où l'utilisateur n'écrit pas un entier
-    }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs);
+    }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs);//procédure lorsque le nombre de joueurs ne convient pas au lancement de la partie
 
     system("pause");
     system("cls");
 
     for(int i = 0; i < *nb_joueurs; i++)
     {
-        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);
+        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);//attribution du nom des joueurs
         gets_limite(joueurs[i].nom, DIM_STR);
         printf("Le joueur %d s'appelle: %s\n\n", i+1, joueurs[i].nom);
         system("pause");
@@ -22,7 +22,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
         for(int j=0;  j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_NULLE
             joueurs[i].cartes[j]=CARTE_NULLE;
 
-        joueurs[i].nb_jetons = 3;
+        joueurs[i].nb_jetons = 3;//attribution des 3 jetons par joueurs en début de partie
     }
 }
 
@@ -51,13 +51,13 @@ void initialiser_pile(int pile[DIM_pile])
     pile[55] = 76;
 }
 
-void initialiser_defausse(int defausse[DIM_pile])
+void initialiser_defausse(int defausse[DIM_pile])//initialisation de la défausse en début de partie
 {
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_NULLE;
 }
 
-void distribuer_cartes(int pile[DIM_pile], int index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void distribuer_cartes(int pile[DIM_pile], int index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)//distribution des cartes
 {
     system("cls");
     printf("Distribution des cartes...\n");

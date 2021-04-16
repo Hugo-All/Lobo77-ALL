@@ -12,10 +12,10 @@ int main()
 {
     srand(time(NULL));
     //SetConsoleOutputCP(1252);
-    
-    index_donneur=0;
-    index_pile=DIM_pile;
-    index_defausse=0;
+
+    index_donneur = 0;
+    index_pile = DIM_pile;
+    index_defausse = 0;
     initialiser_joueurs_DEBUG(joueurs, &nb_joueurs);
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs, index_donneur);
@@ -25,7 +25,7 @@ int main()
     melanger_pile(pile,index_pile);
     afficher_pile(pile);
     //distribuer_cartes(pile, index_pile, joueurs, nb_joueurs, index_donneur);
-    printf("%d\n",attend_touche());
+    printf("%d\n",attend_touche(5));
     system("pause");
     /*
     for(int i = 0; i<10000;i++){
