@@ -14,7 +14,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)
     for(int i = 0; i < *nb_joueurs; i++)
     {
         printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);
-        gets_limite(DIM_STR, joueurs[i].nom);
+        gets_limite(joueurs[i].nom, DIM_STR);
         printf("Le joueur %d s'appelle: %s\n\n", i+1, joueurs[i].nom);
         system("pause");
         system("cls");
