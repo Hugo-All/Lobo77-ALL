@@ -7,22 +7,22 @@
 #include <conio.h>
 #include "declarations.h"
 
-enum E_couleurs{noir,
-            bleu_fonce,
-            vert_fonce,
-            turquoise,
-            rouge_fonce,
-            violet,
-            vert_oie,
-            gris_clair,
-            gris_fonce,
-            bleu,
-            vert,
-            turquoise_2,
-            rouge,
-            violet_2,
-            jaune,
-            blanc
+enum E_couleurs{NOIR,
+            BLEU_FONCE,
+            VERT_FONCE,
+            TURQUOISE,
+            ROUGE_FONCE,
+            VIOLET,
+            VERT_OIE,
+            GRIS_CLAIR,
+            GRIS_FONCE,
+            BLEU,
+            VERT,
+            TURQUOISE_2,
+            ROUGE,
+            VIOLET_2,
+            JAUNE,
+            BLANC
             };
 typedef enum E_couleurs couleurs;
 
