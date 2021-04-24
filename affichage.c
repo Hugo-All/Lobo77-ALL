@@ -11,12 +11,24 @@ void banniere()
     printf("%c\n\n", 188);
 }
 
-void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
 {
     banniere();
-    printf("Nom      Donneur  Cartes       Jetons\n");
+    printf("Sens  Nom      Donneur  Cartes       Jetons\n");
     for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
     {
+
+        if(index_donneur == i)
+        {
+            if(sens_jeu == SENS_HORAIRE)
+                printf("  ^   ");
+            else
+                printf("  v   ");
+        }else
+        {
+            printf("      ");
+        }
+
         printf("%-10s", joueurs[i].nom); //Affiche le nom du joueur
 
         //Affiche un (D) si le joueur est le donneur

@@ -37,7 +37,7 @@ int attend_touche(int timeout)
      return 0;//Pas de touche pressée
 }
 
-int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int index_donneur)
+int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
 {
      char touche;
      int curseur;
@@ -53,7 +53,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      do //Tant que le joueur n'as pas appuyé sur entré
      {
           system("cls");
-          afficher_joueurs(joueurs, nb_joueurs, index_donneur);
+          afficher_joueurs(joueurs, nb_joueurs, index_donneur, index_joueur, sens_jeu);
           for(int i = 0; i<30; i++) printf("-");
           printf("\nVeuillez selectionner une carte:\n");
 

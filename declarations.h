@@ -18,6 +18,10 @@
 #define TOUCHE_GAUCHE 75
 #define TOUCHE_ENTER 13
 
+//Sens de jeu
+#define SENS_HORAIRE 1
+#define SENS_ANTIHORAIRE -1
+
 //-------------Structure---------------
 typedef struct joueur{
     char nom[DIM_STR];
@@ -31,8 +35,9 @@ int defausse[DIM_pile];
 S_joueur joueurs[NB_max_joueurs];
 int nb_joueurs;
 int index_donneur;
+int index_joueur;
 int index_pile;
 int index_defausse;
-int sens_jeu;//1=sens horaire, -1=sens anti-horaire
+int sens_jeu;
 
 #endif

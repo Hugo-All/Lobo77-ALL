@@ -17,7 +17,9 @@ int main()
     index_donneur = 0;
     index_pile = DIM_pile-1;
     index_defausse = 0;
-    initialiser_joueurs(joueurs, &nb_joueurs);
+    index_joueur = 0;
+    sens_jeu = SENS_HORAIRE;
+    initialiser_joueurs_DEBUG(joueurs, &nb_joueurs);
     //system("cls");
     initialiser_pile(pile);
     initialiser_defausse(defausse);
@@ -26,8 +28,8 @@ int main()
     distribuer_cartes(pile, &index_pile, joueurs, nb_joueurs, index_donneur);
 
     joueurs[0].cartes[0] = CARTE_VIDE;
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur);
-    int carte = selectionner_carte(joueurs, joueurs[0], nb_joueurs, index_donneur);
+    afficher_joueurs(joueurs, nb_joueurs, index_donneur, index_joueur, sens_jeu);
+    int carte = selectionner_carte(joueurs, joueurs[0], nb_joueurs, index_donneur, index_joueur, sens_jeu);
 
     printf("%d\n", carte);
     return 0;
