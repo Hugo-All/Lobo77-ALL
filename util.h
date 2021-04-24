@@ -34,4 +34,5 @@ void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes
 
 int attend_touche(int timeout);
 
+char get_touche();
 #endif

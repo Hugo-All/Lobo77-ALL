@@ -36,3 +36,14 @@ int attend_touche(int timeout)
 
      return 0;//Pas de touche pressée
 }
+
+char get_touche()
+{
+     char touche;
+     fflush(stdin);
+     do{
+          touche = getch();
+     }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE && touche != TOUCHE_ENTER);
+
+    return touche;
+}

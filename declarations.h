@@ -13,6 +13,11 @@
 #define CARTE_X2 101
 #define CARTE_SENS 102
 
+//Touches
+#define TOUCHE_DROITE 77
+#define TOUCHE_GAUCHE 75
+#define TOUCHE_ENTER 13
+
 //-------------Structure---------------
 typedef struct joueur{
     char nom[DIM_STR];
