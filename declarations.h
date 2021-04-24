@@ -9,7 +9,7 @@
 #define NB_max_joueurs 8
 
 //Définition des cartes spéciales
-#define CARTE_NULLE 100
+#define CARTE_VIDE 100
 #define CARTE_X2 101
 #define CARTE_SENS 102
 

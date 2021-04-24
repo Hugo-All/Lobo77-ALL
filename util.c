@@ -43,7 +43,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      int curseur;
      for(int i = 0; i < DIM_main_joueur; i++) //Place le curseur sur une carte non-nulle
      {
-          if(joueur.cartes[i] != CARTE_NULLE)
+          if(joueur.cartes[i] != CARTE_VIDE)
           {
                curseur = i;
                break;
@@ -64,7 +64,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_GAUCHE:
                     for(int i = curseur - 1; i >= 0; i--)
                     {
-                         if(joueur.cartes[i] != CARTE_NULLE)
+                         if(joueur.cartes[i] != CARTE_VIDE)
                          {
                               curseur = i;
                               break;
@@ -74,7 +74,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_DROITE:
                     for(int i = curseur + 1; i < DIM_main_joueur; i++)
                     {
-                         if(joueur.cartes[i] != CARTE_NULLE)
+                         if(joueur.cartes[i] != CARTE_VIDE)
                          {
                               curseur = i;
                               break;

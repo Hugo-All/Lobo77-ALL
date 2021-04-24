@@ -17,18 +17,18 @@ int main()
     index_donneur = 0;
     index_pile = DIM_pile-1;
     index_defausse = 0;
-    initialiser_joueurs_DEBUG(joueurs, &nb_joueurs);
+    initialiser_joueurs(joueurs, &nb_joueurs);
     //system("cls");
     initialiser_pile(pile);
     initialiser_defausse(defausse);
     melanger_pile(pile, index_pile);
 
-    distribuer_cartes_DEBUG(pile, &index_pile, joueurs, nb_joueurs, index_donneur);
+    distribuer_cartes(pile, &index_pile, joueurs, nb_joueurs, index_donneur);
 
-    joueurs[0].cartes[0] = CARTE_NULLE;
+    joueurs[0].cartes[0] = CARTE_VIDE;
     afficher_joueurs(joueurs, nb_joueurs, index_donneur);
     int carte = selectionner_carte(joueurs, joueurs[0], nb_joueurs, index_donneur);
-    
+
     printf("%d\n", carte);
     return 0;
 }

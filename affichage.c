@@ -28,7 +28,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
 
         for(int j = 0; j < DIM_main_joueur; j++)
         {
-            if(joueurs[i].cartes[j] == CARTE_NULLE)
+            if(joueurs[i].cartes[j] == CARTE_VIDE)
             {
                 printf("%c ", 176);
             }else{
@@ -47,7 +47,7 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
     {
         color(BLANC, NOIR);
-        if(joueur.cartes[i_carte] != CARTE_NULLE)
+        if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
             if(i_carte == curseur) color(NOIR, BLANC);
             printf("%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
@@ -62,7 +62,7 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
         for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
         {
             color(BLANC, NOIR);
-            if(joueur.cartes[i_carte] != CARTE_NULLE)
+            if(joueur.cartes[i_carte] != CARTE_VIDE)
             {
                 if(i_carte == curseur) color(NOIR, BLANC);
                 printf("%c      %c", 186, 186);
@@ -72,11 +72,11 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
         }
         printf("\n");
     }
-    
+
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
     {
         color(BLANC, NOIR);
-        if(joueur.cartes[i_carte] != CARTE_NULLE)
+        if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
             if(i_carte == curseur) color(NOIR, BLANC);
             switch (joueur.cartes[i_carte])
@@ -90,18 +90,18 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
                 default :
                     printf("%c % 3d  %c", 186, joueur.cartes[i_carte], 186);
             }
-        }   
+        }
         else
             printf("        ");
     }
     printf("\n");
-    
+
     for(int i_ligne = 0; i_ligne < 2; i_ligne++)
     {
         for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
         {
             color(BLANC, NOIR);
-            if(joueur.cartes[i_carte] != CARTE_NULLE)
+            if(joueur.cartes[i_carte] != CARTE_VIDE)
             {
                 if(i_carte == curseur) color(NOIR, BLANC);
                 printf("%c      %c", 186, 186);
@@ -111,11 +111,11 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
         }
         printf("\n");
     }
-    
+
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
     {
         color(BLANC, NOIR);
-        if(joueur.cartes[i_carte] != CARTE_NULLE)
+        if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
             if(i_carte == curseur) color(NOIR, BLANC);
             printf("%c%c%c%c%c%c%c%c", 200, 205, 205, 205, 205, 205, 205, 188);
@@ -125,5 +125,5 @@ void afficher_cartes(S_joueur joueur, int curseur) //TODO Refactor avec print li
     }
     printf("\n");
     color(BLANC, NOIR);
-    
+
 }
