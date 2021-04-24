@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
+
 #include "declarations.h"
+#include "affichage.h"
 
 enum E_couleurs{NOIR,
             BLEU_FONCE,
@@ -33,6 +35,8 @@ void gets_limite(char *sortie, int limite);
 void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 
 int attend_touche(int timeout);
+
+int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int index_donneur);
 
 char get_touche();
 #endif
