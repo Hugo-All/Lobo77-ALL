@@ -11,26 +11,24 @@
 int main()
 {
     srand(time(NULL));
+    color(BLANC,NOIR);
     //SetConsoleOutputCP(1252);
 
     index_donneur = 0;
-    index_pile = DIM_pile;
+    index_pile = DIM_pile-1;
     index_defausse = 0;
     initialiser_joueurs_DEBUG(joueurs, &nb_joueurs);
-    system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur);
+    //system("cls");
     initialiser_pile(pile);
     initialiser_defausse(defausse);
-    afficher_pile(pile);
-    melanger_pile(pile,index_pile);
-    afficher_pile(pile);
-    //distribuer_cartes(pile, index_pile, joueurs, nb_joueurs, index_donneur);
-    printf("%d\n",attend_touche(5));
-    system("pause");
-    /*
-    for(int i = 0; i<10000;i++){
-        melanger_pile(pile, 40);
-        afficher_pile(pile);
-    }*/
+    melanger_pile(pile, index_pile);
+
+    distribuer_cartes_DEBUG(pile, &index_pile, joueurs, nb_joueurs, index_donneur);
+
+    joueurs[0].cartes[0] = CARTE_NULLE;
+    afficher_joueurs(joueurs, nb_joueurs, index_donneur);
+    int carte = selectionner_carte(joueurs, joueurs[0], nb_joueurs, index_donneur);
+    
+    printf("%d\n", carte);
     return 0;
 }
