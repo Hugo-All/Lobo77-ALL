@@ -41,7 +41,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
 {
      char touche;
      int curseur;
-     for(int i = 0; i < DIM_main_joueur; i++) //Place le curseur sur une carte non-nulle
+     for(int i = 0; i < DIM_main_joueur; i++) //Place le curseur sur une carte non-vide
      {
           if(joueur.cartes[i] != CARTE_VIDE)
           {
@@ -50,12 +50,13 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
           }
      }
 
-     do
+     do //Tant que le joueur n'as pas appuyé sur entré
      {
           system("cls");
           afficher_joueurs(joueurs, nb_joueurs, index_donneur);
           for(int i = 0; i<30; i++) printf("-");
           printf("\nVeuillez selectionner une carte:\n");
+
           afficher_cartes(joueur, curseur);
           touche=get_touche();
 
@@ -64,7 +65,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_GAUCHE:
                     for(int i = curseur - 1; i >= 0; i--)
                     {
-                         if(joueur.cartes[i] != CARTE_VIDE)
+                         if(joueur.cartes[i] != CARTE_VIDE) //Trouve une carte non-vide à gauche du curseur
                          {
                               curseur = i;
                               break;
@@ -74,7 +75,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_DROITE:
                     for(int i = curseur + 1; i < DIM_main_joueur; i++)
                     {
-                         if(joueur.cartes[i] != CARTE_VIDE)
+                         if(joueur.cartes[i] != CARTE_VIDE) //Trouve une carte non-vide à droite du curseur
                          {
                               curseur = i;
                               break;
