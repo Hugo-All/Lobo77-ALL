@@ -29,19 +29,19 @@ void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_carte
 int attend_touche(int timeout)
 {
      int start = time(NULL);
-     fflush(stdin);//S'assure que le buffer est vide avant d'attendre la pression d'une touche
+     fflush(stdin); // S'assure que le buffer est vide avant d'attendre la pression d'une touche
      while (time(NULL) - start < timeout)
           if(kbhit()!=0)
-               return 1;//Une touche a été pressée dans le temps imparti
+               return 1; // Une touche a été pressée dans le temps imparti
 
-     return 0;//Pas de touche pressée
+     return 0; // Pas de touche pressée
 }
 
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
 {
      char touche;
      int curseur;
-     for(int i = 0; i < DIM_main_joueur; i++) //Place le curseur sur une carte non-vide
+     for(int i = 0; i < DIM_main_joueur; i++) // Place le curseur sur une carte non-vide
      {
           if(joueur.cartes[i] != CARTE_VIDE)
           {
@@ -50,7 +50,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
           }
      }
 
-     do //Tant que le joueur n'as pas appuyé sur entré
+     do // Tant que le joueur n'as pas appuyé sur entré
      {
           system("cls");
           afficher_joueurs(joueurs, nb_joueurs, index_donneur, index_joueur, sens_jeu);
@@ -65,7 +65,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_GAUCHE:
                     for(int i = curseur - 1; i >= 0; i--)
                     {
-                         if(joueur.cartes[i] != CARTE_VIDE) //Trouve une carte non-vide à gauche du curseur
+                         if(joueur.cartes[i] != CARTE_VIDE) // Trouve une carte non-vide à gauche du curseur
                          {
                               curseur = i;
                               break;
@@ -75,7 +75,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
                case TOUCHE_DROITE:
                     for(int i = curseur + 1; i < DIM_main_joueur; i++)
                     {
-                         if(joueur.cartes[i] != CARTE_VIDE) //Trouve une carte non-vide à droite du curseur
+                         if(joueur.cartes[i] != CARTE_VIDE) // Trouve une carte non-vide à droite du curseur
                          {
                               curseur = i;
                               break;
