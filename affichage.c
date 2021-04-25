@@ -11,6 +11,13 @@ void banniere()
     printf("%c\n\n", 188);
 }
 
+void barre_horizontale()
+{
+    for(int i = 0; i < 41; i++)
+        printf("%c", 205);
+    printf("\n\n");
+}
+
 void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
 {
     banniere();
