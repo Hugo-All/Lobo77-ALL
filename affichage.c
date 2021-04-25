@@ -5,7 +5,7 @@ void banniere()
     printf("%c", 200);
     for(int i = 0; i < 16; i++)
         printf("%c", 205);
-    printf("LOBO 77");
+    printf("  LOBO 77  ");
     for(int i = 0; i < 16; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
@@ -13,7 +13,7 @@ void banniere()
 
 void barre_horizontale()
 {
-    for(int i = 0; i < 41; i++)
+    for(int i = 0; i < 45; i++)
         printf("%c", 205);
     printf("\n\n");
 }
@@ -21,49 +21,71 @@ void barre_horizontale()
 void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
 {
     banniere();
-    printf("Sens  Nom      Donneur  Cartes       Jetons\n");
+    if(index_joueur >=0)
+        printf("Sens  "); //Si l'index du joueur est négatif, on ne l'affiche pas
+
+    printf("Nom       Jetons  Cartes        Donneur\n");
     for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
     {
 
-        if(index_donneur == i)
+        if(index_joueur >= 0)//Si l'index du joueur est négatif, on ne l'affiche pas
         {
-            if(sens_jeu == SENS_HORAIRE)
-                printf("  ^   ");
-            else
-                printf("  v   ");
-        }else
-        {
-            printf("      ");
+            if(index_joueur == i)
+            {
+                if(sens_jeu == SENS_HORAIRE)
+                    printf("  v   ");
+                else
+                    printf("  ^   ");
+            }else
+            {
+                printf("      ");
+            }
         }
 
         printf("%-10s", joueurs[i].nom); //Affiche le nom du joueur
 
-        //Affiche un (D) si le joueur est le donneur
-        if(index_donneur == i)
+        //Si un jeton n'as plus de jetons et n'est pas flottant, on ne l'affiche pas
+        if(joueurs[i].nb_jetons >= 0)
         {
-            printf(" (D)    ");
+            //Affiche les jetons du joueur
+            for(int j = 1; j <= NB_max_jetons; j++)
+            {
+                if(joueurs[i].nb_jetons >= j)
+                    printf("%c ", 254);
+                else
+                    printf("  ");
+                
+            }
+            printf("  ");
+
+            //Affiche des carrés à la place des cartes du joueur
+            for(int j = 0; j < DIM_main_joueur; j++)
+            {
+                if(joueurs[i].cartes[j] == CARTE_VIDE)
+                {
+                    printf("%c ", 176);
+                }else{
+                    printf("%c ", 219);
+                }
+            }
+            printf("   ");
+
+            //Affiche un (D) si le joueur est le donneur
+            if(index_donneur == i)
+            {
+                printf(" (D)    ");
+            }else
+            {
+                printf(" ( )    ");
+            }
+
         }else
         {
-            printf(" ( )    ");
+            printf("Elimine");
         }
-        
-        //Affiche des carrés à la place des cartes du joueur
-        for(int j = 0; j < DIM_main_joueur; j++)
-        {
-            if(joueurs[i].cartes[j] == CARTE_VIDE)
-            {
-                printf("%c ", 176);
-            }else{
-                printf("%c ", 219);
-            }
-        }
-        printf("   ");
-
-        //Affiche les jetons du joueur
-        for(int j = 0; j < joueurs[i].nb_jetons; j++)
-            printf("%c ", 254);
         printf("\n\n");
     }
+    barre_horizontale();
 }
 
 void afficher_cartes(S_joueur joueur, int curseur)
