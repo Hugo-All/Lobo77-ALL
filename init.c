@@ -1,5 +1,6 @@
 #include "init.h"
 
+#ifndef MODE_DEBUG
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sous-programme pour initialiser les joueurs en début de partie
 {
     do{
@@ -8,7 +9,6 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sou
         fflush(stdin);//Au cas où l'utilisateur n'écrit pas un entier
     }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs);//procédure lorsque le nombre de joueurs ne convient pas au lancement de la partie
 
-    system("pause");
     system("cls");
 
     for(int i = 0; i < *nb_joueurs; i++)
@@ -25,6 +25,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sou
         joueurs[i].nb_jetons = 0;//Initialisation des jetons
     }
 }
+#endif
 
 void initialiser_pile(int pile[DIM_pile])
 {
@@ -43,9 +44,9 @@ void initialiser_pile(int pile[DIM_pile])
     for(int i = 0; i < 8; i++)//8 cartes 10
         pile[ i + 23 ] = 10;
 
-    for(int i = 0; i < 8; i++)
+    for(int i = 0; i < 8; i++) //Parcours les 8 valeurs de 2 à 9
     {
-        for(int j = 0; j < 3; j++)
+        for(int j = 0; j < 3; j++) //Distribue 3 cartes par valeur
             pile[ i*3 + 31 + j] = i+2;//i+2 prend des valeurs de 2 à 9
     }
     pile[55] = 76;
@@ -57,6 +58,7 @@ void initialiser_defausse(int defausse[DIM_pile])//initialisation de la défauss
         defausse[i] = CARTE_VIDE;
 }
 
+#ifndef MODE_DEBUG
 //Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
 {
@@ -109,3 +111,4 @@ void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     sleep(2);
     system("cls");
 }
+#endif

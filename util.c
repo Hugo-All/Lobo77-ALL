@@ -54,7 +54,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      {
           system("cls");
           afficher_joueurs(joueurs, nb_joueurs, index_donneur, index_joueur, sens_jeu);
-          for(int i = 0; i<30; i++) printf("-");
+          
           printf("\nVeuillez selectionner une carte:\n");
 
           afficher_cartes(joueur, curseur);
