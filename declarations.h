@@ -6,6 +6,7 @@
 #define DIM_STR 10
 #define DIM_pile 56
 #define DIM_main_joueur 5
+#define NB_max_jetons 3
 #define NB_max_joueurs 8
 
 //Définition des cartes spéciales

@@ -20,30 +20,27 @@ void initialiser_joueurs_DEBUG(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs
         for(int j = 0; j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
-        joueurs[i].nb_jetons = 3;
+        joueurs[i].nb_jetons = 0;
     }
 }
 
-void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)//distribution des cartes
+//Distribution des cartes en mode débug
+void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
 {
-    //system("cls");
-    //printf("Distribution des cartes...\n");
-    //sleep(2);
     for(int i = 0; i < DIM_main_joueur; i++)
     {
         for(int j = 0; j < nb_joueurs; j++)
         {
-            //system("cls");
-            //afficher_joueurs(joueurs, nb_joueurs, index_donneur);
-            //usleep(300000);
             joueurs[j].cartes[i] = pile[*index_pile];
             pile[*index_pile] = CARTE_VIDE;
             (*index_pile)--;
         }
     }
-    //system("cls");
-    //afficher_joueurs(joueurs, nb_joueurs, index_donneur);
-    //printf("Fin de la distribution des cartes\n");
-    //sleep(2);
-    //system("cls");
+}
+
+//Distribution des jetons en mode débug
+void distribuer_jetons_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+{
+    for(int i = 0; i < nb_joueurs; i++)
+        joueurs[i].nb_jetons = NB_max_jetons;
 }
