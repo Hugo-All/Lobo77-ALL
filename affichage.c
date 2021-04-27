@@ -24,7 +24,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
     if(index_joueur >=0)
         printf("Sens  "); //Si l'index du joueur est négatif, on ne l'affiche pas
 
-    printf("Nom       Jetons  Cartes        Donneur\n");
+    printf("Nom        Jetons  Cartes        Donneur\n");
     for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
     {
 
@@ -43,6 +43,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
         }
 
         printf("%-10s", joueurs[i].nom); //Affiche le nom du joueur
+        printf(" ");
 
         //Si un jeton n'as plus de jetons et n'est pas flottant, on ne l'affiche pas
         if(joueurs[i].nb_jetons >= 0)
