@@ -50,12 +50,6 @@ void initialiser_pile(int pile[DIM_pile])
     pile[55] = 76;
 }
 
-void initialiser_defausse(int defausse[DIM_pile])//initialisation de la défausse en début de partie
-{
-    for(int i = 0; i < DIM_pile; i++)
-        defausse[i] = CARTE_VIDE;
-}
-
 //Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {

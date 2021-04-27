@@ -34,10 +34,8 @@ typedef struct joueur{
 
 //--------Variables principales--------
 int pile[DIM_pile];
-int defausse[DIM_pile];
 S_joueur joueurs[NB_max_joueurs];
 int nb_joueurs;
 int index_pile;
-int index_defausse;
 
 #endif
