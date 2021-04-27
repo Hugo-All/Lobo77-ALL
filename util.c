@@ -55,7 +55,7 @@ int attend_touche(int timeout)
      return 0; // Pas de touche pressée
 }
 
-int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs)
+int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse)
 {
      char touche;
      int curseur;
@@ -73,7 +73,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
           system("cls");
           afficher_joueurs(joueurs, nb_joueurs);
 
-          printf("\nVeuillez selectionner une carte:\n");
+          printf("\n\nTotal defausse: %d\n\n\nVeuillez selectionner une carte:\n", total_defausse);
 
           afficher_cartes(joueur, curseur);
           touche=get_touche();

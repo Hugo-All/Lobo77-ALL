@@ -40,7 +40,7 @@ void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes
 
 int attend_touche(int timeout);
 
-int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs);
+int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse);
 
 char get_touche();
 #endif
