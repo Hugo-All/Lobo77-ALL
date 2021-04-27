@@ -11,8 +11,17 @@ int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      for(int i = 0; i < nb_joueurs; i++)
           if(joueurs[i].sens_jeu != 0)
                return i;
-     
+
      return -1; //Si le joueur actuel n'a pas été trouvé
+}
+
+int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     for(int i = 0; i < nb_joueurs; i++)
+          if(joueurs[i].donneur == 1)
+               return i;
+
+     return -1; //Si le donneur n'a pas été trouvé
 }
 
 void gets_limite(char *sortie, int limite)
@@ -63,7 +72,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      {
           system("cls");
           afficher_joueurs(joueurs, nb_joueurs);
-          
+
           printf("\nVeuillez selectionner une carte:\n");
 
           afficher_cartes(joueur, curseur);

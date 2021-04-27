@@ -31,6 +31,7 @@ typedef enum E_couleurs couleurs;
 void color (int couleurDuTexte, int couleurDuFond);
 
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void gets_limite(char *sortie, int limite);
 
