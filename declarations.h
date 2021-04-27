@@ -28,6 +28,8 @@ typedef struct joueur{
     char nom[DIM_STR];
     char cartes[5];
     char nb_jetons;
+    char donneur;
+    char sens_jeu; //0 si le joueur n'est pas en train de jouer, SENS_HORAIRE ou SENS_ANTIHORAIRE sur le joueur courant
 } S_joueur;
 
 //--------Variables principales--------
@@ -35,10 +37,7 @@ int pile[DIM_pile];
 int defausse[DIM_pile];
 S_joueur joueurs[NB_max_joueurs];
 int nb_joueurs;
-int index_donneur;
-int index_joueur;
 int index_pile;
 int index_defausse;
-int sens_jeu;
 
 #endif

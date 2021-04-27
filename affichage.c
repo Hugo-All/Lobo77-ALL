@@ -18,28 +18,22 @@ void barre_horizontale()
     printf("\n\n");
 }
 
-void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur, int index_joueur, int sens_jeu)
+void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     banniere();
-    if(index_joueur >=0)
-        printf("Sens  "); //Si l'index du joueur est négatif, on ne l'affiche pas
 
-    printf("Nom        Jetons  Cartes        Donneur\n");
+    printf("Sens  Nom        Jetons  Cartes        Donneur\n");
     for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
     {
-
-        if(index_joueur >= 0)//Si l'index du joueur est négatif, on ne l'affiche pas
+        if(joueurs[i].sens_jeu != 0) //Si le joueur en cours d'affichage est en train de jouer
         {
-            if(index_joueur == i)
-            {
-                if(sens_jeu == SENS_HORAIRE)
-                    printf("  v   ");
-                else
-                    printf("  ^   ");
-            }else
-            {
-                printf("      ");
-            }
+            if(joueurs[i].sens_jeu == SENS_HORAIRE)
+                printf("  v   ");
+            else
+                printf("  ^   ");
+        }else
+        {
+            printf("      ");
         }
 
         printf("%-10s", joueurs[i].nom); //Affiche le nom du joueur
@@ -72,7 +66,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int inde
             printf("   ");
 
             //Affiche un (D) si le joueur est le donneur
-            if(index_donneur == i)
+            if(joueurs[i].donneur == 1)
             {
                 printf(" (D)    ");
             }else

@@ -25,7 +25,7 @@ void initialiser_joueurs_DEBUG(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs
 }
 
 //Distribution des cartes en mode débug
-void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     for(int i = 0; i < DIM_main_joueur; i++)
     {
@@ -39,7 +39,7 @@ void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueu
 }
 
 //Distribution des jetons en mode débug
-void distribuer_jetons_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void distribuer_jetons_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     for(int i = 0; i < nb_joueurs; i++)
         joueurs[i].nb_jetons = NB_max_jetons;

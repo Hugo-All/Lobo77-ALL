@@ -60,10 +60,10 @@ void initialiser_defausse(int defausse[DIM_pile])//initialisation de la défauss
 
 #ifndef MODE_DEBUG
 //Distribution des cartes
-void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Distribution des cartes...\n");
     sleep(1);
 
@@ -72,7 +72,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
         for(int j = 0; j < nb_joueurs; j++)
         {
             system("cls");
-            afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+            afficher_joueurs(joueurs, nb_joueurs);
             printf("Distribution des cartes...\n");
             usleep(300000);
             joueurs[j].cartes[i] = pile[*index_pile];
@@ -81,16 +81,16 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
         }
     }
     system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Fin de la distribution des cartes\n");
     sleep(2);
     system("cls");
 }
 
-void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int index_donneur)
+void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Distribution des jetons...\n");
     sleep(1);
 
@@ -99,14 +99,14 @@ void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
         for(int j = 0; j < nb_joueurs; j++)
         {
             system("cls");
-            afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+            afficher_joueurs(joueurs, nb_joueurs);
             printf("Distribution des jetons...\n");
             usleep(300000);
             joueurs[j].nb_jetons++;
         }
     }
     system("cls");
-    afficher_joueurs(joueurs, nb_joueurs, index_donneur, -1, 0);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Fin de la distribution des jetons\n");
     sleep(2);
     system("cls");
