@@ -6,6 +6,15 @@ void color (int couleurDuTexte, int couleurDuFond)
      SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
 
+int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     for(int i = 0; i < nb_joueurs; i++)
+          if(joueurs[i].sens_jeu != 0)
+               return i;
+     
+     return -1; //Si le joueur actuel n'a pas été trouvé
+}
+
 void gets_limite(char *sortie, int limite)
 {
      fflush(stdin);
