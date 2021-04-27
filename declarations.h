@@ -3,7 +3,7 @@
 
 //----------------DEFINES---------------
 //Définition des dimensions des tableaux
-#define DIM_STR 10
+#define DIM_STR 10 //Taille maximum du nom d'un joueur
 #define DIM_pile 56
 #define DIM_main_joueur 5
 #define NB_max_jetons 3
@@ -25,7 +25,7 @@
 
 //-------------Structure---------------
 typedef struct joueur{
-    char nom[DIM_STR];
+    char nom[DIM_STR + 1];
     char cartes[5];
     char nb_jetons;
     char donneur;
