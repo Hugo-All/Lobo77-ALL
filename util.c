@@ -23,7 +23,7 @@ void gets_limite(char *sortie, int limite)
      fflush(stdin);
 }
 
-void melanger_pile(int cartes[DIM_pile],char nb_cartes) // Mélange les nb_cartes premières cartes d'une pile
+void melanger_pile(int cartes[DIM_pile],int nb_cartes) // Mélange les nb_cartes premières cartes d'une pile
 {
      int i, index_aleatoire, carte_temp;
 

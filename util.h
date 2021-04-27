@@ -34,7 +34,7 @@ int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void gets_limite(char *sortie, int limite);
 
-void melanger_pile(int cartes[DIM_pile],char nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
+void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 
 int attend_touche(int timeout);
 
