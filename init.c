@@ -1,6 +1,5 @@
 #include "init.h"
 
-#ifndef MODE_DEBUG
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sous-programme pour initialiser les joueurs en début de partie
 {
     do{
@@ -25,7 +24,6 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sou
         joueurs[i].nb_jetons = 0;//Initialisation des jetons
     }
 }
-#endif
 
 void initialiser_pile(int pile[DIM_pile])
 {
@@ -58,7 +56,6 @@ void initialiser_defausse(int defausse[DIM_pile])//initialisation de la défauss
         defausse[i] = CARTE_VIDE;
 }
 
-#ifndef MODE_DEBUG
 //Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
@@ -111,4 +108,3 @@ void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     sleep(2);
     system("cls");
 }
-#endif
