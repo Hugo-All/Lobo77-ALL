@@ -10,10 +10,15 @@ void banniere();
 void barre_horizontale();
 
 void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+
 void afficher_cartes(S_joueur joueur, int curseur);
 void afficher_carte(int carte);
 void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur);
+
+
+void afficher_nom(char nom[])
 void afficher_total(int total);
+
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse);
 
 #endif

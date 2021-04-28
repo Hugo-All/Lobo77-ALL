@@ -87,6 +87,8 @@ void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
 
+    afficher_nom(joueur.nom);
+
     //Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
@@ -180,6 +182,21 @@ void afficher_total(int total)
     
     printf("            %c", 200);
     for(int i = 0; i < 16; i++)
+        printf("%c", 205);
+    printf("%c\n\n", 188);
+}
+
+void afficher_nom(char nom[])
+{
+    printf("\n        %c", 201);
+    for(int i = 0; i < strlen(nom) + 13; i++)
+        printf("%c", 205);
+    printf("%c\n", 187);
+
+    printf("        %c Cartes de: %s %c\n", 186, nom, 186);
+    
+    printf("        %c", 200);
+    for(int i = 0; i < strlen(nom) + 13; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
 }
