@@ -52,6 +52,7 @@ void initialiser_pile(int pile[DIM_pile])
     pile[55] = 76;
 }
 
+//TODO Animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = rand() % (nb_joueurs-1);
@@ -61,26 +62,22 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     system("pause");
 }
 
-//TODO Distribuer à partir du donneur
 //Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
-    system("cls");
-    afficher_joueurs(joueurs, nb_joueurs);
-    printf("Distribution des cartes...\n");
-    sleep(1);
+    int index_donneur = get_donneur(joueurs, nb_joueurs);
 
     for(int i = 0; i < DIM_main_joueur; i++)
     {
-        for(int j = 0; j < nb_joueurs; j++)
+        for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
         {
             if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
-                printf("Distribution des cartes...\n");
-                usleep(300000);
-                joueurs[j].cartes[i] = pile[*index_pile];
+                printf("Distribution des cartes par le donneur...\n");
+                usleep(250000);
+                joueurs[j % nb_joueurs].cartes[i] = pile[*index_pile];
                 pile[*index_pile] = CARTE_VIDE;
                 (*index_pile)--;
             }
@@ -94,22 +91,19 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
 
 void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
-    system("cls");
-    afficher_joueurs(joueurs, nb_joueurs);
-    printf("Distribution des jetons...\n");
-    sleep(1);
+    int index_donneur = get_donneur(joueurs, nb_joueurs);
 
     for(int i = 0; i < NB_max_jetons; i++)
     {
-        for(int j = 0; j < nb_joueurs; j++)
+        for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
         {
             if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
-                printf("Distribution des jetons...\n");
-                usleep(300000);
-                joueurs[j].nb_jetons++;
+                printf("Distribution des jetons par le donneur...\n");
+                usleep(250000);
+                joueurs[j % nb_joueurs].nb_jetons++;
             }
         }
     }
