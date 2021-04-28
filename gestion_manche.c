@@ -6,7 +6,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     system("cls");
 
     int defausse[DIM_pile];
-    int index_defausse = 0; //Nombre de cartes dans la défausse
+    int index_defausse = -1; //Nombre de cartes dans la défausse
     int total_defausse = 0; //Total numérique de la défausse
     int index_carte, valeur_carte; //Stoke la carte sélectionnée par le joueur et sa valeur
     int joueur_suivant_x2 = 0; //Indique si le prochain joueur doit jouer 2 fois
