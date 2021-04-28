@@ -8,6 +8,7 @@
 #include "declarations.h"
 #include "affichage.h"
 #include "util.h"
+#include "init.h"
 
 void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueursw, int pile[DIM_pile], int *index_pile);
 

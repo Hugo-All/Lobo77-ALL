@@ -2,7 +2,7 @@
 
 void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile)
 {
-    //Initialisation de la manche
+    //-------------------------Initialisation de la manche-------------------------
     system("cls");
 
     int defausse[DIM_pile];
@@ -17,9 +17,9 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     system("cls");
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-    printf("Debut de la manche:\n\nMelange des cartes de la pile");
+    printf("Melange des cartes de la pile");
 
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 3; i++)
     {
         usleep(600000);
         printf(".");
@@ -27,7 +27,9 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     melanger_pile(pile, *index_pile);
     system("cls");
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-    printf("Debut de la manche:\n\nMelange des cartes de la pile termine\n");
+    printf("Melange des cartes de la pile termine\n");
+    usleep(600000);
+    distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
     system("pause");
 
     for(int i = 0; i < nb_joueurs; i++)//Remise à 0 du sens du jeu et du joueur actuel
@@ -41,6 +43,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     printf("Le donneur est: %s, c'est le joueur a gauche qui commence, donc: %s\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
     system("pause");
 
+    //-------------------------Boucle de jeu-------------------------
     while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
     {
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
@@ -62,11 +65,12 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             if(*index_pile == 0) //Si il ne reste plus de cartes dans la pile
             {
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
+                melanger_pile(pile, *index_pile);
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 printf("La défausse a ete rajoutee a la pile et melangee.\n");
             }
 
-
+            //-------------------------Selection carte-------------------------
             do{
                 index_carte = selectionner_carte(joueurs, joueurs[index_joueur], nb_joueurs, total_defausse);
                 valeur_carte = joueurs[index_joueur].cartes[index_carte];
@@ -113,7 +117,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 carte_restant_a_jouer--;
             }
 
-            //Si le joueur est toujours vivant et que le total est inférieur à 77
+            //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
             if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
             {
                 printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n");
@@ -139,10 +143,12 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
         index_joueur = joueur_suivant(joueurs, nb_joueurs);
     }
+
     if(total_defausse >= 77)
     {
         printf("Vous avez fait depasser la defausse au dessus de 76");
         retirer_jeton(&joueurs[index_joueur]);
+        vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile);
     }//Si cette condition n'est pas vérifiée alors: un seul joueur possède des cartes ou un seul joueur est vivant
     //TODO un seul joueur vivant ? (en dehors de cette fonction)
 }
