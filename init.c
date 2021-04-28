@@ -52,6 +52,16 @@ void initialiser_pile(int pile[DIM_pile])
     pile[55] = 76;
 }
 
+void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+    int donneur = rand() % (nb_joueurs-1);
+    joueurs[donneur].donneur = 1;
+    afficher_joueurs(joueurs, nb_joueurs);
+    printf("Le donneur selectionne est %s\n", joueurs[donneur].nom);
+    system("pause");
+}
+
+//TODO Distribuer à partir du donneur
 //Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {

@@ -22,10 +22,10 @@ int main()
     banniere();
     printf("Bienvenue sur LOBO77. Par Hugo ALLAIRE et Tom ALLARD\n\n");
 
-    joueurs[0].donneur = 1;
     initialiser_joueurs(joueurs, &nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
     distribuer_cartes(pile, &index_pile, joueurs, nb_joueurs);
+    donneur_aleatoire(joueurs, nb_joueurs);
     
     manche(joueurs, nb_joueurs, pile, &index_pile);
     system("cls");
