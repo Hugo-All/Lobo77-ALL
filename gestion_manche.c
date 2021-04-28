@@ -15,7 +15,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
 
-    
+    melanger_pile(pile, *index_pile);
     distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
     system("pause");
 
