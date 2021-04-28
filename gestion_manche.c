@@ -10,7 +10,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int total_defausse = 0; //Total numérique de la défausse
     int index_carte, valeur_carte; //Stoke la carte sélectionnée par le joueur et sa valeur
     int prochain_joueur_x2 = 0; //Indique si le prochain joueur doit jouer 2 fois
-    int sens_jeu;
 
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
@@ -97,12 +96,11 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 printf("Vous n'avez pas pioche de carte.\n");
                 if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
-                    printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche");
+                    printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
             }
         }
         system("pause");
 
-        sens_jeu = joueurs[index_joueur].sens_jeu;
         index_joueur = joueur_suivant(joueurs, nb_joueurs);
 
     }

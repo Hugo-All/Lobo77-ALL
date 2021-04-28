@@ -43,7 +43,6 @@ void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes
 
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse);
 
-
 int nb_cartes_joueur(S_joueur joueur);
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
