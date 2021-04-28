@@ -145,7 +145,7 @@ int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      else if(index_joueur < 0)
           index_joueur = nb_joueurs - 1;
 
-     }while(joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) == 0);
+     }while(joueurs[index_joueur].nb_jetons < 0 || nb_cartes_joueur(joueurs[index_joueur]) == 0);
 
      joueurs[index_joueur].sens_jeu = sens_jeu;
 

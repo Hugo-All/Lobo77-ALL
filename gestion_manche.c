@@ -106,8 +106,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
                     printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
             }
+            system("pause");
         }
-        system("pause");
 
         index_joueur = joueur_suivant(joueurs, nb_joueurs);
 
