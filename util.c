@@ -36,7 +36,7 @@ void melanger_pile(int cartes[DIM_pile],int nb_cartes) // Mélange les nb_cartes
 {
      int i, index_aleatoire, carte_temp;
 
-     for (i = nb_cartes - 1; i > 0; i--) { // Parcours toute les cartes de la pile de la nb_cartes vers le début
+     for (i = nb_cartes; i > 0; i--) { // Parcours toute les cartes de la pile de la nb_cartes vers le début
          index_aleatoire = rand() % (i + 1); // Trouve une case aléatoire
          carte_temp = cartes[index_aleatoire]; // Echange la case choisie aléatoirement avec la case en cours
          cartes[index_aleatoire] = cartes[i];
