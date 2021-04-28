@@ -15,7 +15,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
 
-    printf("Melange des cartes");
+    printf("Melange des cartes de la pile");
     for(int i = 0; i < 5; i++)
     {
         usleep(500000);
@@ -23,29 +23,23 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     }
     melanger_pile(pile, *index_pile);
     system("cls");
-    printf("Melange des cartes termine\n");
+    printf("Melange des cartes de la pile termine\n");
     system("pause");
 
     for(int i = 0; i < nb_joueurs; i++)//Remise à 0 du sens du jeu et du joueur actuel
         joueurs[i].sens_jeu = 0;
 
     int index_donneur = get_donneur(joueurs, nb_joueurs);
+    joueurs[index_donneur].sens_jeu = SENS_HORAIRE; //On dit que le joueur actuel est le donneur
+    int index_joueur = joueur_suivant(joueurs, nb_joueurs); //Et on cherche un joueur vivant à gauche
 
-    int index_joueur;//On prend le joueur après le donneur
-    //TODO Checker que le joueur à gauche soit vivant
-    if(index_donneur+1 < nb_joueurs)
-        index_joueur = index_donneur + 1;
-    else //Si le donneur est le dernier joueur le joueur qui commence est donc le premier
-        index_joueur = 0;
-    joueurs[index_joueur].sens_jeu = SENS_HORAIRE;
-
+    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
     printf("Le donneur est: %s, c'est le joueur a gauche qui commence, donc: %s\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
     system("pause");
 
-    while(total_defausse < 77)//TODO Carte x2
+    while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)//TODO Carte x2
     {
-        system("cls");
-        afficher_joueurs(joueurs, nb_joueurs);
+        afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         printf("Laissez le clavier a %s\n", joueurs[index_joueur].nom);
         system("pause");
         index_carte = selectionner_carte(joueurs, joueurs[index_joueur], nb_joueurs, total_defausse);
@@ -57,7 +51,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         defausse[index_defausse] = valeur_carte;
         joueurs[index_joueur].cartes[index_carte] = CARTE_VIDE;
 
-        system("cls");
+
         if(valeur_carte == CARTE_SENS)//Inversion du sens de jeu
         {
             if(joueurs[index_joueur].sens_jeu == SENS_ANTIHORAIRE)
@@ -65,50 +59,52 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             else
                 joueurs[index_joueur].sens_jeu = SENS_ANTIHORAIRE;
 
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             printf("Le sens de jeu a ete inverse.\n");
         }else if(valeur_carte == CARTE_X2)
         {
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             prochain_joueur_x2 = 1;
             printf("Le prochain joueur devra jouer 2 cartes\n");
         }else //La carte a donc une valeur numérique
         {
             total_defausse += valeur_carte;
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             printf("La carte %d a ete ajoutee au total qui atteint donc: %d\n", valeur_carte, total_defausse);
             if(total_defausse != 0 && total_defausse < 77 && total_defausse%11 == 0) //Si le total atteint un multiple de 11, le joueur perd un jeton.
             {
-                //TODO Fonction retirer jeton avec conditions d'élimination
-                joueurs[index_joueur].nb_jetons--;
-                printf("Le total est un multiple de 11 donc vous avez perdu un jeton, vous n'en avez plus que %d\n", joueurs[index_joueur].nb_jetons);
+                printf("\nLe total est un multiple de 11. ");
+                retirer_jeton(&joueurs[index_joueur]);
+            }
+        }
+
+        //Si le joueur est toujours vivant et que le total est inférieur à 77
+        if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
+        {
+            printf("Vous avez 5 secondes pour piocher une carte.\n");
+            if(attend_touche(5) == 1)
+            {
+                joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
+                pile[*index_pile] = CARTE_VIDE;
+                (*index_pile)--;
+
+                afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+                printf("Vous avez pioche la carte:\n\n");
+                afficher_carte(joueurs[index_joueur].cartes[index_carte]);
+
+            }else
+            {
+                afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+                printf("Vous n'avez pas pioche de carte.\n");
+                if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
+                    printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche");
             }
         }
         system("pause");
 
-        printf("Vous avez 5 secondes pour piocher une carte.\n");
-        if(attend_touche(5) == 1)
-        {
-            joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
-            pile[*index_pile] = CARTE_VIDE;
-            (*index_pile)--;
-            printf("Vous avez pioche la carte %d\n", joueurs[index_joueur].cartes[index_carte]); //TODO Fonction afficher_carte
-        }else
-            printf("Vous n'avez pas pioche de carte.\n");
-        system("pause");
-
-        //TODO Fonction sélectionner prochain joueur
         sens_jeu = joueurs[index_joueur].sens_jeu;
-        do{ //On sélectionne le prochain joueur
-            joueurs[index_joueur].sens_jeu = 0;
-            index_joueur += sens_jeu;
+        index_joueur = joueur_suivant(joueurs, nb_joueurs);
 
-            if(index_joueur >= nb_joueurs)
-                index_joueur = 0;
-            else if(index_joueur < 0)
-                index_joueur = nb_joueurs - 1;
-
-            joueurs[index_joueur].sens_jeu = sens_jeu;
-        }while(joueurs[index_joueur].nb_jetons < 0) //On recommence si le prochain joueur est éliminé
-
-        printf("j%d %d", index_joueur, get_joueur_actuel(joueurs, nb_joueurs)); system("pause");
     }
 
 }
