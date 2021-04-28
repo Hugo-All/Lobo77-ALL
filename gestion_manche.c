@@ -38,6 +38,14 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)//TODO Carte x2
     {
+
+        if(*index_pile == 0) //Si il ne reste plus de cartes dans la pile
+        {
+            vider_defausse(pile, defausse, index_pile, &index_defausse);
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+            printf("La défausse a ete rajoutee a la pile et melangee.\n");
+        }
+
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         printf("Laissez le clavier a %s\n", joueurs[index_joueur].nom);
         system("pause");
