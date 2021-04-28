@@ -31,16 +31,15 @@ typedef enum E_couleurs couleurs;
 
 void color (int couleurDuTexte, int couleurDuFond);
 
+int attend_touche(int timeout);
+char get_touche();
+void gets_limite(char *sortie, int limite);
+
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
-void gets_limite(char *sortie, int limite);
-
 void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
-
-int attend_touche(int timeout);
 
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse);
 
-char get_touche();
 #endif
