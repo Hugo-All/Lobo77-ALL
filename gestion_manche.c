@@ -16,7 +16,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
 
     system("cls");
-    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Melange des cartes de la pile");
 
     for(int i = 0; i < 3; i++)
@@ -26,9 +26,9 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     }
     melanger_pile(pile, *index_pile);
     system("cls");
-    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+    afficher_joueurs(joueurs, nb_joueurs);
     printf("Melange des cartes de la pile termine\n");
-    usleep(600000);
+    sleep(1);
     distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
     system("pause");
 

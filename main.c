@@ -25,7 +25,6 @@ int main()
     initialiser_joueurs(joueurs, &nb_joueurs);
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
-    distribuer_cartes(pile, &index_pile, joueurs, nb_joueurs);
 
     int num_manche = 1;
     do
