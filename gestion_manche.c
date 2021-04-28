@@ -39,10 +39,19 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)//TODO Carte x2
     {
+        afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+        printf("Laissez le clavier a %s\n", joueurs[index_joueur].nom);
+        system("pause");
+
         if(joueur_suivant_x2 == 0) //Si le joueur précédent a joué une carte x2
             carte_restant_a_jouer = 1;
         else
+        {
             carte_restant_a_jouer = 2;
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+            printf("Vous devez jouer 2 cartes.\n");
+            system("pause");
+        }
         joueur_suivant_x2 = 0;
 
         do{
@@ -53,13 +62,15 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 printf("La défausse a ete rajoutee a la pile et melangee.\n");
             }
 
-            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-            printf("Laissez le clavier a %s, qui doit jouer %d carte(s)\n", joueurs[index_joueur].nom, carte_restant_a_jouer);
-            system("pause");
 
             do{
                 index_carte = selectionner_carte(joueurs, joueurs[index_joueur], nb_joueurs, total_defausse);
                 valeur_carte = joueurs[index_joueur].cartes[index_carte];
+                if(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2)
+                {
+                    printf("Vous ne pouvez pas jouer cette carte en premier alors que vous devez en poser 2.");
+                    system("pause");
+                }
             }while(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2); //Si le joueur doit jouer 2 cartes, il ne peut pas jouer un x2 en première carte
 
             //Le joueur se défausse de la carte qu'il vient de jouer
