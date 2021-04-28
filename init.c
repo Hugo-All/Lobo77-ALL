@@ -10,18 +10,20 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sou
 
     system("cls");
 
-    for(int i = 0; i < *nb_joueurs; i++)
+    for(int i = 0; i < *nb_joueurs; i++)//Initialisation des cartes et des jetons avant l'affichage
     {
-        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);//attribution du nom des joueurs
-        gets_limite(joueurs[i].nom, DIM_STR);
-        printf("Le joueur %d s'appelle: %s\n\n", i+1, joueurs[i].nom);
-        system("pause");
-        system("cls");
-
         for(int j=0;  j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
         joueurs[i].nb_jetons = 0;//Initialisation des jetons
+    }
+    
+    for(int i = 0; i < *nb_joueurs; i++)
+    {
+        afficher_joueurs(joueurs, *nb_joueurs);
+        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);//attribution du nom des joueurs
+        gets_limite(joueurs[i].nom, DIM_STR);
+        system("cls");
     }
 }
 
@@ -77,11 +79,11 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
     printf("Fin de la distribution des cartes\n");
-    sleep(2);
+    sleep(1);
     system("cls");
 }
 
-void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
@@ -105,6 +107,6 @@ void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
     printf("Fin de la distribution des jetons\n");
-    sleep(2);
+    sleep(1);
     system("cls");
 }

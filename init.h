@@ -14,6 +14,6 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs);
 void initialiser_pile(int pile[DIM_pile]);
 
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
-void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 #endif
