@@ -26,8 +26,20 @@ int main()
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
     distribuer_cartes(pile, &index_pile, joueurs, nb_joueurs);
-    
-    manche(joueurs, nb_joueurs, pile, &index_pile);
+
+    int num_manche = 1;
+    do
+    {
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+
+        printf("    Manche numero %d\n\n", num_manche);
+        system("pause");
+
+        manche(joueurs, nb_joueurs, pile, &index_pile);
+        num_manche++;
+    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO joueur sans cartes valide
+
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
     printf("Fin de la manche demo.\n");

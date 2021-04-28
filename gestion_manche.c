@@ -150,7 +150,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         retirer_jeton(&joueurs[index_joueur]);
         vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile);
     }//Si cette condition n'est pas vérifiée alors: un seul joueur possède des cartes ou un seul joueur est vivant
-    //TODO un seul joueur vivant ? (en dehors de cette fonction)
 }
 
 void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse)
