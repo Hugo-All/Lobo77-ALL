@@ -15,15 +15,19 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
 
-    printf("Melange des cartes de la pile");
+    system("cls");
+    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+    printf("Debut de la manche:\n\nMelange des cartes de la pile");
+
     for(int i = 0; i < 5; i++)
     {
-        usleep(500000);
+        usleep(600000);
         printf(".");
     }
     melanger_pile(pile, *index_pile);
     system("cls");
-    printf("Melange des cartes de la pile termine\n");
+    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+    printf("Debut de la manche:\n\nMelange des cartes de la pile termine\n");
     system("pause");
 
     for(int i = 0; i < nb_joueurs; i++)//Remise à 0 du sens du jeu et du joueur actuel
@@ -37,7 +41,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     printf("Le donneur est: %s, c'est le joueur a gauche qui commence, donc: %s\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
     system("pause");
 
-    while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)//TODO Carte x2
+    while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
     {
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         printf("Laissez le clavier a %s\n", joueurs[index_joueur].nom);
@@ -103,7 +107,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 printf("La carte %d a ete ajoutee au total qui atteint donc: %d\n", valeur_carte, total_defausse);
                 if(total_defausse != 0 && total_defausse < 77 && total_defausse%11 == 0) //Si le total atteint un multiple de 11, le joueur perd un jeton.
                 {
-                    printf("\nLe total est un multiple de 11. ");
+                    printf("\nLe total est un multiple de 11");
                     retirer_jeton(&joueurs[index_joueur]);
                 }
                 carte_restant_a_jouer--;
@@ -112,7 +116,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             //Si le joueur est toujours vivant et que le total est inférieur à 77
             if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
             {
-                printf("Vous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n");
+                printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n");
                 if(attend_touche(5) == 1)
                 {
                     joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
@@ -126,7 +130,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 {
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                     printf("Vous n'avez pas pioche de carte.\n");
-                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
+                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0) //TODO Ecrire prof à propos de la protection d'un joueur qui n'as plus de cartes
                         printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
                 }
                 system("pause");
@@ -137,9 +141,10 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     }
     if(total_defausse >= 77)
     {
-        printf("Vous avez fait depasser la defausse au dessus de 76.\n");
+        printf("Vous avez fait depasser la defausse au dessus de 76");
         retirer_jeton(&joueurs[index_joueur]);
     }//Si cette condition n'est pas vérifiée alors: un seul joueur possède des cartes ou un seul joueur est vivant
+    //TODO un seul joueur vivant ? (en dehors de cette fonction)
 }
 
 void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse)

@@ -167,14 +167,14 @@ int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 void retirer_jeton(S_joueur *joueur)
 {
      joueur->nb_jetons--;
-     printf("Vous avez perdu un jeton, ");
+     printf(" donc vous avez perdu un jeton et ");
 
      if(joueur->nb_jetons > 0)
-          printf("il ne vous en reste plus que %d\n", joueur->nb_jetons);
+          printf("il ne vous en reste plus que %d.\n", joueur->nb_jetons);
      else if(joueur->nb_jetons == 0)
-          printf("vous n'en avez plus donc vous nagez, ne perdez pas encore une fois !\n");
+          printf("vous n'en avez plus alors vous nagez, ne perdez pas encore une fois !\n");
      else
-          printf("vous nagiez donc vous etes maintenant elimine\n");
+          printf("vous nagiez alors vous etes maintenant elimine.\n");
 
      system("pause");
 }
