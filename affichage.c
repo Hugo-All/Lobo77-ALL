@@ -137,21 +137,21 @@ void afficher_cartes(S_joueur joueur, int curseur)
 
 void afficher_carte(int carte)
 {
-    printf("    %c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187);
-    printf("    %c      %c\n    %c      %c\n", 186, 186, 186, 186);
-    switch (carte)
+    printf("\t\t%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
+    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Lignes intermédiaires
+    switch (carte) //Ligne de texte
     {
         case CARTE_SENS :
-            printf("    %c SENS %c\n", 186, 186);
+            printf("\t\t%c SENS %c\n", 186, 186);
             break;
         case CARTE_X2 :
-            printf("    %c  X2  %c\n", 186, 186);
+            printf("\t\t%c  X2  %c\n", 186, 186);
             break;
         default :
-            printf("    %c % 3d  %c\n", 186, carte, 186);
+            printf("\t\t%c % 3d  %c\n", 186, carte, 186);
     }
-    printf("    %c      %c\n    %c      %c\n", 186, 186, 186, 186);
-    printf("    %c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188);
+    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Ligne intermédiaires de la carte
+    printf("\t\t%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
 }
 
 //Affiche une portion de chaque cartes
