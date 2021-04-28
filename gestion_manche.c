@@ -164,3 +164,23 @@ void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile,
         defausse[i] = CARTE_VIDE; //Remplace la carte transférée par la carte vide
     }
 }
+
+void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile)
+{
+    for(int i = DIM_main_joueur - 1; i >= 0; i--)
+    {
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        printf("Vidage des mains des joueurs...");
+        usleep(200000);
+        for(int j = 0; j < nb_joueurs; j++)
+        {
+            (*index_pile)++;
+            pile[*index_pile] = joueurs[j].cartes[i];
+            joueurs[j].cartes[i] = CARTE_VIDE;
+        }
+    }
+
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs);
+}
