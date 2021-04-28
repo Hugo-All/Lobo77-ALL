@@ -157,7 +157,7 @@ int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      int compte_joueurs_valides = 0;
      for(int i = 0; i < nb_joueurs; i++)
      {
-          if(joueurs[i].nb_jetons >= 0 && nb_cartes_joueur(joueurs[i]) > 0)
+          if(joueurs[i].nb_jetons >= 0)
                compte_joueurs_valides++;
      }
 
