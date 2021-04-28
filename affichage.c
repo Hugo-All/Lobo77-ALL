@@ -49,7 +49,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
                     printf("%c ", 254);
                 else
                     printf("  ");
-                
+
             }
             printf("  ");
 
@@ -86,7 +86,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
-    
+
     //Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
@@ -124,13 +124,32 @@ void afficher_cartes(S_joueur joueur, int curseur)
     sprintf(buffer_ligne, "%c      %c", 186, 186);
     for(int i = 0; i < 2; i++)
         afficher_ligne_cartes(joueur, buffer_ligne, curseur);
-        
+
     //Affiche le bas de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 200, 205, 205, 205, 205, 205, 205, 188);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
     printf("\n");
     color(BLANC, NOIR); //Remet à 0 les couleurs
+}
+
+void afficher_carte(int carte)
+{
+    printf("    %c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187);
+    printf("    %c      %c\n    %c      %c\n", 186, 186, 186, 186);
+    switch (carte)
+    {
+        case CARTE_SENS :
+            printf("    %c SENS %c\n", 186, 186);
+            break;
+        case CARTE_X2 :
+            printf("    %c  X2  %c\n", 186, 186);
+            break;
+        default :
+            printf("    %c % 3d  %c\n", 186, carte, 186);
+    }
+    printf("    %c      %c\n    %c      %c\n", 186, 186, 186, 186);
+    printf("    %c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188);
 }
 
 //Affiche une portion de chaque cartes
@@ -148,4 +167,27 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
             printf("        "); //Si la carte est vide, imprimer des espaces
     }
     printf("\n");
+}
+
+void afficher_total(int total)
+{
+    printf("            %c", 201);
+    for(int i = 0; i < 16; i++)
+        printf("%c", 205);
+    printf("%c\n", 187);
+
+    printf("            %c   Total: % 4d  %c\n", 186, total, 186);
+    
+    printf("            %c", 200);
+    for(int i = 0; i < 16; i++)
+        printf("%c", 205);
+    printf("%c\n\n", 188);
+}
+
+void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse)
+{
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs);
+    afficher_total(total_defausse);
+    barre_horizontale();
 }

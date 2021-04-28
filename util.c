@@ -70,10 +70,8 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
 
      do // Tant que le joueur n'as pas appuyé sur entré
      {
-          system("cls");
-          afficher_joueurs(joueurs, nb_joueurs);
-
-          printf("\n\nTotal defausse: %d\n\n\nVeuillez selectionner une carte:\n", total_defausse);
+          afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+          printf("\nVeuillez selectionner une carte:\n");
 
           afficher_cartes(joueur, curseur);
           touche=get_touche();
