@@ -55,7 +55,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
             afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             printf("Laissez le clavier a %s, qui doit jouer %d carte(s)\n", joueurs[index_joueur].nom, carte_restant_a_jouer);
-            printf("\n%d\n", carte_restant_a_jouer);
             system("pause");
 
             do{
