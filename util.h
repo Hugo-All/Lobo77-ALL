@@ -37,9 +37,15 @@ void gets_limite(char *sortie, int limite);
 
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse);
 
+
+int nb_cartes_joueur(S_joueur joueur);
+int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+
+void retirer_jeton(S_joueur *joueur);
 #endif

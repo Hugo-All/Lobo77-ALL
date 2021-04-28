@@ -118,3 +118,63 @@ char get_touche()
 
     return touche;
 }
+
+int nb_cartes_joueur(S_joueur joueur)
+{
+     int nb_cartes = 0;
+     for(int i = 0; i < DIM_main_joueur; i++)
+     {
+          if(joueur.cartes[i] != CARTE_VIDE)
+               nb_cartes++;
+     }
+     return nb_cartes;
+}
+
+int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     int index_joueur = get_joueur_actuel(joueurs, nb_joueurs);
+     int sens_jeu = joueurs[index_joueur].sens_jeu;
+     joueurs[index_joueur].sens_jeu = 0;
+
+     do
+     {
+     index_joueur += sens_jeu; //On prend le joueur suivant en fonction du sens du jeu
+
+     if(index_joueur >= nb_joueurs)
+          index_joueur = 0;
+     else if(index_joueur < 0)
+          index_joueur = nb_joueurs - 1;
+
+     }while(joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) == 0);
+
+     joueurs[index_joueur].sens_jeu = sens_jeu;
+
+     return index_joueur;
+}
+
+int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     int compte_joueurs_valides = 0;
+     for(int i = 0; i < nb_joueurs; i++)
+     {
+          if(joueurs[i].nb_jetons >= 0 && nb_cartes_joueur(joueurs[i]) > 0)
+               compte_joueurs_valides++;
+     }
+
+     return compte_joueurs_valides;
+}
+
+void retirer_jeton(S_joueur *joueur)
+{
+     joueur->nb_jetons--;
+     printf("Vous avez perdu un jeton, ");
+
+     if(joueur->nb_jetons > 0)
+          printf("il ne vous en reste plus que %d\n", joueur->nb_jetons);
+     else if(joueur->nb_jetons == 0)
+          printf("vous n'en avez plus donc vous nagez, ne perdez pas encore une fois !\n");
+     else
+          printf("vous nagiez donc vous etes maintenant elimine\n");
+
+     system("pause");
+}
