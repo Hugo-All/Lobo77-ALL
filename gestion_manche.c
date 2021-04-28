@@ -161,9 +161,12 @@ void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pi
         usleep(200000);
         for(int j = 0; j < nb_joueurs; j++)
         {
-            (*index_pile)++;
-            pile[*index_pile] = joueurs[j].cartes[i];
-            joueurs[j].cartes[i] = CARTE_VIDE;
+            if(joueurs[j].cartes[i] != CARTE_VIDE)
+            {
+                (*index_pile)++;
+                pile[*index_pile] = joueurs[j].cartes[i];
+                joueurs[j].cartes[i] = CARTE_VIDE;
+            }
         }
     }
 
