@@ -112,7 +112,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             //Si le joueur est toujours vivant et que le total est inférieur à 77
             if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
             {
-                printf("Vous avez 5 secondes pour piocher une carte.\n");
+                printf("Vous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n");
                 if(attend_touche(5) == 1)
                 {
                     joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
@@ -135,7 +135,11 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
         index_joueur = joueur_suivant(joueurs, nb_joueurs);
     }
-
+    if(total_defausse >= 77)
+    {
+        printf("Vous avez fait depasser la defausse au dessus de 76.\n");
+        retirer_jeton(&joueurs[index_joueur]);
+    }//Si cette condition n'est pas vérifiée alors: un seul joueur possède des cartes ou un seul joueur est vivant
 }
 
 void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse)
