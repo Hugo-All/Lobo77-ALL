@@ -62,13 +62,16 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     {
         for(int j = 0; j < nb_joueurs; j++)
         {
-            system("cls");
-            afficher_joueurs(joueurs, nb_joueurs);
-            printf("Distribution des cartes...\n");
-            usleep(300000);
-            joueurs[j].cartes[i] = pile[*index_pile];
-            pile[*index_pile] = CARTE_VIDE;
-            (*index_pile)--;
+            if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
+            {
+                system("cls");
+                afficher_joueurs(joueurs, nb_joueurs);
+                printf("Distribution des cartes...\n");
+                usleep(300000);
+                joueurs[j].cartes[i] = pile[*index_pile];
+                pile[*index_pile] = CARTE_VIDE;
+                (*index_pile)--;
+            }
         }
     }
     system("cls");
@@ -89,11 +92,14 @@ void distribuer_jetons(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     {
         for(int j = 0; j < nb_joueurs; j++)
         {
-            system("cls");
-            afficher_joueurs(joueurs, nb_joueurs);
-            printf("Distribution des jetons...\n");
-            usleep(300000);
-            joueurs[j].nb_jetons++;
+            if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
+            {
+                system("cls");
+                afficher_joueurs(joueurs, nb_joueurs);
+                printf("Distribution des jetons...\n");
+                usleep(300000);
+                joueurs[j].nb_jetons++;
+            }
         }
     }
     system("cls");
