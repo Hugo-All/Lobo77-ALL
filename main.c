@@ -15,10 +15,12 @@ int main()
     color(BLANC, NOIR);
     //SetConsoleOutputCP(1252);
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
-
     index_pile = DIM_pile-1;
     initialiser_pile(pile);
     melanger_pile(pile, index_pile);
+
+    banniere();
+    printf("Bienvenue sur LOBO77. Par Hugo ALLAIRE et Tom ALLARD\n\n");
 
     joueurs[0].donneur = 1;
     initialiser_joueurs(joueurs, &nb_joueurs);
