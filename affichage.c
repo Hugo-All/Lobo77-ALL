@@ -36,8 +36,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
             printf("      ");
         }
 
-        printf("%-10s", joueurs[i].nom); //Affiche le nom du joueur
-        printf(" ");
+        printf("%-10s ", joueurs[i].nom); //Affiche le nom du joueur
 
         //Si un jeton n'as plus de jetons et n'est pas flottant, on ne l'affiche pas
         if(joueurs[i].nb_jetons >= 0)
@@ -131,8 +130,8 @@ void afficher_cartes(S_joueur joueur, int curseur)
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 200, 205, 205, 205, 205, 205, 205, 188);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
-    printf("\n");
     color(BLANC, NOIR); //Remet à 0 les couleurs
+    printf("\n");
 }
 
 void afficher_carte(int carte)
