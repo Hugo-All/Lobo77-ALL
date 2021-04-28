@@ -69,7 +69,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             }while(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2); //Si le joueur doit jouer 2 cartes, il ne peut pas jouer un x2 en première carte
 
             //Le joueur se défausse de la carte qu'il vient de jouer
-            defausse[index_defausse + 1] = valeur_carte;
             index_defausse++;
             defausse[index_defausse] = valeur_carte;
             joueurs[index_joueur].cartes[index_carte] = CARTE_VIDE;
