@@ -13,7 +13,7 @@ void banniere() //Affichage de la bannière du jeu
 
 void barre_horizontale() //Affichage d'un élément esthétique pour la présentation sur la console
 {
-    for(int i = 0; i < 45; i++)
+    for(int i = 0; i < LARGEUR_AFFICHAGE; i++)
         printf("%c", 205);
     printf("\n\n");
 }
@@ -102,9 +102,9 @@ void afficher_cartes(S_joueur joueur, int curseur)
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
     {
         color(BLANC, NOIR);
+        printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            printf(" "); //Espacement entre les cartes
             if(i_carte == curseur) color(NOIR, BLANC);//Inverse les couleurs si carte sélectionnée
             switch (joueur.cartes[i_carte])
             {
@@ -160,8 +160,8 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) //Parcours chaque carte du joueur
     {
-        printf(" "); //Espacement entre les cartes
         color(BLANC, NOIR); //Remet à 0 les couleurs
+        printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
             if(i_carte == curseur) color(NOIR, BLANC); //Inverse les couleurs si carte sélectionnée
