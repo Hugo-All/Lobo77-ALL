@@ -72,7 +72,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             index_defausse++;
             defausse[index_defausse] = valeur_carte;
             joueurs[index_joueur].cartes[index_carte] = CARTE_VIDE;
-            cartes_a_piocher++; //Le joueur devra piocher une carte de plus
+            cartes_a_piocher++; //Le joueur aura la possibilité de piocher une carte
 
             //Traitement de la carte jouée
             if(valeur_carte == CARTE_SENS) //Inversion du sens de jeu
@@ -98,10 +98,11 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 color(VERT, NOIR); printf("La carte %d a ete ajoutee au total qui atteint donc: %d\n\n", valeur_carte, total_defausse); color(BLANC, NOIR);
                 
                 //Si le total atteint un multiple de 11, le joueur perd un jeton. Ne retire pas de jeton si le joueur vient de poser une carte sans valeur numérique
-                if(total_defausse != 0 && total_defausse < 77 && total_defausse%11 == 0 && valeur_carte > 0 && valeur_carte < 77)
+                if(total_defausse%11 == 0 && total_defausse != 0 && total_defausse < 77 && valeur_carte != 0 && valeur_carte < 77)
                 {
                     color(ROUGE, NOIR); printf("\nLe total est un multiple de 11"); color(BLANC, NOIR);
                     retirer_jeton(&joueurs[index_joueur]);
+                    if(carte_restant_a_jouer == 0) system("pause"); //Evite d'avoir une double pause si le doit jouer 2 cartes
                 }
                 carte_restant_a_jouer--;
             }
@@ -144,6 +145,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         {
             color(ROUGE, NOIR); printf("Vous avez fait depasser la defausse au dessus de 76");
             retirer_jeton(&joueurs[index_joueur]); color(BLANC, NOIR);
+            system("pause");
         }else
             index_joueur = joueur_suivant(joueurs, nb_joueurs); //On passe au joueur suivant si la défausse n'a pas atteint 77
     }

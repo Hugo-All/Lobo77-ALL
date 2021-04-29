@@ -32,7 +32,7 @@ int main()
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadree_int("Manche numero: %d", num_manche);
+        afficher_encadree_int("Manche numero: % 2d", num_manche);
         system("pause");
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
@@ -41,7 +41,7 @@ int main()
 
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadree_int("Fin de la manche %d", num_manche);
+        afficher_encadree_int("Fin de la manche % 2d", num_manche);
 
         if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
         {

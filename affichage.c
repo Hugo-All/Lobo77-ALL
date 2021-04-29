@@ -13,7 +13,7 @@ void banniere() //Affichage de la bannière du jeu
 
 void barre_horizontale() //Affichage d'un élément esthétique pour la présentation sur la console
 {
-    for(int i = 0; i < LARGEUR_AFFICHAGE; i++)
+    for(int i = 0; i < 45; i++)
         printf("%c", 205);
     printf("\n\n");
 }
@@ -219,7 +219,7 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    afficher_encadree_int("  Total: % 4d ", total_defausse);
+    afficher_encadree_int("  Total: % 3d ", total_defausse);
     barre_horizontale();
 }
 
