@@ -71,7 +71,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     {
         for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
         {
-            if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
+            if(joueurs[j % nb_joueurs].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
@@ -97,7 +97,7 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     {
         for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
         {
-            if(joueurs[j].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
+            if(joueurs[j % nb_joueurs].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
