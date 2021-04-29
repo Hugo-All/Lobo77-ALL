@@ -96,7 +96,9 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 total_defausse += valeur_carte;
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 color(VERT, NOIR); printf("La carte %d a ete ajoutee au total qui atteint donc: %d\n\n", valeur_carte, total_defausse); color(BLANC, NOIR);
-                if(total_defausse != 0 && total_defausse < 77 && total_defausse%11 == 0) //Si le total atteint un multiple de 11, le joueur perd un jeton.
+                
+                //Si le total atteint un multiple de 11, le joueur perd un jeton. Ne retire pas de jeton si le joueur vient de poser une carte sans valeur numérique
+                if(total_defausse != 0 && total_defausse < 77 && total_defausse%11 == 0 && valeur_carte > 0 && valeur_carte < 77)
                 {
                     color(ROUGE, NOIR); printf("\nLe total est un multiple de 11"); color(BLANC, NOIR);
                     retirer_jeton(&joueurs[index_joueur]);
@@ -111,6 +113,10 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         {
             while(cartes_a_piocher > 0)
             {
+                for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
+                    if(joueurs[index_joueur].cartes[i] == CARTE_VIDE)
+                        index_carte = i;
+                
                 color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
                 if(attend_touche(5) == 1)
                 {
@@ -138,11 +144,12 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         {
             color(ROUGE, NOIR); printf("Vous avez fait depasser la defausse au dessus de 76");
             retirer_jeton(&joueurs[index_joueur]); color(BLANC, NOIR);
-            vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile);
         }else
             index_joueur = joueur_suivant(joueurs, nb_joueurs); //On passe au joueur suivant si la défausse n'a pas atteint 77
     }
-
+    //-------------------------Fin de manche-------------------------
+    joueurs[get_joueur_actuel(joueurs, nb_joueurs)].sens_jeu = 0; //Remise à zéro du sens du joueur
+    vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile); //Vidage de la main des joueur_suivant
     vider_defausse(pile, defausse, index_pile, &index_defausse); //Vide la défausse avant la fin de la manche
 }
 
@@ -165,7 +172,7 @@ void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pi
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         printf("Vidage des mains des joueurs...");
-        usleep(300000);
+        usleep(400000);
         for(int j = 0; j < nb_joueurs; j++)
         {
             if(joueurs[j].cartes[i] != CARTE_VIDE)
