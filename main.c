@@ -42,9 +42,13 @@ int main()
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         afficher_encadree_int("Fin de la manche %d", num_manche);
-        color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
-        system("pause");
-        num_manche++;
+
+        if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
+        {
+            color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
+            system("pause");
+            num_manche++;
+        }
     } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO rotation donneur
 
     system("cls");
