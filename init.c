@@ -85,7 +85,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    printf("Fin de la distribution des cartes\n");
+    printf("Fin de la distribution des cartes\n\n");
     sleep(1);
 }
 
@@ -109,6 +109,6 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    printf("Fin de la distribution des jetons\n");
+    printf("Fin de la distribution des jetons\n\n");
     sleep(1);
 }
