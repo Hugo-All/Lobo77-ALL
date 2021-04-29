@@ -106,7 +106,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
             if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
             {
-                printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n");
+                color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
                 if(attend_touche(5) == 1)
                 {
                     joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
