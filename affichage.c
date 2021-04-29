@@ -13,7 +13,7 @@ void banniere() //Affichage de la bannière du jeu
 
 void barre_horizontale() //Affichage d'un élément esthétique pour la présentation sur la console
 {
-    for(int i = 0; i < LARGEUR_AFFICHAGE; i++)
+    for(int i = 0; i < 45; i++)
         printf("%c", 205);
     printf("\n\n");
 }
