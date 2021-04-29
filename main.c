@@ -15,6 +15,7 @@ int main()
     color(BLANC, NOIR);
     //SetConsoleOutputCP(1252);
     apparence_console();
+
     index_pile = DIM_pile-1;
     initialiser_pile(pile);
     melanger_pile(pile, index_pile);
@@ -37,11 +38,14 @@ int main()
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
         num_manche++;
-    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO joueur sans cartes valide
+    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO rotation donneur
 
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    printf("Fin de la manche demo.\n");
+    for(int i = 0; i < nb_joueurs; i++)
+        if(joueurs[i].nb_jetons >= 0)
+            printf("Le joueur %s a gagne !\n", joueurs[i].nom);
+
     system("pause");
 
     return 0;
