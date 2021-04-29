@@ -214,7 +214,7 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    afficher_encadree_int("  Total: % 4d ", total_defausse);
+    afficher_encadree_int("  Total: % 3d ", total_defausse);
     barre_horizontale();
 }
 
