@@ -93,9 +93,9 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_donneur = get_donneur(joueurs, nb_joueurs);
 
-    for(int i = 0; i < NB_max_jetons; i++)
+    for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
     {
-        for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
+        for(int i = 0; i < NB_max_jetons; i++)
         {
             if(joueurs[j % nb_joueurs].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
