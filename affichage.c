@@ -176,7 +176,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 
 void afficher_total(int total) //Affichage du total de la défausse
 {
-    afficher_encadree_int("  Total:% 4d  ", total);
+    afficher_encadree_int(" Total: % 3d ", total);
 }
 
 void afficher_encadree_int(char format[], int donnee)
