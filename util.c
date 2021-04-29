@@ -27,8 +27,10 @@ int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 void gets_limite(char *sortie, int limite)
 {
      fflush(stdin);
-     fgets(sortie, limite + 1, stdin);
-     strtok(sortie, "\n");  // Enlève le retour à la ligne à la fin du nom
+     do{
+          fgets(sortie, limite + 1, stdin);
+          strtok(sortie, "\n");  // Enlève le retour à la ligne à la fin du nom
+     }while(strcmp(sortie, "\n") == 0); //Le joueur ne peut pas avoir un nom vide
      fflush(stdin);
 }
 
