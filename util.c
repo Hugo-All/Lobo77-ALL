@@ -155,15 +155,11 @@ int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
 int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
-     int index_donneur = get_joueur_actuel(joueurs, nb_joueurs);
+     int index_donneur = get_donneur(joueurs, nb_joueurs);
      joueurs[index_donneur].donneur = 0;
 
      do{
-          index_donneur++; //On prend le joueur suivant en fonction du sens du jeu
-          if(index_donneur >= nb_joueurs)
-               index_donneur = 0;
-          else if(index_donneur < 0)
-               index_donneur = nb_joueurs - 1;
+          index_donneur = (index_donneur + 1) % nb_joueurs; //On prend le joueur suivant en fonction du sens du jeu
      }while(joueurs[index_donneur].nb_jetons < 0); //Il faut que le donneur soit vivant
 
      joueurs[index_donneur].donneur = 1;
