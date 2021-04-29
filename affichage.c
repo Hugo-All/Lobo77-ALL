@@ -176,7 +176,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 
 void afficher_total(int total) //Affichage du total de la défausse
 {
-    afficher_encadree_int("  Total: % 4d  ", total);
+    afficher_encadree_int("  Total:% 4d  ", total);
 }
 
 void afficher_encadree_int(char format[], int donnee)
@@ -197,14 +197,19 @@ void afficher_encadree_str(char format[], char donnee[])
 
 void afficher_encadree(char ligne[])
 {
-    printf("\t    %c", 201);
+    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssare pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 201);
     for(int i = 0; i < strlen(ligne) + 2; i++)
         printf("%c", 205);
     printf("%c\n", 187);
 
-    printf("\t    %c %s %c\n", 186, ligne, 186);
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c %s %c\n", 186, ligne, 186);
 
-    printf("\t    %c", 200);
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 200);
     for(int i = 0; i < strlen(ligne) + 2; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
