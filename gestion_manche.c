@@ -37,19 +37,17 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         color(JAUNE, NOIR); afficher_encadree_str("Laissez le clavier a %s", joueurs[index_joueur].nom); color(BLANC, NOIR);        
-        system("pause");
 
         if(joueur_suivant_x2 == 0) //Si le joueur précédent a joué une carte x2
             carte_restant_a_jouer = 1;
         else
         {
             carte_restant_a_jouer = 2;
-            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             color(ROUGE, NOIR); afficher_encadree_str("Vous devez jouer 2 cartes.", ""); color(BLANC, NOIR);
-            system("pause");
         }
         joueur_suivant_x2 = 0;
 
+        system("pause");
         do{
             if(*index_pile == 0) //Si il ne reste plus de cartes dans la pile
             {

@@ -104,6 +104,7 @@ void afficher_cartes(S_joueur joueur, int curseur)
         color(BLANC, NOIR);
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
+            printf(" "); //Espacement entre les cartes
             if(i_carte == curseur) color(NOIR, BLANC);//Inverse les couleurs si carte sélectionnée
             switch (joueur.cartes[i_carte])
             {
@@ -159,6 +160,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) //Parcours chaque carte du joueur
     {
+        printf(" "); //Espacement entre les cartes
         color(BLANC, NOIR); //Remet à 0 les couleurs
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
@@ -167,6 +169,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
         }
         else
             printf("        "); //Si la carte est vide, imprimer des espaces
+        color(BLANC, NOIR); //Remet à 0 les couleurs
     }
     printf("\n");
 }
