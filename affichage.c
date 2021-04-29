@@ -22,7 +22,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     banniere();
 
-    printf("Sens  Nom        Jetons  Cartes        Donneur\n");
+    printf("Sens  Nom        Jetons  Cartes        Donneur\n\n");
     for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
     {
         if(joueurs[i].sens_jeu != 0) //Si le joueur en cours d'affichage est en train de jouer

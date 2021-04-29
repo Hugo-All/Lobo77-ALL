@@ -58,7 +58,7 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     int donneur = rand() % (nb_joueurs-1);
     joueurs[donneur].donneur = 1;
     afficher_joueurs(joueurs, nb_joueurs);
-    printf("Le donneur selectionne est %s\n", joueurs[donneur].nom);
+    printf("Le donneur selectionne est %s\n\n", joueurs[donneur].nom);
     system("pause");
 }
 

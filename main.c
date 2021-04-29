@@ -32,19 +32,29 @@ int main()
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-
-        printf("    Manche numero %d\n\n", num_manche);
+        afficher_encadree_int("Manche numero: %d", num_manche);
         system("pause");
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
+
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        afficher_encadree_int("Fin de la manche %d", num_manche);
+        system("pause");
         num_manche++;
     } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO rotation donneur
 
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
     for(int i = 0; i < nb_joueurs; i++)
+    {
         if(joueurs[i].nb_jetons >= 0)
-            printf("Le joueur %s a gagne !\n", joueurs[i].nom);
+        {
+            color(VERT, NOIR);
+            afficher_encadree_str("Le joueur %s a gagne !", joueurs[i].nom);
+            color(BLANC, NOIR);
+        }
+    }
 
     system("pause");
 
