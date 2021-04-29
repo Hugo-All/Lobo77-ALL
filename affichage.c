@@ -86,7 +86,8 @@ void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
 
-    afficher_nom(joueur.nom);
+    printf("\n");
+    afficher_encadree_str("Cartes de %s", joueur.nom);
 
     //Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
@@ -172,30 +173,36 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 
 void afficher_total(int total)
 {
-    printf("            %c", 201);
-    for(int i = 0; i < 16; i++)
-        printf("%c", 205);
-    printf("%c\n", 187);
-
-    printf("            %c   Total: % 4d  %c\n", 186, total, 186);
-    
-    printf("            %c", 200);
-    for(int i = 0; i < 16; i++)
-        printf("%c", 205);
-    printf("%c\n\n", 188);
+    afficher_encadree_int("  Total: % 4d  ", total);
 }
 
-void afficher_nom(char nom[])
+void afficher_encadree_int(char format[], int donnee)
 {
-    printf("\n        %c", 201);
-    for(int i = 0; i < strlen(nom) + 13; i++)
+    char ligne[30];
+    sprintf(ligne, format, donnee);
+
+    afficher_encadree(ligne);
+}
+
+void afficher_encadree_str(char format[], char donnee[])
+{
+    char ligne[30];
+    sprintf(ligne, format, donnee);
+
+    afficher_encadree(ligne);
+}
+
+void afficher_encadree(char ligne[])
+{
+    printf("\t    %c", 201);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
         printf("%c", 205);
     printf("%c\n", 187);
 
-    printf("        %c Cartes de: %s %c\n", 186, nom, 186);
-    
-    printf("        %c", 200);
-    for(int i = 0; i < strlen(nom) + 13; i++)
+    printf("\t    %c %s %c\n", 186, ligne, 186);
+
+    printf("\t    %c", 200);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
 }
@@ -204,7 +211,7 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    afficher_total(total_defausse);
+    afficher_encadree_int("  Total: % 4d ", total_defausse);
     barre_horizontale();
 }
 
