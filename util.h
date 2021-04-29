@@ -37,7 +37,9 @@ void gets_limite(char *sortie, int limite);
 
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+
 int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void melanger_pile(int cartes[DIM_pile], int nb_cartes);//Mélange les nb_cartes premières cartes d'une pile
 

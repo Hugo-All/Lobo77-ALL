@@ -139,20 +139,36 @@ int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      int sens_jeu = joueurs[index_joueur].sens_jeu;
      joueurs[index_joueur].sens_jeu = 0;
 
-     do
-     {
-     index_joueur += sens_jeu; //On prend le joueur suivant en fonction du sens du jeu
+     do{
+          index_joueur += sens_jeu; //On prend le joueur suivant en fonction du sens du jeu
 
-     if(index_joueur >= nb_joueurs)
-          index_joueur = 0;
-     else if(index_joueur < 0)
-          index_joueur = nb_joueurs - 1;
-
-     }while(joueurs[index_joueur].nb_jetons < 0 || nb_cartes_joueur(joueurs[index_joueur]) == 0);
+          if(index_joueur >= nb_joueurs)
+               index_joueur = 0;
+          else if(index_joueur < 0)
+               index_joueur = nb_joueurs - 1;
+     }while(joueurs[index_joueur].nb_jetons < 0 || nb_cartes_joueur(joueurs[index_joueur]) == 0); //Il faut que le joueur soit vivant
 
      joueurs[index_joueur].sens_jeu = sens_jeu;
 
      return index_joueur;
+}
+
+int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     int index_donneur = get_joueur_actuel(joueurs, nb_joueurs);
+     joueurs[index_donneur].donneur = 0;
+
+     do{
+          index_donneur++; //On prend le joueur suivant en fonction du sens du jeu
+          if(index_donneur >= nb_joueurs)
+               index_donneur = 0;
+          else if(index_donneur < 0)
+               index_donneur = nb_joueurs - 1;
+     }while(joueurs[index_donneur].nb_jetons < 0); //Il faut que le donneur soit vivant
+
+     joueurs[index_donneur].donneur = 1;
+
+     return index_donneur;
 }
 
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
