@@ -207,3 +207,17 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
     afficher_total(total_defausse);
     barre_horizontale();
 }
+
+void apparence_console()
+{
+    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof cfi;
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 0;
+    cfi.dwFontSize.Y = 24;
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+}

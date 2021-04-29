@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "declarations.h"
 #include "util.h"
 
@@ -21,4 +22,5 @@ void afficher_total(int total);
 
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse);
 
+void apparence_console();
 #endif

@@ -14,7 +14,7 @@ int main()
     srand(time(NULL));
     color(BLANC, NOIR);
     //SetConsoleOutputCP(1252);
-    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+    apparence_console();
     index_pile = DIM_pile-1;
     initialiser_pile(pile);
     melanger_pile(pile, index_pile);
