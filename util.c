@@ -50,7 +50,7 @@ int attend_touche(int timeout)
      fflush(stdin); // S'assure que le buffer est vide avant d'attendre la pression d'une touche
      while (time(NULL) - start < timeout)
      {
-          printf("\r%d...",(int) (timeout - (time(NULL) - start))); //Affichage du décompte
+          printf("\rVous avez %d secondes...", (int) (timeout - (time(NULL) - start))); //Affichage du décompte
           if(kbhit()!=0)
                return 1; // Une touche a été pressée dans le temps imparti
      }
