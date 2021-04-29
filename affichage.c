@@ -1,6 +1,6 @@
 #include "affichage.h"
 
-void banniere()
+void banniere()//affichage de la bannière du jeu
 {
     printf("%c", 200);
     for(int i = 0; i < 16; i++)
@@ -11,7 +11,7 @@ void banniere()
     printf("%c\n\n", 188);
 }
 
-void barre_horizontale()
+void barre_horizontale()//affichage d'un élément esthétique pour la présentation sur la console
 {
     for(int i = 0; i < 45; i++)
         printf("%c", 205);
@@ -171,7 +171,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
     printf("\n");
 }
 
-void afficher_total(int total)
+void afficher_total(int total)//affichage du total de la défausse
 {
     afficher_encadree_int("  Total: % 4d  ", total);
 }
