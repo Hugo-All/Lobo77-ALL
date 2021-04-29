@@ -194,5 +194,4 @@ void retirer_jeton(S_joueur *joueur)
      else
           printf("vous nagiez alors vous etes maintenant elimine.\n\n");
      color(BLANC, NOIR);
-     system("pause");
 }
