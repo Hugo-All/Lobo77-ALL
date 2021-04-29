@@ -11,6 +11,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_carte, valeur_carte; //Stoke la carte sélectionnée par le joueur et sa valeur
     int joueur_suivant_x2 = 0; //Indique si le prochain joueur doit jouer 2 fois
     int carte_restant_a_jouer = 1; //Indique le nombre de cartes à jouer par le joueur
+    int cartes_a_piocher = 0;
 
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
@@ -33,6 +34,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     //-------------------------Boucle de jeu-------------------------
     while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
     {
+        cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         color(JAUNE, NOIR); afficher_encadree_str("Laissez le clavier a %s", joueurs[index_joueur].nom); color(BLANC, NOIR);        
         system("pause");
@@ -72,6 +74,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             index_defausse++;
             defausse[index_defausse] = valeur_carte;
             joueurs[index_joueur].cartes[index_carte] = CARTE_VIDE;
+            cartes_a_piocher++; //Le joueur devra piocher une carte de plus
 
             //Traitement de la carte jouée
             if(valeur_carte == CARTE_SENS) //Inversion du sens de jeu
@@ -102,9 +105,13 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 }
                 carte_restant_a_jouer--;
             }
-
-            //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
-            if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
+            if(carte_restant_a_jouer > 0) system("pause"); //Si c'est sa dernière carte à jouer, on passe directement à la pioche
+        }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
+        
+        //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
+        if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
+        {
+            while(cartes_a_piocher > 0)
             {
                 color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
                 if(attend_touche(5) == 1)
@@ -124,8 +131,10 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                         printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
                 }
                 system("pause");
+
+                cartes_a_piocher--;
             }
-        }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
+        }
 
         if(total_defausse >= 77)
         {
