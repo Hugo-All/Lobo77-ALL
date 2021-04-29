@@ -127,15 +127,15 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             }
         }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
 
-        index_joueur = joueur_suivant(joueurs, nb_joueurs);
+        if(total_defausse >= 77)
+        {
+            printf("Vous avez fait depasser la defausse au dessus de 76");
+            retirer_jeton(&joueurs[index_joueur]);
+            vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile);
+        }else
+            index_joueur = joueur_suivant(joueurs, nb_joueurs); //On passe au joueur suivant si la défausse n'a pas atteint 77
     }
 
-    if(total_defausse >= 77)
-    {
-        printf("Vous avez fait depasser la defausse au dessus de 76");
-        retirer_jeton(&joueurs[index_joueur]);
-        vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile);
-    }//Si cette condition n'est pas vérifiée alors: un seul joueur possède des cartes ou un seul joueur est vivant
     vider_defausse(pile, defausse, index_pile, &index_defausse); //Vide la défausse avant la fin de la manche
 }
 
