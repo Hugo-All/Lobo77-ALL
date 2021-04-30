@@ -23,6 +23,8 @@
 #define SENS_HORAIRE 1
 #define SENS_ANTIHORAIRE -1
 
+#define LARGEUR_AFFICHAGE 45
+
 //-------------Structure---------------
 typedef struct joueur{
     char nom[DIM_STR + 1];
