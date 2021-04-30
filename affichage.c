@@ -158,7 +158,7 @@ void afficher_carte(int carte)
 //Affiche une portion de chaque cartes
 void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
-    for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) //Parcours chaque carte du joueur
+    for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) //Parcours chaque cartes du joueur
     {
         color(BLANC, NOIR); //Remet à 0 les couleurs
         printf(" "); //Espacement entre les cartes
@@ -192,7 +192,7 @@ void afficher_encadree_str(char format[], char donnee[])
 
 void afficher_encadree(char ligne[])
 {
-    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssare pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 201);
