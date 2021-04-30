@@ -1,27 +1,27 @@
 #include "init.h"
 
-void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs)//Sous-programme pour initialiser les joueurs en début de partie
+void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //Sous-programme pour initialiser les joueurs en début de partie
 {
     do{
-        printf("Combien de joueurs autour de la table ? (2-8) ");//entré du nombre de joueurs
+        printf("Combien de joueurs autour de la table ? (2-8) ");
         scanf("%d", nb_joueurs);
-        fflush(stdin);//Au cas où l'utilisateur n'écrit pas un entier
-    }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs);//procédure lorsque le nombre de joueurs ne convient pas au lancement de la partie
+        fflush(stdin);
+    }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs); //Recommence si le joueur n'écris pas un nombre dans l'intervale souhaité
 
     system("cls");
 
-    for(int i = 0; i < *nb_joueurs; i++)//Initialisation des cartes et des jetons avant l'affichage
+    for(int i = 0; i < *nb_joueurs; i++) //Initialisation des cartes et des jetons avant l'affichage
     {
-        for(int j=0;  j < DIM_main_joueur; j++)//Initialisation des cartes à CARTE_VIDE
+        for(int j=0;  j < DIM_main_joueur; j++) //Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
-        joueurs[i].nb_jetons = 0;//Initialisation des jetons
+        joueurs[i].nb_jetons = 0; //Initialisation des jetons
     }
     
     for(int i = 0; i < *nb_joueurs; i++)
     {
         afficher_joueurs(joueurs, *nb_joueurs);
-        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR);//attribution du nom des joueurs
+        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR); //attribution du nom des joueurs
         gets_limite(joueurs[i].nom, DIM_STR);
         system("cls");
     }
