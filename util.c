@@ -63,7 +63,7 @@ int attend_touche(int timeout)
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse)
 {
      char touche;
-     int curseur;
+     int curseur = 0;
      for(int i = 0; i < DIM_main_joueur; i++) // Place le curseur sur une carte non-vide
      {
           if(joueur.cartes[i] != CARTE_VIDE)
