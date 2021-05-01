@@ -24,6 +24,7 @@ int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      return -1; //Si le donneur n'a pas été trouvé
 }
 
+//Demande à l'utilisateur une chaine de charactère non-vide d'une longueur maximum "limite"
 void gets_limite(char *sortie, int limite)
 {
      fflush(stdin);
@@ -34,7 +35,8 @@ void gets_limite(char *sortie, int limite)
      fflush(stdin);
 }
 
-void melanger_pile(int cartes[DIM_pile],int nb_cartes) // Mélange les nb_cartes premières cartes d'une pile
+// Mélange les "nb_cartes" premières cartes d'une pile grâce à l'algorithme de Fisher–Yates
+void melanger_pile(int cartes[DIM_pile],int nb_cartes) 
 {
      int i, index_aleatoire, carte_temp;
 
@@ -46,6 +48,7 @@ void melanger_pile(int cartes[DIM_pile],int nb_cartes) // Mélange les nb_cartes
      }
 }
 
+//Retourne 1 si le joueur a appuyé sur une touche dans le temps imparti, 0 sinon
 int attend_touche(int timeout)
 {
      int start = time(NULL);
@@ -113,6 +116,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      return curseur;
 }
 
+//Attend que l'utilisateur appuie sur la flèche de gauche, de droite ou enter. Et retourne la touche appuyée.
 char get_touche()
 {
      char touche;
@@ -124,6 +128,7 @@ char get_touche()
     return touche;
 }
 
+//Retourne le nombre de carte d'un joueur
 int nb_cartes_joueur(S_joueur joueur)
 {
      int nb_cartes = 0;
@@ -135,6 +140,7 @@ int nb_cartes_joueur(S_joueur joueur)
      return nb_cartes;
 }
 
+//Trouve le joueur suivant en fonction du sens du jeu et des joueurs vivants
 int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
      int index_joueur = get_joueur_actuel(joueurs, nb_joueurs);
@@ -169,6 +175,7 @@ int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      return index_donneur;
 }
 
+//Calcul le nombre de joueurs encore en jeu
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
      int compte_joueurs_valides = 0;

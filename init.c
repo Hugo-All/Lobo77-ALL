@@ -55,11 +55,10 @@ void initialiser_pile(int pile[DIM_pile])
     pile[55] = 76;
 }
 
-//TODO Animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = 0;
-    int nombre_aleatoire = (rand() % (nb_joueurs*3)) + nb_joueurs;
+    int nombre_aleatoire = (rand() % (nb_joueurs*3)) + nb_joueurs; //Au minimum un tour complet et au max 3
 
     for(int i = 0; i < nombre_aleatoire; i++)
     {
@@ -75,7 +74,6 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     system("pause");
 }
 
-//Distribution des cartes
 void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_donneur = get_donneur(joueurs, nb_joueurs);
