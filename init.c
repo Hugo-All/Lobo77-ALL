@@ -55,8 +55,18 @@ void initialiser_pile(int pile[DIM_pile])
 //TODO Animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
-    int donneur = rand() % (nb_joueurs-1);
-    joueurs[donneur].donneur = 1;
+    int donneur = 0;
+    int nombre_aleatoire = (rand() % (nb_joueurs*3)) + nb_joueurs;
+
+    for(int i = 0; i < nombre_aleatoire; i++)
+    {
+        donneur = donneur_suivant(joueurs, nb_joueurs);
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        printf("Selection d'un donneur aleatoire...");
+        usleep(250000);
+    }
+    system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
     printf("Le donneur selectionne est %s\n\n", joueurs[donneur].nom);
     system("pause");
