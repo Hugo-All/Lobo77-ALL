@@ -58,7 +58,7 @@ void initialiser_pile(int pile[DIM_pile])
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = 0;
-    int nombre_aleatoire = (rand() % (nb_joueurs*3)) + nb_joueurs; //Au minimum un tour complet et au max 3
+    int nombre_aleatoire = (rand() % nb_joueurs) + nb_joueurs; //Au minimum un tour complet et au max 2
 
     for(int i = 0; i < nombre_aleatoire; i++)
     {
