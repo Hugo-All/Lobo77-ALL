@@ -53,7 +53,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
                 melanger_pile(pile, *index_pile);
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                printf("La défausse a ete rajoutee a la pile et melangee.\n");
+                printf("La defausse a ete rajoutee a la pile et melangee.\n");
             }
 
             //-------------------------Selection carte-------------------------
