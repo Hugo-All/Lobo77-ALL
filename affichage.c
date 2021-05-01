@@ -212,6 +212,26 @@ void afficher_encadree(char ligne[])
     printf("%c\n\n", 188);
 }
 
+void afficher_petit_encadree(char ligne[])
+{
+    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 218);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
+        printf("%c", 196);
+    printf("%c\n", 191);
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c %s %c\n", 179, ligne, 179);
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 192);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
+        printf("%c", 196);
+    printf("%c\n\n", 217);
+}
+
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse)
 {
     system("cls");
