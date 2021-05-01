@@ -195,3 +195,18 @@ void retirer_jeton(S_joueur *joueur)
           printf("vous nagiez alors vous etes maintenant elimine.\n\n");
      color(BLANC, NOIR);
 }
+
+void annoncer_gagnant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     system("cls");
+     afficher_joueurs(joueurs, nb_joueurs);
+     for(int i = 0; i < nb_joueurs; i++)
+     {
+          if(joueurs[i].nb_jetons >= 0)
+          {
+               color(VERT, NOIR);
+               afficher_encadree_str("Le joueur %s a gagne !", joueurs[i].nom);
+               color(BLANC, NOIR);
+          }
+     }
+}

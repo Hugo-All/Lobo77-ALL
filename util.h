@@ -49,4 +49,6 @@ int nb_cartes_joueur(S_joueur joueur);
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void retirer_jeton(S_joueur *joueur);
+
+void annoncer_gagnant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 #endif
