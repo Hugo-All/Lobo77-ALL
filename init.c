@@ -26,7 +26,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
         system("cls");
     }
     
-    color(TURQUOISE_2, NOIR); afficher_petit_encadree("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
+    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
     system("pause");
 }
 
@@ -66,12 +66,12 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         donneur = donneur_suivant(joueurs, nb_joueurs);
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_petit_encadree("Selection d'un donneur aleatoire...");
+        afficher_petit_encadre("Selection d'un donneur aleatoire...");
         usleep(250000);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_encadree_str("Le donneur selectionne est %s", joueurs[donneur].nom); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur selectionne est %s", joueurs[donneur].nom); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -88,7 +88,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
-                afficher_petit_encadree("Distribution des cartes par le donneur...");
+                afficher_petit_encadre("Distribution des cartes par le donneur...");
                 usleep(250000);
                 joueurs[j % nb_joueurs].cartes[i] = pile[*index_pile];
                 pile[*index_pile] = CARTE_VIDE;
@@ -98,7 +98,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_petit_encadree("Fin de la distribution des cartes"); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de la distribution des cartes"); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -114,7 +114,7 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
             {
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
-                afficher_petit_encadree("Distribution des jetons par le donneur...");
+                afficher_petit_encadre("Distribution des jetons par le donneur...");
                 usleep(250000);
                 joueurs[j % nb_joueurs].nb_jetons++;
             }
@@ -122,6 +122,6 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_petit_encadree("Fin de la distribution des jetons"); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de la distribution des jetons"); color(BLANC, NOIR);
     system("pause");
 }

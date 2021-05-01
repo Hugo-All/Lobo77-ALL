@@ -89,7 +89,7 @@ void afficher_cartes(S_joueur joueur, int curseur)
     char buffer_ligne[9];
 
     printf("\n");
-    afficher_encadree_str("Cartes de %s", joueur.nom);
+    afficher_encadre_str("Cartes de %s", joueur.nom);
 
     //Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
@@ -193,23 +193,23 @@ void afficher_carte(int carte)
     printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
 }
 
-void afficher_encadree_int(char format[], int donnee)
+void afficher_encadre_int(char format[], int donnee)
 {
     char ligne[30];
     sprintf(ligne, format, donnee);
 
-    afficher_encadree(ligne);
+    afficher_encadre(ligne);
 }
 
-void afficher_encadree_str(char format[], char donnee[])
+void afficher_encadre_str(char format[], char donnee[])
 {
     char ligne[30];
     sprintf(ligne, format, donnee);
 
-    afficher_encadree(ligne);
+    afficher_encadre(ligne);
 }
 
-void afficher_encadree(char ligne[])
+void afficher_encadre(char ligne[])
 {
     int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
@@ -229,7 +229,7 @@ void afficher_encadree(char ligne[])
     printf("%c\n\n", 188);
 }
 
-void afficher_petit_encadree(char ligne[])
+void afficher_petit_encadre(char ligne[])
 {
     int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
@@ -253,7 +253,7 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    afficher_encadree_int("  Total: % 3d ", total_defausse);
+    afficher_encadre_int("  Total: % 3d ", total_defausse);
     barre_horizontale();
 }
 

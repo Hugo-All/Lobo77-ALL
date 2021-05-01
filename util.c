@@ -205,7 +205,7 @@ void annoncer_gagnant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
           if(joueurs[i].nb_jetons >= 0)
           {
                color(VERT, NOIR);
-               afficher_encadree_str("Le joueur %s a gagne !", joueurs[i].nom);
+               afficher_encadre_str("Le joueur %s a gagne !", joueurs[i].nom);
                color(BLANC, NOIR);
           }
      }

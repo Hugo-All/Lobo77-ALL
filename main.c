@@ -31,7 +31,7 @@ int main()
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadree_int("Manche numero: % 2d", num_manche);
+        afficher_encadre_int("Manche numero: % 2d", num_manche);
         system("pause");
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
@@ -42,7 +42,7 @@ int main()
 
             system("cls");
             afficher_joueurs(joueurs, nb_joueurs);
-            afficher_encadree_int("Fin de la manche % 2d", num_manche);
+            afficher_encadre_int("Fin de la manche % 2d", num_manche);
             color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
             system("pause");
             num_manche++;
