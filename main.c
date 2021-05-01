@@ -13,7 +13,6 @@ int main()
 {
     srand(time(NULL));
     color(BLANC, NOIR);
-    //SetConsoleOutputCP(1252);
     apparence_console();
 
     index_pile = DIM_pile-1;
@@ -37,31 +36,20 @@ int main()
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
 
-        donneur_suivant(joueurs, nb_joueurs); //Rotation du donneur
-
-        system("cls");
-        afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadree_int("Fin de la manche % 2d", num_manche);
-
         if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
         {
+            donneur_suivant(joueurs, nb_joueurs); //Rotation du donneur
+
+            system("cls");
+            afficher_joueurs(joueurs, nb_joueurs);
+            afficher_encadree_int("Fin de la manche % 2d", num_manche);
             color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
             system("pause");
             num_manche++;
         }
-    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //TODO rotation donneur
+    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1);
 
-    system("cls");
-    afficher_joueurs(joueurs, nb_joueurs);
-    for(int i = 0; i < nb_joueurs; i++)
-    {
-        if(joueurs[i].nb_jetons >= 0)
-        {
-            color(VERT, NOIR);
-            afficher_encadree_str("Le joueur %s a gagne !", joueurs[i].nom);
-            color(BLANC, NOIR);
-        }
-    }
+    annoncer_gagnant(joueurs, nb_joueurs);
 
     system("pause");
 
