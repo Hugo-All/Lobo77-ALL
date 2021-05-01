@@ -138,25 +138,6 @@ void afficher_cartes(S_joueur joueur, int curseur)
     printf("\n");
 }
 
-void afficher_carte(int carte)
-{
-    printf("\t\t%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
-    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Lignes intermédiaires
-    switch (carte) //Ligne de texte
-    {
-        case CARTE_SENS :
-            printf("\t\t%c SENS %c\n", 186, 186);
-            break;
-        case CARTE_X2 :
-            printf("\t\t%c  X2  %c\n", 186, 186);
-            break;
-        default :
-            printf("\t\t%c % 3d  %c\n", 186, carte, 186);
-    }
-    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Ligne intermédiaires de la carte
-    printf("\t\t%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
-}
-
 //Affiche une portion de chaque cartes
 void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
@@ -174,6 +155,42 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
         color(BLANC, NOIR); //Remet à 0 les couleurs
     }
     printf("\n");
+}
+
+void afficher_carte(int carte)
+{
+    int marge = (LARGEUR_AFFICHAGE - 8)/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    printf("%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
+
+    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    {
+        for(int j = 0; j < marge; j++) printf(" ");
+        printf("%c      %c\n", 186, 186); 
+    }
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    switch (carte) //Ligne de texte
+    {
+        case CARTE_SENS :
+            printf("%c SENS %c\n", 186, 186);
+            break;
+        case CARTE_X2 :
+            printf("%c  X2  %c\n", 186, 186);
+            break;
+        default :
+            printf("%c % 3d  %c\n", 186, carte, 186);
+    }
+
+    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    {
+        for(int j = 0; j < marge; j++) printf(" ");
+        printf("%c      %c\n", 186, 186); 
+    }
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
 }
 
 void afficher_encadree_int(char format[], int donnee)
