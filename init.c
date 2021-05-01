@@ -66,7 +66,7 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         afficher_petit_encadre("Selection d'un donneur aleatoire...");
-        usleep(250000);
+        usleep(300000);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
