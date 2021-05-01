@@ -42,6 +42,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         if(joueurs[i].nb_jetons >= 0)
         {
             //Affiche les jetons du joueur
+            color(BLEU, NOIR); //Affichage des jetons en bleu comme dans le jeu physique
             for(int j = 1; j <= NB_max_jetons; j++)
             {
                 if(joueurs[i].nb_jetons >= j)
@@ -51,6 +52,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
             }
             printf("  ");
+            color(BLANC, NOIR); //Remise à zéro de la couleur
 
             //Affiche des carrés à la place des cartes du joueur
             for(int j = 0; j < DIM_main_joueur; j++)
