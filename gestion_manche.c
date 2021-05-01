@@ -18,7 +18,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     melanger_pile(pile, *index_pile);
     distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
-    system("pause");
 
     for(int i = 0; i < nb_joueurs; i++)//Remise à 0 du sens du jeu et du joueur actuel
         joueurs[i].sens_jeu = 0;
@@ -43,7 +42,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         else
         {
             carte_restant_a_jouer = 2;
-            color(ROUGE, NOIR); afficher_encadree_str("Vous devez jouer 2 cartes.", ""); color(BLANC, NOIR);
+            color(ROUGE, NOIR); afficher_petit_encadree("Vous devez jouer 2 cartes."); color(BLANC, NOIR);
         }
         joueur_suivant_x2 = 0;
 
@@ -126,7 +125,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                     (*index_pile)--;
 
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    printf("Vous avez pioche la carte:\n\n");
+                    afficher_petit_encadree("Vous avez pioche la carte:");
                     afficher_carte(joueurs[index_joueur].cartes[index_carte]);
                 }else
                 {
