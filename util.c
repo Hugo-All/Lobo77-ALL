@@ -188,6 +188,19 @@ int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
      return compte_joueurs_valides;
 }
 
+//Calcul le nombre de joueurs encore en jeu et qui possède des cartes
+int nb_joueur_valide_avec_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+     int compte_joueurs_valides = 0;
+     for(int i = 0; i < nb_joueurs; i++)
+     {
+          if(joueurs[i].nb_jetons >= 0 && nb_cartes_joueur(joueurs[i]) > 0)
+               compte_joueurs_valides++;
+     }
+
+     return compte_joueurs_valides;
+}
+
 void retirer_jeton(S_joueur *joueur)
 {
      joueur->nb_jetons--;

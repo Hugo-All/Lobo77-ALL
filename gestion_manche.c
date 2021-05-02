@@ -31,7 +31,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     system("pause");
 
     //-------------------------Boucle de jeu-------------------------
-    while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
+    while(total_defausse < 77 && nb_joueur_valide_avec_cartes(joueurs, nb_joueurs) > 1)
     {
         cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
@@ -135,6 +135,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                     {
                         printf("Vous n'avez plus de cartes,");
                         retirer_jeton(&joueurs[index_joueur]);
+                        color(ROUGE, NOIR);
+                        afficher_encadre("La manche va maintenant se terminer.");
                     }
                     color(BLANC, NOIR);
                 }
