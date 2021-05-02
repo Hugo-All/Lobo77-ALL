@@ -130,9 +130,13 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 }else
                 {
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n"); color(BLANC, NOIR);
-                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0) //TODO Ecrire prof à propos de la protection d'un joueur qui n'as plus de cartes
-                        printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
+                    color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
+                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
+                    {
+                        printf("Vous n'avez plus de cartes,");
+                        retirer_jeton(&joueurs[index_joueur]);
+                    }
+                    color(BLANC, NOIR);
                 }
                 system("pause");
 
