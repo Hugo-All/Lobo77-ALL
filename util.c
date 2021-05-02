@@ -36,7 +36,7 @@ void gets_limite(char *sortie, int limite)
 }
 
 // Mélange les "nb_cartes" premières cartes d'une pile grâce à l'algorithme de Fisher–Yates
-void melanger_pile(int cartes[DIM_pile],int nb_cartes) 
+void melanger_pile(int cartes[DIM_pile],int nb_cartes)
 {
      int i, index_aleatoire, carte_temp;
 
@@ -79,7 +79,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      do // Tant que le joueur n'as pas appuyé sur entré
      {
           afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-          printf("\nVeuillez selectionner une carte:\n");
+          printf("\nVeuillez sélectionner une carte:\n");
 
           afficher_cartes(joueur, curseur);
           touche=get_touche();
@@ -199,7 +199,7 @@ void retirer_jeton(S_joueur *joueur)
      else if(joueur->nb_jetons == 0)
           printf("vous n'en avez plus alors vous nagez.\nNe perdez pas encore une fois !\n\n");
      else
-          printf("vous nagiez alors vous etes maintenant elimine.\n\n");
+          printf("vous nagiez alors vous êtes maintenant éliminé.\n\n");
      color(BLANC, NOIR);
 }
 
@@ -212,7 +212,7 @@ void annoncer_gagnant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
           if(joueurs[i].nb_jetons >= 0)
           {
                color(VERT, NOIR);
-               afficher_encadre_str("Le joueur %s a gagne !", joueurs[i].nom);
+               afficher_encadre_str("Le joueur %s à gagné !", joueurs[i].nom);
                color(BLANC, NOIR);
           }
      }

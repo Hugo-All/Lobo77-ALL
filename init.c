@@ -17,16 +17,16 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
 
         joueurs[i].nb_jetons = 0; //Initialisation des jetons
     }
-    
+
     for(int i = 0; i < *nb_joueurs; i++)
     {
         afficher_joueurs(joueurs, *nb_joueurs);
-        printf("Veuillez entrer le nom du joueur %d (max %d caracteres):\n", i+1, DIM_STR); //attribution du nom des joueurs
+        printf("Veuillez entrer le nom du joueur %d (max %d caractères):\n", i+1, DIM_STR); //attribution du nom des joueurs
         gets_limite(joueurs[i].nom, DIM_STR);
         system("cls");
     }
-    
-    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
+
+    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -65,12 +65,12 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         donneur = donneur_suivant(joueurs, nb_joueurs);
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_petit_encadre("Selection d'un donneur aleatoire...");
+        afficher_petit_encadre("Selection d'un donneur aléatoire...");
         usleep(300000);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur selectionne est %s", joueurs[donneur].nom); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur sélectionné est %s", joueurs[donneur].nom); color(BLANC, NOIR);
     system("pause");
 }
 
