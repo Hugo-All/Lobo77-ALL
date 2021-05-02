@@ -107,7 +107,7 @@ void afficher_cartes(S_joueur joueur, int curseur)
         printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, BLANC);//Inverse les couleurs si carte sélectionnée
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
             switch (joueur.cartes[i_carte])
             {
                 case CARTE_SENS :
@@ -147,7 +147,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
         printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, BLANC); //Inverse les couleurs si carte sélectionnée
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
             printf("%s", ligne);
         }
         else
