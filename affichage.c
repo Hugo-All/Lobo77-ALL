@@ -38,10 +38,11 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
         printf("%-10s ", joueurs[i].nom); //Affiche le nom du joueur
 
-        //Si un jeton n'as plus de jetons et n'est pas flottant, on ne l'affiche pas
+        //Il faut qu'un joueur soit toujours vivant pour être affiché
         if(joueurs[i].nb_jetons >= 0)
         {
             //Affiche les jetons du joueur
+            color(BLEU, NOIR); //Affichage des jetons en bleu comme dans le jeu physique
             for(int j = 1; j <= NB_max_jetons; j++)
             {
                 if(joueurs[i].nb_jetons >= j)
@@ -51,6 +52,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
             }
             printf("  ");
+            color(BLANC, NOIR); //Remise à zéro de la couleur
 
             //Affiche des carrés à la place des cartes du joueur
             for(int j = 0; j < DIM_main_joueur; j++)
@@ -75,7 +77,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
         }else
         {
-            printf("Elimine");
+            printf("Elimin\x82");
         }
         printf("\n\n");
     }
@@ -87,7 +89,7 @@ void afficher_cartes(S_joueur joueur, int curseur)
     char buffer_ligne[9];
 
     printf("\n");
-    afficher_encadree_str("Cartes de %s", joueur.nom);
+    afficher_encadre_str("Cartes de %s", joueur.nom);
 
     //Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
@@ -105,7 +107,7 @@ void afficher_cartes(S_joueur joueur, int curseur)
         printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, BLANC);//Inverse les couleurs si carte sélectionnée
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
             switch (joueur.cartes[i_carte])
             {
                 case CARTE_SENS :
@@ -136,25 +138,6 @@ void afficher_cartes(S_joueur joueur, int curseur)
     printf("\n");
 }
 
-void afficher_carte(int carte)
-{
-    printf("\t\t%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
-    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Lignes intermédiaires
-    switch (carte) //Ligne de texte
-    {
-        case CARTE_SENS :
-            printf("\t\t%c SENS %c\n", 186, 186);
-            break;
-        case CARTE_X2 :
-            printf("\t\t%c  X2  %c\n", 186, 186);
-            break;
-        default :
-            printf("\t\t%c % 3d  %c\n", 186, carte, 186);
-    }
-    printf("\t\t%c      %c\n\t\t%c      %c\n", 186, 186, 186, 186); //Ligne intermédiaires de la carte
-    printf("\t\t%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
-}
-
 //Affiche une portion de chaque cartes
 void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
@@ -164,7 +147,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
         printf(" "); //Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, BLANC); //Inverse les couleurs si carte sélectionnée
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
             printf("%s", ligne);
         }
         else
@@ -174,23 +157,59 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
     printf("\n");
 }
 
-void afficher_encadree_int(char format[], int donnee)
+void afficher_carte(int carte)
+{
+    int marge = (LARGEUR_AFFICHAGE - 8)/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    printf("%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
+
+    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    {
+        for(int j = 0; j < marge; j++) printf(" ");
+        printf("%c      %c\n", 186, 186);
+    }
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    switch (carte) //Ligne de texte
+    {
+        case CARTE_SENS :
+            printf("%c SENS %c\n", 186, 186);
+            break;
+        case CARTE_X2 :
+            printf("%c  X2  %c\n", 186, 186);
+            break;
+        default :
+            printf("%c % 3d  %c\n", 186, carte, 186);
+    }
+
+    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    {
+        for(int j = 0; j < marge; j++) printf(" ");
+        printf("%c      %c\n", 186, 186);
+    }
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
+}
+
+void afficher_encadre_int(char format[], int donnee)
 {
     char ligne[30];
     sprintf(ligne, format, donnee);
 
-    afficher_encadree(ligne);
+    afficher_encadre(ligne);
 }
 
-void afficher_encadree_str(char format[], char donnee[])
+void afficher_encadre_str(char format[], char donnee[])
 {
     char ligne[30];
     sprintf(ligne, format, donnee);
 
-    afficher_encadree(ligne);
+    afficher_encadre(ligne);
 }
 
-void afficher_encadree(char ligne[])
+void afficher_encadre(char ligne[])
 {
     int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
@@ -210,11 +229,31 @@ void afficher_encadree(char ligne[])
     printf("%c\n\n", 188);
 }
 
+void afficher_petit_encadre(char ligne[])
+{
+    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 218);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
+        printf("%c", 196);
+    printf("%c\n", 191);
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c %s %c\n", 179, ligne, 179);
+
+    for(int i = 0; i < marge; i++) printf(" ");
+    printf("%c", 192);
+    for(int i = 0; i < strlen(ligne) + 2; i++)
+        printf("%c", 196);
+    printf("%c\n\n", 217);
+}
+
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse)
 {
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    afficher_encadree_int("  Total: % 3d ", total_defausse);
+    afficher_encadre_int("  Total: % 3d ", total_defausse);
     barre_horizontale();
 }
 

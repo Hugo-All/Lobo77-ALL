@@ -18,7 +18,6 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     melanger_pile(pile, *index_pile);
     distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
-    system("pause");
 
     for(int i = 0; i < nb_joueurs; i++)//Remise à 0 du sens du jeu et du joueur actuel
         joueurs[i].sens_jeu = 0;
@@ -28,22 +27,22 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_joueur = joueur_suivant(joueurs, nb_joueurs); //Et on cherche un joueur vivant à gauche
 
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-    printf("Le donneur est: %s\nC'est le joueur a gauche qui commence, donc: %s\n\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
+    printf("Le donneur est: %s\nC'est le joueur \x85 gauche qui commence, donc: %s\n\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
     system("pause");
 
     //-------------------------Boucle de jeu-------------------------
-    while(total_defausse < 77 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
+    while(total_defausse < 77 && nb_joueur_valide_avec_cartes(joueurs, nb_joueurs) > 1)
     {
         cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-        color(JAUNE, NOIR); afficher_encadree_str("Laissez le clavier a %s", joueurs[index_joueur].nom); color(BLANC, NOIR);        
+        color(JAUNE, NOIR); afficher_encadre_str("Laissez le clavier \x85 %s", joueurs[index_joueur].nom); color(BLANC, NOIR);
 
         if(joueur_suivant_x2 == 0) //Si le joueur précédent a joué une carte x2
             carte_restant_a_jouer = 1;
         else
         {
             carte_restant_a_jouer = 2;
-            color(ROUGE, NOIR); afficher_encadree_str("Vous devez jouer 2 cartes.", ""); color(BLANC, NOIR);
+            color(ROUGE, NOIR); afficher_petit_encadre("Vous devez jouer 2 cartes."); color(BLANC, NOIR);
         }
         joueur_suivant_x2 = 0;
 
@@ -54,7 +53,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
                 melanger_pile(pile, *index_pile);
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                printf("La défausse a ete rajoutee a la pile et melangee.\n");
+                printf("La d""\x82""fausse a ""\x82""t\x82 rajout""\x82""e \x85 la pile et melang""\x82""e.\n");
             }
 
             //-------------------------Selection carte-------------------------
@@ -83,7 +82,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                     joueurs[index_joueur].sens_jeu = SENS_ANTIHORAIRE;
 
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                color(VERT, NOIR); printf("Le sens de jeu a ete inverse.\n\n"); color(BLANC, NOIR);
+                color(VERT, NOIR); printf("Le sens de jeu a \x82t\x82 invers\x82.\n\n"); color(BLANC, NOIR);
                 carte_restant_a_jouer--;
             }else if(valeur_carte == CARTE_X2) //Le prochain joueur doit jouer
             {
@@ -95,8 +94,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             {
                 total_defausse += valeur_carte;
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                color(VERT, NOIR); printf("La carte %d a ete ajoutee au total qui atteint donc: %d\n\n", valeur_carte, total_defausse); color(BLANC, NOIR);
-                
+                color(VERT, NOIR); printf("La carte %d a ""\x82""t\x82 ajout""\x82""e au total qui atteint donc: %d\n\n", valeur_carte, total_defausse); color(BLANC, NOIR);
+
                 //Si le total atteint un multiple de 11, le joueur perd un jeton. Ne retire pas de jeton si le joueur vient de poser une carte sans valeur numérique
                 if(total_defausse%11 == 0 && total_defausse != 0 && total_defausse < 77 && valeur_carte != 0 && valeur_carte < 77)
                 {
@@ -108,7 +107,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             }
             if(carte_restant_a_jouer > 0) system("pause"); //Si c'est sa dernière carte à jouer, on passe directement à la pioche
         }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
-        
+
         //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
         {
@@ -117,7 +116,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
                     if(joueurs[index_joueur].cartes[i] == CARTE_VIDE)
                         index_carte = i;
-                
+
                 color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
                 if(attend_touche(5) == 1)
                 {
@@ -126,14 +125,20 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                     (*index_pile)--;
 
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    printf("Vous avez pioche la carte:\n\n");
+                    afficher_petit_encadre("Vous avez pioch\x82 la carte:");
                     afficher_carte(joueurs[index_joueur].cartes[index_carte]);
                 }else
                 {
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    color(ROUGE, NOIR); printf("Vous n'avez pas pioche de carte.\n\n"); color(BLANC, NOIR);
-                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0) //TODO Ecrire prof à propos de la protection d'un joueur qui n'as plus de cartes
-                        printf("Vous n'avez plus de cartes, vous ne perdez pas de jetons, mais vous devez attendre la prochaine manche.\n");
+                    color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
+                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
+                    {
+                        printf("Vous n'avez plus de cartes,");
+                        retirer_jeton(&joueurs[index_joueur]);
+                        color(ROUGE, NOIR);
+                        afficher_encadre("La manche va maintenant se terminer.");
+                    }
+                    color(BLANC, NOIR);
                 }
                 system("pause");
 
@@ -143,7 +148,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
         if(total_defausse >= 77)
         {
-            color(ROUGE, NOIR); printf("Vous avez fait depasser la defausse au dessus de 76");
+            color(ROUGE, NOIR); printf("Vous avez fait d""\x82""passer la d""\x82""fausse au dessus de 76");
             retirer_jeton(&joueurs[index_joueur]); color(BLANC, NOIR);
             system("pause");
         }else

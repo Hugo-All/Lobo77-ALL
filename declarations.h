@@ -25,6 +25,14 @@
 
 #define LARGEUR_AFFICHAGE 45
 
+/* Caractères à remplacer
+é = \x82
+è = \x8A
+à = \x85
+ç = \x87
+ê = \x88
+*/
+
 //-------------Structure---------------
 typedef struct joueur{
     char nom[DIM_STR + 1];
