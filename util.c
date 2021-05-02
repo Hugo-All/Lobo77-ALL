@@ -212,7 +212,7 @@ void retirer_jeton(S_joueur *joueur)
      else if(joueur->nb_jetons == 0)
           printf("vous n'en avez plus alors vous nagez.\nNe perdez pas encore une fois !\n\n");
      else
-          printf("vous nagiez alors vous \x88tes maintenant \x82limin\x82.\n\n");
+          printf("vous nagiez.\nVous \x88tes donc maintenant \x82limin\x82.\n\n");
      color(BLANC, NOIR);
 }
 

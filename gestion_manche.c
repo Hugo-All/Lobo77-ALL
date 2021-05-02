@@ -148,6 +148,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
         if(total_defausse >= 77)
         {
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             color(ROUGE, NOIR); printf("Vous avez fait d""\x82""passer la d""\x82""fausse au dessus de 76");
             retirer_jeton(&joueurs[index_joueur]); color(BLANC, NOIR);
             system("pause");
