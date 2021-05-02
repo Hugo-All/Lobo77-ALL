@@ -77,7 +77,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
         }else
         {
-            printf("Elimine");
+            printf("Elimin\x82");
         }
         printf("\n\n");
     }
@@ -167,7 +167,7 @@ void afficher_carte(int carte)
     for(int i = 0; i < 2; i++) //Lignes intermédiaires
     {
         for(int j = 0; j < marge; j++) printf(" ");
-        printf("%c      %c\n", 186, 186); 
+        printf("%c      %c\n", 186, 186);
     }
 
     for(int i = 0; i < marge; i++) printf(" ");
@@ -186,7 +186,7 @@ void afficher_carte(int carte)
     for(int i = 0; i < 2; i++) //Lignes intermédiaires
     {
         for(int j = 0; j < marge; j++) printf(" ");
-        printf("%c      %c\n", 186, 186); 
+        printf("%c      %c\n", 186, 186);
     }
 
     for(int i = 0; i < marge; i++) printf(" ");

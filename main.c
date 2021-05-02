@@ -31,7 +31,7 @@ int main()
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadre_int("Manche numero: % 2d", num_manche);
+        afficher_encadre_int("Manche num\x82ro: % 2d", num_manche);
         system("pause");
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
