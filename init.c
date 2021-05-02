@@ -21,7 +21,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
     for(int i = 0; i < *nb_joueurs; i++)
     {
         afficher_joueurs(joueurs, *nb_joueurs);
-        printf("Veuillez entrer le nom du joueur %d (max %d caractères):\n", i+1, DIM_STR); //attribution du nom des joueurs
+        printf("Veuillez entrer le nom du joueur %d (max %d caract\x8Ares):\n", i+1, DIM_STR); //attribution du nom des joueurs
         gets_limite(joueurs[i].nom, DIM_STR);
         system("cls");
     }
@@ -65,12 +65,12 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         donneur = donneur_suivant(joueurs, nb_joueurs);
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_petit_encadre("Selection d'un donneur aléatoire...");
+        afficher_petit_encadre("Selection d'un donneur al""\x82""atoire...");
         usleep(300000);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur sélectionné est %s", joueurs[donneur].nom); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur s\x82lectionn\x82 est %s", joueurs[donneur].nom); color(BLANC, NOIR);
     system("pause");
 }
 

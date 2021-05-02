@@ -77,7 +77,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
         }else
         {
-            printf("Eliminé");
+            printf("Elimin\x82");
         }
         printf("\n\n");
     }
