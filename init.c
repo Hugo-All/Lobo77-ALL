@@ -26,6 +26,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
         system("cls");
     }
     
+    afficher_joueurs(joueurs, *nb_joueurs);
     color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
     system("pause");
 }
