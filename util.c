@@ -81,7 +81,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         afficher_cartes(joueur, curseur);
 
-        printf("Veuillez s\x82lectionner une carte avec les fl""\x8A""ches.\nPuis appuyez sur enter une fois votre choix effectu\x82.\n");
+        afficher_petit_encadre("< > puis Enter");
         touche=get_fleche_horizontale();
 
         switch (touche)
