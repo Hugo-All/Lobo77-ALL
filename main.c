@@ -8,6 +8,7 @@
 #include "affichage.h"
 #include "declarations.h"
 #include "debug.h"
+#include "menu.h"
 
 int main()
 {
