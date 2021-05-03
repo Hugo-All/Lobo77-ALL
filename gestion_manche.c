@@ -51,11 +51,17 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         do{
             if(*index_pile == 0) //Si il ne reste plus de cartes dans la pile
             {
+                afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+                afficher_petit_encadre("Il n'y a plus de cartes dans la pile");
+                system("pause");
+
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
                 animation_melanger_pile(joueurs, nb_joueurs);
                 melanger_pile(pile, *index_pile);
+                
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                printf("La d""\x82""fausse a ""\x82""t\x82 rajout""\x82""e \x85 la pile et melang""\x82""e.\n");
+                printf("La d""\x82""fausse a \x82""t\x82 rajout\x82""e \x85 la pile et m\x82""lang""\x82""e.\n\n");
+                system("pause");
             }
 
             //-------------------------Selection carte-------------------------
@@ -64,6 +70,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 valeur_carte = joueurs[index_joueur].cartes[index_carte];
                 if(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2)
                 {
+                    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                     color(ROUGE, NOIR); printf("Vous ne pouvez pas jouer cette carte en premier alors que vous devez en poser 2.\n"); color(BLANC, NOIR);
                     system("pause");
                 }
