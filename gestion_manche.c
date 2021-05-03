@@ -16,6 +16,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
 
+    animation_melanger_pile(joueurs, nb_joueurs);
     melanger_pile(pile, *index_pile);
     distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
 
@@ -51,6 +52,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             if(*index_pile == 0) //Si il ne reste plus de cartes dans la pile
             {
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
+                animation_melanger_pile(joueurs, nb_joueurs);
                 melanger_pile(pile, *index_pile);
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 printf("La d""\x82""fausse a ""\x82""t\x82 rajout""\x82""e \x85 la pile et melang""\x82""e.\n");

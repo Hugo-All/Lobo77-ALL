@@ -287,3 +287,20 @@ void apparence_console()
 
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 }
+
+void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+    char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
+    for(int i = 0; i < 11; i++)
+    {
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        afficher_encadre_str("M\x82""lange des cartes ""\xDB""%s\xDB", animation[i % 5]);
+        usleep(300000);
+    }
+
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs);
+    color(TURQUOISE_2, NOIR); afficher_encadre("M\x82""lange des cartes termin\x82"); color(BLANC, NOIR);
+    system("pause");
+}
