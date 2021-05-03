@@ -13,7 +13,7 @@ int main()
 {
     srand(time(NULL));
     color(BLANC, NOIR);
-    apparence_console();
+    apparence_console(24); //Zoom sur la fenêtre
 
     index_pile = DIM_pile-1;
     initialiser_pile(pile);
@@ -23,6 +23,9 @@ int main()
     printf("Bienvenue sur LOBO77. Par Hugo ALLAIRE et Tom ALLARD\n\n");
 
     initialiser_joueurs(joueurs, &nb_joueurs);
+
+    if(nb_joueurs == 8) apparence_console(18); //Dézoom si il y a beaucoup de joueurs
+
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
 
