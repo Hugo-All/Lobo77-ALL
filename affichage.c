@@ -210,40 +210,58 @@ void afficher_encadre_str(char format[], char donnee[])
 
 void afficher_encadre(char ligne[])
 {
-    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    char buffer[strlen(ligne) + 1];
+    if(strlen(ligne) % 2 == 0)
+    {
+        strcpy(buffer, ligne);
+        strcat(buffer, " "); //Ajoute un espace si la ligne comporte un nombre pair de caractères
+    }else{
+        strcpy(buffer, ligne);
+    }
+
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 201);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
     printf("%c\n", 187);
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 186, ligne, 186);
+    printf("%c %s %c\n", 186, buffer, 186);
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 200);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
 }
 
 void afficher_petit_encadre(char ligne[])
 {
-    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    char buffer[strlen(ligne) + 1];
+    if(strlen(ligne) % 2 == 0)
+    {
+        strcpy(buffer, ligne);
+        strcat(buffer, " "); //Ajoute un espace si la ligne comporte un nombre pair de caractères
+    }else{
+        strcpy(buffer, ligne);
+    }
+
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 218);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
     printf("%c\n", 191);
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 179, ligne, 179);
+    printf("%c %s %c\n", 179, buffer, 179);
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 192);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
     printf("%c\n\n", 217);
 }

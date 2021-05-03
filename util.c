@@ -82,7 +82,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
           afficher_cartes(joueur, curseur);
 
           printf("Veuillez s\x82lectionner une carte avec les fl""\x8A""ches.\nPuis appuyez sur enter une fois votre choix effectu\x82.\n");
-          touche=get_touche();
+          touche=get_fleche_horizontale();
 
           switch (touche)
           {
@@ -117,12 +117,13 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
 }
 
 //Attend que l'utilisateur appuie sur la flèche de gauche, de droite ou enter. Et retourne la touche appuyée.
-char get_touche()
+char get_fleche_horizontale()
 {
      char touche;
      fflush(stdin);
      do{
-          touche = getch();
+          if(kbhit())
+               touche = getch();
      }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE && touche != TOUCHE_ENTER);
 
     return touche;
