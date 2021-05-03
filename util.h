@@ -47,7 +47,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
 
 int nb_cartes_joueur(S_joueur joueur);
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
-int nb_joueur_valide_avec_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+int nb_joueur_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void retirer_jeton(S_joueur *joueur);
 
