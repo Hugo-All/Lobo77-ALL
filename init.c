@@ -15,7 +15,10 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
         for(int j=0;  j < DIM_main_joueur; j++) //Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
-        joueurs[i].nb_jetons = 0; //Initialisation des jetons
+        joueurs[i].nb_jetons = 0;
+        joueurs[i].donneur = 0;
+        joueurs[i].sens_jeu = 0;
+        strcpy(joueurs[i].nom, ""); //Initialisation du nom
     }
 
     for(int i = 0; i < *nb_joueurs; i++)
