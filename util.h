@@ -33,6 +33,7 @@ void color (int couleurDuTexte, int couleurDuFond);
 
 int attend_touche(int timeout);
 char get_touche();
+char get_fleche_verticale();
 void gets_limite(char *sortie, int limite);
 
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);

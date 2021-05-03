@@ -17,6 +17,8 @@
 //Touches
 #define TOUCHE_DROITE 77
 #define TOUCHE_GAUCHE 75
+#define TOUCHE_HAUT 80
+#define TOUCHE_BAS 72
 #define TOUCHE_ENTER 13
 
 //Sens de jeu
