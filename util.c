@@ -79,9 +79,9 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
      do // Tant que le joueur n'as pas appuyé sur entré
      {
           afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-          printf("\nVeuillez s\x82lectionner une carte:\n");
-
           afficher_cartes(joueur, curseur);
+
+          printf("Veuillez s\x82lectionner une carte avec les fl""\x8A""ches.\nPuis appuyez sur enter une fois votre choix effectu\x82.\n");
           touche=get_touche();
 
           switch (touche)

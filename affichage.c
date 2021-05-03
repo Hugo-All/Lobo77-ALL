@@ -88,7 +88,6 @@ void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
 
-    printf("\n");
     afficher_encadre_str("Cartes de %s", joueur.nom);
 
     //Affiche le haut de chaque cartes
