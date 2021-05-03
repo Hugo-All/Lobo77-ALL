@@ -8,6 +8,8 @@
 #include "affichage.h"
 #include "util.h"
 
+void menu();
+
 void afficher_bouton(char *texte, int curseur);
 
 #endif
