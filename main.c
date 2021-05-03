@@ -29,7 +29,7 @@ int main()
     
     system("cls");
     banniere();
-    afficher_encadre("D\x82""but de la partie");
+    color(VERT, NOIR); afficher_encadre("D\x82""but de la partie"); color(BLANC, NOIR);
 
     initialiser_joueurs(joueurs, &nb_joueurs);
     donneur_aleatoire(joueurs, nb_joueurs);
@@ -40,7 +40,7 @@ int main()
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_encadre_int("D\x82""but de la manche %d", num_manche);
+        color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
         system("pause");
 
         manche(joueurs, nb_joueurs, pile, &index_pile);
