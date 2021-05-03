@@ -42,5 +42,5 @@ void distribuer_cartes_DEBUG(int pile[DIM_pile], int* index_pile, S_joueur joueu
 void distribuer_jetons_DEBUG(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     for(int i = 0; i < nb_joueurs; i++)
-        joueurs[i].nb_jetons = NB_max_jetons;
+        joueurs[i].nb_jetons = jetons_depart;
 }

@@ -7,6 +7,7 @@
 #define DIM_pile 56
 #define DIM_main_joueur 5
 #define NB_max_joueurs 8
+#define NB_max_jetons 3
 
 //Définition des cartes spéciales
 #define CARTE_VIDE 100
@@ -46,6 +47,6 @@ typedef struct joueur{
 } S_joueur;
 
 //--------Variables globales--------
-int jetons_max;
+int jetons_depart;
 
 #endif
