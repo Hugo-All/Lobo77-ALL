@@ -9,6 +9,7 @@
 #include "util.h"
 
 void menu();
+void options();
 
 void afficher_bouton(char *texte, int curseur);
 
