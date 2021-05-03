@@ -6,7 +6,6 @@
 #define DIM_STR 10 //Taille maximum du nom d'un joueur
 #define DIM_pile 56
 #define DIM_main_joueur 5
-#define NB_max_jetons 3
 #define NB_max_joueurs 8
 
 //Définition des cartes spéciales
@@ -46,10 +45,7 @@ typedef struct joueur{
     char sens_jeu; //0 si le joueur n'est pas en train de jouer, SENS_HORAIRE ou SENS_ANTIHORAIRE sur le joueur courant
 } S_joueur;
 
-//--------Variables principales--------
-int pile[DIM_pile];
-S_joueur joueurs[NB_max_joueurs];
-int nb_joueurs;
-int index_pile;
+//--------Variables globales--------
+int jetons_max;
 
 #endif

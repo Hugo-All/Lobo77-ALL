@@ -12,6 +12,12 @@
 
 int main()
 {
+    int pile[DIM_pile];
+    S_joueur joueurs[NB_max_joueurs];
+    int nb_joueurs;
+    int index_pile = DIM_pile-1;
+    jetons_max = 3; //Initialisation du max des jetons
+
     srand(time(NULL));
     color(BLANC, NOIR);
     apparence_console();
