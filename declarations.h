@@ -25,6 +25,8 @@
 
 #define LARGEUR_AFFICHAGE 45
 
+#define DELAI_PIOCHE 5 //Temps maximum pour que le joueur pioche une carte
+
 /* Caractères à remplacer
 é = \x82
 è = \x8A

@@ -118,7 +118,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                         index_carte = i;
 
                 color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
-                if(attend_touche(5) == 1)
+                if(attend_touche(DELAI_PIOCHE) == 1)
                 {
                     joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
                     pile[*index_pile] = CARTE_VIDE;
