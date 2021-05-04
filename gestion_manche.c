@@ -85,10 +85,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             //Traitement de la carte jouée
             if(valeur_carte == CARTE_SENS) //Inversion du sens de jeu
             {
-                if(joueurs[index_joueur].sens_jeu == SENS_ANTIHORAIRE)
-                    joueurs[index_joueur].sens_jeu = SENS_HORAIRE;
-                else
-                    joueurs[index_joueur].sens_jeu = SENS_ANTIHORAIRE;
+                joueurs[index_joueur].sens_jeu *= -1;
 
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 color(VERT, NOIR); printf("Le sens de jeu a \x82t\x82 invers\x82.\n\n"); color(BLANC, NOIR);
