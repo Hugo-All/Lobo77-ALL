@@ -16,6 +16,7 @@ int main()
     S_joueur joueurs[NB_max_joueurs];
     int nb_joueurs;
     int index_pile = DIM_pile-1;
+    num_manche = 0;
     jetons_depart = 3; //Initialisation du max des jetons
 
     srand(time(NULL));
@@ -35,9 +36,9 @@ int main()
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
 
-    int num_manche = 1;
     do
     {
+        num_manche++;
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
@@ -54,7 +55,6 @@ int main()
             afficher_encadre_int("Fin de la manche % 2d", num_manche);
             color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
             system("pause");
-            num_manche++;
         }
     } while (nb_joueur_valide(joueurs, nb_joueurs) > 1);
 

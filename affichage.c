@@ -2,6 +2,15 @@
 
 void banniere() //Affichage de la bannière du jeu
 {
+    if(num_manche > 0)
+    {
+        printf("%c", 186);
+        for(int i = 0; i < 14; i++) printf(" ");
+        printf("Manche num\x82""ro %-2d", num_manche);
+        for(int i = 0; i < 13; i++) printf(" ");
+        printf("%c\n", 186);
+    }
+    
     printf("%c", 200);
     for(int i = 0; i < 16; i++)
         printf("%c", 205);

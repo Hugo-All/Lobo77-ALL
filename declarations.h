@@ -48,5 +48,6 @@ typedef struct joueur{
 
 //--------Variables globales--------
 int jetons_depart;
+int num_manche;
 
 #endif
