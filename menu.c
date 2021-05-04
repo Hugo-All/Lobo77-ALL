@@ -28,7 +28,7 @@ void menu()
             options();
         }else if(curseur == 2)
         {
-            printf("REGLES"); system("pause");
+            regles();
         }else if(curseur == 3)
         {
             system("cls");
@@ -87,7 +87,7 @@ void options()
                     delai_pioche--;
                 break;
         }
-        
+
         //printf("    %d   ",curseur); system("pause");
     }while(touche != TOUCHE_ENTER);
 
@@ -99,6 +99,61 @@ void options()
     afficher_encadre_int("%d secondes pour piocher", delai_pioche);
     color(BLANC, NOIR);
     system("pause");
+}
+
+void regles()
+{
+    char nb_diapos = 2;
+    char curseur = 0;
+    char touche;
+    char buffer[20];
+
+    do{
+        system("cls");
+        banniere();
+        sprintf(buffer, "Panneau %d/%d", curseur + 1, nb_diapos);
+        afficher_encadre(buffer);
+        switch (curseur)
+        {
+            case 0:
+                color(VERT, NOIR); printf("R\x8A""gles du jeu LOBO77:\n\n"); color(BLANC, NOIR);
+                printf("Pour remporter une partie de LOBO 77 il faut \x88""tre le dernier joueur avec des jetons ou en train de \"nager\".\n");
+                printf("Pour y parvenir, il faut respecter deux principes fondamentaux :\n\n");
+                printf("\t- La d\x82""fausse ne doit jamais afficher un multiple de 11\n");
+                printf("\t- La d\x82""fausse ne doit jamais atteindre ou d\x82""passer 77\n\n");
+
+                color(ROUGE, NOIR);
+                printf("Si un de ces principes n'est pas respect\x82"", alors vous perdez un des 3 jetons qui vous est distribu\x82 au d\x82""part.\n");
+                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur est synonyme d'\x82""limination.");
+                color(BLANC, NOIR);
+                break;
+            case 1:
+                printf("En d\x82""but de manche les joueurs (compris entre 2 et 8) re\x87""oivent tous 5 cartes parmis\n");
+                printf("celles expos\x82""es ci-dessus ainsi que 3 jetons");
+                color(VERT, NOIR); printf("(configurable pour une partie plus rapide).\n\n"); color(BLANC, NOIR);
+                printf("De plus, un \"donneur\" est s\x82""lectionn\x82"", le joueur \x85 sa gauche est d\x82""finie comme premier joueur \x85 poser une carte.\n");
+
+                printf("La manche est donc lanc\x82""e, il faut maintenant respecter les 2 principes fondamentaux pour ne pas perdre de jetons.\n");
+                
+                color(ROUGE, NOIR);
+                printf("Mais \x82""galement ne pas oublier de piocher une carte apr\x8A""s avoir jou\x82""\n");
+                printf("sous peine d'avoir un choix plus restreint et m\x88""me de perdre un jeton lorsque votre main est vide.\n\n");
+                color(BLANC, NOIR);
+
+                printf("Lorsque la pioche est vide, on r\x82""cup\x8A""re la d\x82""fausse, on la m\x82""lange et on l'utilise \x85 nouveau comme pioche.\n");
+
+                break;
+        }
+        printf("\n\n");
+        barre_horizontale();
+        afficher_petit_encadre("Navigez avec < > puis Enter pour sortir");
+
+        touche = get_fleche_horizontale();
+        if(touche == TOUCHE_DROITE && curseur + 1 < nb_diapos)
+            curseur++;
+        else if(touche == TOUCHE_GAUCHE && curseur - 1 >= 0)
+            curseur--;
+    }while(touche != TOUCHE_ENTER);
 }
 
 void afficher_bouton(char *texte, int curseur)
