@@ -58,7 +58,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 vider_defausse(pile, defausse, index_pile, &index_defausse);
                 animation_melanger_pile(joueurs, nb_joueurs);
                 melanger_pile(pile, *index_pile);
-                
+
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 printf("La d""\x82""fausse a \x82""t\x82 rajout\x82""e \x85 la pile et m\x82""lang""\x82""e.\n\n");
                 system("pause");
@@ -139,7 +139,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
 void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a_piocher, int total_defausse)
 {
-    int index_carte;
+    int index_carte = 0;
     while(cartes_a_piocher > 0)
     {
         for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
