@@ -27,7 +27,7 @@
 
 #define LARGEUR_AFFICHAGE 45
 
-#define DELAI_PIOCHE 5 //Temps maximum pour que le joueur pioche une carte
+#define DELAI_PIOCHE_MIN 2 //Temps minimum pour piocher une carte
 
 /* Caractères à remplacer
 é = \x82
@@ -49,5 +49,6 @@ typedef struct joueur{
 //--------Variables globales--------
 int jetons_depart;
 int num_manche;
+int delai_pioche;
 
 #endif

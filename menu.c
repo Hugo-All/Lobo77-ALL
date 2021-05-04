@@ -16,7 +16,7 @@ void menu()
             afficher_bouton("Quitter", curseur==3);
 
             touche = get_fleche_verticale();
-            if(touche == TOUCHE_HAUT && curseur + 1 <= nb_boutons - 1)
+            if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
                 curseur++;
             else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
                 curseur--;
@@ -42,25 +42,62 @@ void menu()
 void options()
 {
     char touche = 0;
+    char curseur = 0;
+    char nb_boutons = 2;
+    char buffer[DIM_STR];
     do{
         system("cls");
         banniere();
 
         afficher_petit_encadre("Nombre de jetons au d\x82""part:");
-        afficher_encadre_int("< %d >", jetons_depart);
+        sprintf(buffer, "< %d >", jetons_depart);
+        afficher_bouton(buffer, curseur == 0);
+
+        barre_horizontale();
+
+        afficher_petit_encadre("Nombre de secondes pour piocher:");
+        sprintf(buffer, "< %d >", delai_pioche);
+        afficher_bouton(buffer, curseur == 1);
+
+        barre_horizontale();
         afficher_petit_encadre("Appuyez sur Entr\x82 pour valider");
 
-        touche = get_fleche_horizontale();
-        if(touche == TOUCHE_DROITE && jetons_depart + 1 <= NB_max_jetons)
-            jetons_depart++;
-        else if(touche == TOUCHE_GAUCHE && jetons_depart - 1 >= 0)
-            jetons_depart--;
+        touche = get_fleches();
 
+        switch (touche)
+        {
+            case TOUCHE_HAUT:
+                if(curseur + 1 < nb_boutons)
+                    curseur++;
+                break;
+            case TOUCHE_BAS:
+                if(curseur - 1 >= 0)
+                    curseur--;
+                break;
+            case TOUCHE_DROITE:
+                if(curseur == 0 && jetons_depart + 1 <= NB_max_jetons)
+                    jetons_depart++;
+                else if(curseur == 1)
+                    delai_pioche++;
+                break;
+            case TOUCHE_GAUCHE:
+                if(curseur == 0 && jetons_depart - 1 >= 0)
+                    jetons_depart--;
+                else if(curseur == 1 && delai_pioche - 1 >= DELAI_PIOCHE_MIN)
+                    delai_pioche--;
+                break;
+        }
+        
+        //printf("    %d   ",curseur); system("pause");
     }while(touche != TOUCHE_ENTER);
 
+    //Affichage du récapitulatif des options
     system("cls");
     banniere();
-    color(TURQUOISE_2, NOIR); afficher_encadre_int("%d jeton(s) au d\x82""part", jetons_depart); color(BLANC, NOIR);
+    color(TURQUOISE_2, NOIR);
+    afficher_encadre_int("%d jeton(s) au d\x82""part", jetons_depart);
+    afficher_encadre_int("%d secondes pour piocher", delai_pioche);
+    color(BLANC, NOIR);
     system("pause");
 }
 

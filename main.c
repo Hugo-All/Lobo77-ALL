@@ -17,7 +17,8 @@ int main()
     int nb_joueurs;
     int index_pile = DIM_pile-1;
     num_manche = 0;
-    jetons_depart = 3; //Initialisation du max des jetons
+    jetons_depart = 3; //Max des jetons par défaut
+    delai_pioche = 5; //Temps pour piocher par défaut
 
     srand(time(NULL));
     color(BLANC, NOIR);
