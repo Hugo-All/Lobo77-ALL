@@ -15,7 +15,10 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
         for(int j=0;  j < DIM_main_joueur; j++) //Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
-        joueurs[i].nb_jetons = 0; //Initialisation des jetons
+        joueurs[i].nb_jetons = 0;
+        joueurs[i].donneur = 0;
+        joueurs[i].sens_jeu = 0;
+        strcpy(joueurs[i].nom, ""); //Initialisation du nom
     }
 
     for(int i = 0; i < *nb_joueurs; i++)
@@ -107,7 +110,7 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
     for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
     {
-        for(int i = 0; i < NB_max_jetons; i++)
+        for(int i = 0; i < jetons_depart; i++)
         {
             if(joueurs[j % nb_joueurs].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {

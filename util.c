@@ -130,6 +130,32 @@ char get_fleche_horizontale()
     return touche;
 }
 
+//Attend que l'utilisateur appuie sur la flèche vers le haut, vers le bas ou enter. Et retourne la touche appuyée.
+char get_fleche_verticale()
+{
+     char touche;
+     fflush(stdin);
+     do{
+          if(kbhit())
+               touche = getch();
+     }while(touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
+
+    return touche;
+}
+
+//Attend que l'utilisateur appuie sur n'importe quelle flèche ou enter.
+char get_fleches()
+{
+     char touche;
+     fflush(stdin);
+     do{
+          if(kbhit())
+               touche = getch();
+     }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE  && touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
+
+    return touche;
+}
+
 //Retourne le nombre de carte d'un joueur
 int nb_cartes_joueur(S_joueur joueur)
 {

@@ -120,7 +120,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         //------------------------- Pioche -------------------------
         //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
-            piocher(&joueurs[index_joueur], pile, index_pile, cartes_a_piocher, total_defausse);
+            piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pile, index_pile, cartes_a_piocher, total_defausse);
 
         if(total_defausse >= 77)
         {
@@ -137,7 +137,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     vider_defausse(pile, defausse, index_pile, &index_defausse); //Vide la défausse avant la fin de la manche
 }
 
-void piocher(S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a_piocher, int total_defausse)
+void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a_piocher, int total_defausse)
 {
     int index_carte;
     while(cartes_a_piocher > 0)
@@ -146,8 +146,8 @@ void piocher(S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a
             if(joueur->cartes[i] == CARTE_VIDE)
                 index_carte = i;
 
-        color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
-        if(attend_touche(DELAI_PIOCHE) == 1)
+        color(JAUNE, NOIR); printf("\nVous avez %d secondes pour piocher une carte en appuyant sur une touche.\n", delai_pioche); color(BLANC, NOIR);
+        if(attend_touche(delai_pioche) == 1)
         {
             joueur->cartes[index_carte] = pile[*index_pile];
             pile[*index_pile] = CARTE_VIDE;

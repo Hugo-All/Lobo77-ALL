@@ -34,7 +34,9 @@ void color (int couleurDuTexte, int couleurDuFond);
 int attend_touche(int timeout);
 char get_touche();
 
+char get_fleche_verticale();
 char get_fleche_horizontale();
+char get_fleches();
 
 void gets_limite(char *sortie, int limite);
 
