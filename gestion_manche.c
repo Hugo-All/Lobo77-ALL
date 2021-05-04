@@ -110,7 +110,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 {
                     color(ROUGE, NOIR); printf("\nLe total est un multiple de 11"); color(BLANC, NOIR);
                     retirer_jeton(&joueurs[index_joueur]);
-                    if(carte_restant_a_jouer == 0 || joueurs[index_joueur].nb_jetons < 0) system("pause"); //Evite d'avoir une double pause si le doit jouer 2 cartes
+                    if(carte_restant_a_jouer == 0 || joueurs[index_joueur].nb_jetons < 0) system("pause"); //Pause si le joueur vient d'être éliminé ou que c'est la fin de son tour
                 }
                 carte_restant_a_jouer--;
             }
