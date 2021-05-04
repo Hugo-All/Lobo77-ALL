@@ -88,8 +88,6 @@ void options()
                     delai_pioche--;
                 break;
         }
-
-        //printf("    %d   ",curseur); system("pause");
     }while(touche != TOUCHE_ENTER);
 
     //Affichage du récapitulatif des options
@@ -104,10 +102,13 @@ void options()
 
 void regles()
 {
-    char nb_diapos = 2;
+    char nb_diapos = 5;
     char curseur = 0;
     char touche;
     char buffer[20];
+    int exemple_cartes[DIM_pile];
+    initialiser_pile(exemple_cartes);
+    int carte_aleatoire;
 
     do{
         system("cls");
@@ -117,7 +118,7 @@ void regles()
         switch (curseur)
         {
             case 0:
-                color(VERT, NOIR); printf("R\x8A""gles du jeu LOBO77:\n\n"); color(BLANC, NOIR);
+                color(VERT, NOIR); afficher_petit_encadre("R\x8A""gles du jeu LOBO77:"); color(BLANC, NOIR);
                 printf("Pour remporter une partie de LOBO 77 il faut \x88""tre le dernier joueur avec des jetons ou en train de \"nager\".\n");
                 printf("Pour y parvenir, il faut respecter deux principes fondamentaux :\n\n");
                 printf("\t- La d\x82""fausse ne doit jamais afficher un multiple de 11\n");
@@ -125,10 +126,11 @@ void regles()
 
                 color(ROUGE, NOIR);
                 printf("Si un de ces principes n'est pas respect\x82"", alors vous perdez un des 3 jetons qui vous est distribu\x82 au d\x82""part.\n");
-                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur est synonyme d'\x82""limination.");
+                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur est synonyme d'\x82""limination.\n");
                 color(BLANC, NOIR);
                 break;
             case 1:
+                afficher_petit_encadre("D\x82""roulement du jeu");
                 printf("En d\x82""but de manche les joueurs (compris entre 2 et 8) re\x87""oivent tous 5 cartes parmis\n");
                 printf("celles expos\x82""es ci-dessus ainsi que 3 jetons");
                 color(VERT, NOIR); printf("(configurable pour une partie plus rapide).\n\n"); color(BLANC, NOIR);
@@ -139,13 +141,40 @@ void regles()
                 color(ROUGE, NOIR);
                 printf("Mais \x82""galement ne pas oublier de piocher une carte apr\x8A""s avoir jou\x82""\n");
                 printf("sous peine d'avoir un choix plus restreint et m\x88""me de perdre un jeton lorsque votre main est vide.\n\n");
+                printf("La manche est termin\x82 seulement lorsqu'on atteint ou d\x82""passe 77:\n");
                 color(BLANC, NOIR);
+                printf("atteindre un multiple de 11 autre que 77 fera seulement perdre un jeton au joueur en question mais la manche continue.\n\n");
 
                 printf("Lorsque la pioche est vide, on r\x82""cup\x8A""re la d\x82""fausse, on la m\x82""lange et on l'utilise \x85 nouveau comme pioche.\n");
-
+                break;
+            case 2:
+                do{ //On prend une carte aléatoire qui n'est pas une carte spéciale
+                    carte_aleatoire = exemple_cartes[rand() % DIM_pile];
+                }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
+                afficher_petit_encadre("Cartes normales");
+                printf("Voici les diff\x82""rentes cartes normales:\n");
+                printf("\t- 4 cartes 0\n");
+                printf("\t- 4 cartes -10\n");
+                printf("\t- 6 cartes multiple de 11 (entre 11 et 66)\n");
+                printf("\t- 8 cartes 10\n");
+                printf("\t- 3 cartes par chiffre de 2 \x85 9\n\n");
+                printf("Par exemple, cette carte ajoutera %d \x85 la d\x82""fausse.\n\n", carte_aleatoire);
+                afficher_carte(carte_aleatoire);
+                break;
+            case 3:
+                afficher_petit_encadre("Cartes changement de sens (5 dans le jeu)");
+                printf("Inverse le sens de jeu.\n\n");
+                afficher_carte(CARTE_SENS);
+                break;
+            case 4:
+                afficher_petit_encadre("Cartes x2 (4 dans le jeu)");
+                printf("Demande au joueur suivant de jouer 2 cartes.\n\n");
+                color(GRIS_CLAIR, NOIR); printf("Le joueur suivant ne pourra pas jouer de cartes x2 en premier.\n\n"); color(BLANC, NOIR);
+                afficher_carte(CARTE_X2);
                 break;
         }
-        printf("\n\n");
+
+        printf("\n");
         barre_horizontale();
         afficher_petit_encadre("Navigez avec < > puis Enter pour sortir");
 
