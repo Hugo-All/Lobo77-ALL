@@ -220,17 +220,17 @@ void afficher_encadre_str(char format[], char donnee[])
 void afficher_encadre(char ligne[])
 {
     char buffer[strlen(ligne) + 1];
-    if(strlen(ligne) % 2 == 0)
+    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur pair, on rajoute un espace
     {
         strcpy(buffer, ligne);
-        strcat(buffer, " "); //Ajoute un espace si la ligne comporte un nombre pair de caractères
+        strcat(buffer, " ");
     }else{
         strcpy(buffer, ligne);
     }
 
     int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" ");
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
     printf("%c", 201);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
@@ -249,17 +249,17 @@ void afficher_encadre(char ligne[])
 void afficher_petit_encadre(char ligne[])
 {
     char buffer[strlen(ligne) + 1];
-    if(strlen(ligne) % 2 == 0)
+    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur paire, on rajoute un espace
     {
         strcpy(buffer, ligne);
-        strcat(buffer, " "); //Ajoute un espace si la ligne comporte un nombre pair de caractères
+        strcat(buffer, " ");
     }else{
         strcpy(buffer, ligne);
     }
 
     int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" ");
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
     printf("%c", 218);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
@@ -283,16 +283,33 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
     barre_horizontale();
 }
 
-void apparence_console()
+void apparence_console(int zoom)
 {
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof cfi;
     cfi.nFont = 0;
     cfi.dwFontSize.X = 0;
-    cfi.dwFontSize.Y = 24;
+    cfi.dwFontSize.Y = zoom;
     cfi.FontFamily = FF_DONTCARE;
     cfi.FontWeight = FW_NORMAL;
 
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+}
+
+void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+    char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
+    for(int i = 0; i < 16; i++)
+    {
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        afficher_encadre_str("M\x82""lange des cartes ""\xDB""%s\xDB", animation[i % 5]);
+        usleep(300000);
+    }
+
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs);
+    color(TURQUOISE_2, NOIR); afficher_encadre("M\x82""lange des cartes termin\x82"); color(BLANC, NOIR);
+    system("pause");
 }

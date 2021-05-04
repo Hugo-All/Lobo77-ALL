@@ -69,7 +69,7 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         donneur = donneur_suivant(joueurs, nb_joueurs);
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_petit_encadre("Selection d'un donneur al""\x82""atoire...");
+        afficher_petit_encadre("S\x82""lection d'un donneur al""\x82""atoire...");
         usleep(300000);
     }
     system("cls");
