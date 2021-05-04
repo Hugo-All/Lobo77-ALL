@@ -2,7 +2,7 @@
 
 void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile)
 {
-    //-------------------------Initialisation de la manche-------------------------
+    //------------------------- Initialisation de la manche -------------------------
     system("cls");
 
     int defausse[DIM_pile];
@@ -31,7 +31,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     printf("Le donneur est: %s\nC'est le joueur \x85 gauche qui commence, donc: %s\n\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
     system("pause");
 
-    //-------------------------Boucle de jeu-------------------------
+    //------------------------- Boucle de manche -------------------------
     while(total_defausse < 77 && nb_joueur_sans_cartes(joueurs, nb_joueurs) == 0 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
     {
         cartes_a_piocher = 0;
@@ -64,7 +64,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 system("pause");
             }
 
-            //-------------------------Selection carte-------------------------
+            //------------------------- Selection carte -------------------------
             do{
                 index_carte = selectionner_carte(joueurs, joueurs[index_joueur], nb_joueurs, total_defausse);
                 valeur_carte = joueurs[index_joueur].cartes[index_carte];
@@ -117,6 +117,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
             if(carte_restant_a_jouer > 0) system("pause"); //Si c'est sa dernière carte à jouer, on passe directement à la pioche
         }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
 
+        //------------------------- Pioche -------------------------
         //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
         {
@@ -164,7 +165,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         }else
             index_joueur = joueur_suivant(joueurs, nb_joueurs); //On passe au joueur suivant si la défausse n'a pas atteint 77
     }
-    //-------------------------Fin de manche-------------------------
+    //------------------------- Fin de manche -------------------------
     joueurs[get_joueur_actuel(joueurs, nb_joueurs)].sens_jeu = 0; //Remise à zéro du sens du joueur
     vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile); //Vidage de la main des joueur_suivant
     vider_defausse(pile, defausse, index_pile, &index_defausse); //Vide la défausse avant la fin de la manche
