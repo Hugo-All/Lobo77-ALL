@@ -10,11 +10,13 @@
 #include "debug.h"
 #include "menu.h"
 
+void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile);
+
 int main()
 {
     int pile[DIM_pile];
     S_joueur joueurs[NB_max_joueurs];
-    int nb_joueurs;
+    int quitter;
     int index_pile = DIM_pile-1;
     num_manche = 0;
     jetons_depart = 3; //Max des jetons par défaut
@@ -25,10 +27,22 @@ int main()
     apparence_console();
 
     initialiser_pile(pile);
-    melanger_pile(pile, index_pile);
 
-    menu();
-    
+    do{
+        quitter = menu();
+        
+        if(quitter == 0)
+        {
+            partie(joueurs, pile, &index_pile);
+        }
+    }while(quitter == 0); //Tant que le joueur ne veut pas quitter
+
+    return 0;
+}
+
+void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile)
+{
+    int nb_joueurs;
     system("cls");
     banniere();
     color(VERT, NOIR); afficher_encadre("D\x82""but de la partie"); color(BLANC, NOIR);
@@ -45,7 +59,7 @@ int main()
         color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
         system("pause");
 
-        manche(joueurs, nb_joueurs, pile, &index_pile);
+        manche(joueurs, nb_joueurs, pile, index_pile);
 
         if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
         {
@@ -62,6 +76,5 @@ int main()
     annoncer_gagnant(joueurs, nb_joueurs);
 
     system("pause");
-
-    return 0;
+    num_manche = 0; //Réinitialisation du nombre de manches
 }

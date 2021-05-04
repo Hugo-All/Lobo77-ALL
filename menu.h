@@ -8,8 +8,9 @@
 #include "affichage.h"
 #include "util.h"
 
-void menu();
+int menu();
 void options();
+void regles();
 
 void afficher_bouton(char *texte, int curseur);
 

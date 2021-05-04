@@ -1,6 +1,6 @@
 #include "menu.h"
 
-void menu()
+int menu() //Retourne 1 si le joueur veut quitter le jeu
 {
     char touche = 0;
     char curseur = 0;
@@ -22,7 +22,7 @@ void menu()
                 curseur--;
 
         }while(touche != TOUCHE_ENTER);
-
+        
         if(curseur == 1)
         {
             options();
@@ -34,9 +34,10 @@ void menu()
             system("cls");
             banniere();
             color(VERT, NOIR); afficher_encadre("Au revoir !"); color(BLANC, NOIR);
-            exit(0);
+            return 1; //Sort du menu et quitte le jeu
         }
     }while(curseur != 0);
+    return 0; //Sort du menu sans quitter le jeu
 }
 
 void options()
