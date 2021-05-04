@@ -71,7 +71,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
                 if(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2)
                 {
                     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    color(ROUGE, NOIR); printf("Vous ne pouvez pas jouer cette carte en premier alors que vous devez en poser 2.\n"); color(BLANC, NOIR);
+                    color(ROUGE, NOIR); printf("Vous ne pouvez pas jouer cette carte en premier alors que vous devez en poser 2.\n\n"); color(BLANC, NOIR);
                     system("pause");
                 }
             }while(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2); //Si le joueur doit jouer 2 cartes, il ne peut pas jouer un x2 en première carte
