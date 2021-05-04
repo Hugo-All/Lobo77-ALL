@@ -71,7 +71,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
             system("cls");
             afficher_joueurs(joueurs, nb_joueurs);
             afficher_encadre_int("Fin de la manche % 2d", num_manche);
-            color(JAUNE, NOIR); printf("\nLe nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
+            color(JAUNE, NOIR); printf("Le nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
             system("pause");
         }
     } while (nb_joueur_valide(joueurs, nb_joueurs) > 1);

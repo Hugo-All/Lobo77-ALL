@@ -93,7 +93,7 @@ void options()
     //Affichage du récapitulatif des options
     system("cls");
     banniere();
-    color(TURQUOISE_2, NOIR);
+    color(VERT, NOIR);
     afficher_encadre_int("%d jeton(s) au d\x82""part", jetons_depart);
     afficher_encadre_int("%d secondes pour piocher", delai_pioche);
     color(BLANC, NOIR);
@@ -130,8 +130,8 @@ void regles()
                 color(BLANC, NOIR);
                 break;
             case 1:
-                afficher_petit_encadre("D\x82""roulement du jeu");
-                printf("En d\x82""but de manche les joueurs (compris entre 2 et 8) re\x87""oivent tous 5 cartes parmis\n");
+                color(VERT, NOIR); afficher_petit_encadre("D\x82""roulement du jeu"); color(BLANC, NOIR);
+                printf("En d\x82""but de manche les joueurs (compris entre 2 et 8) re\x87""oivent tous 5 cartes parmi\n");
                 printf("celles expos\x82""es ci-dessus ainsi que 3 jetons");
                 color(VERT, NOIR); printf("(configurable pour une partie plus rapide).\n\n"); color(BLANC, NOIR);
                 printf("De plus, un \"donneur\" est s\x82""lectionn\x82"", le joueur \x85 sa gauche est d\x82""finie comme premier joueur \x85 poser une carte.\n");
@@ -151,7 +151,7 @@ void regles()
                 do{ //On prend une carte aléatoire qui n'est pas une carte spéciale
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
-                afficher_petit_encadre("Cartes normales");
+                color(VERT, NOIR); afficher_petit_encadre("Cartes normales"); color(BLANC, NOIR);
                 printf("Voici les diff\x82""rentes cartes normales:\n");
                 printf("\t- 4 cartes 0\n");
                 printf("\t- 4 cartes -10\n");
@@ -162,14 +162,14 @@ void regles()
                 afficher_carte(carte_aleatoire);
                 break;
             case 3:
-                afficher_petit_encadre("Cartes changement de sens (5 dans le jeu)");
+                color(VERT, NOIR); afficher_petit_encadre("Cartes changement de sens (5 dans le jeu)"); color(BLANC, NOIR);
                 printf("Inverse le sens de jeu.\n\n");
                 afficher_carte(CARTE_SENS);
                 break;
             case 4:
-                afficher_petit_encadre("Cartes x2 (4 dans le jeu)");
+                color(VERT, NOIR); afficher_petit_encadre("Cartes x2 (4 dans le jeu)"); color(BLANC, NOIR);
                 printf("Demande au joueur suivant de jouer 2 cartes.\n\n");
-                color(GRIS_CLAIR, NOIR); printf("Le joueur suivant ne pourra pas jouer de cartes x2 en premier.\n\n"); color(BLANC, NOIR);
+                color(ROUGE, NOIR); printf("Le joueur suivant ne pourra pas jouer de cartes x2 en premier.\n\n"); color(BLANC, NOIR);
                 afficher_carte(CARTE_X2);
                 break;
         }

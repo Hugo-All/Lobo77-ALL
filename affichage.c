@@ -310,6 +310,6 @@ void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_encadre("M\x82""lange des cartes termin\x82"); color(BLANC, NOIR);
+    color(VERT, NOIR); afficher_encadre("M\x82""lange des cartes termin\x82"); color(BLANC, NOIR);
     system("pause");
 }
