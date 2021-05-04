@@ -7,6 +7,7 @@
 #include "declarations.h"
 #include "affichage.h"
 #include "util.h"
+#include "init.h"
 
 int menu();
 void options();
