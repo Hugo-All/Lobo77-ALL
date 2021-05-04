@@ -291,7 +291,7 @@ void apparence_console(int zoom)
 void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
-    for(int i = 0; i < 11; i++)
+    for(int i = 0; i < 16; i++)
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
