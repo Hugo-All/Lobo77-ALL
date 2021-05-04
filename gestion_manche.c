@@ -120,41 +120,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         //------------------------- Pioche -------------------------
         //Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
-        {
-            while(cartes_a_piocher > 0)
-            {
-                for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
-                    if(joueurs[index_joueur].cartes[i] == CARTE_VIDE)
-                        index_carte = i;
-
-                color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
-                if(attend_touche(DELAI_PIOCHE) == 1)
-                {
-                    joueurs[index_joueur].cartes[index_carte] = pile[*index_pile];
-                    pile[*index_pile] = CARTE_VIDE;
-                    (*index_pile)--;
-
-                    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    afficher_petit_encadre("Vous avez pioch\x82 la carte:");
-                    afficher_carte(joueurs[index_joueur].cartes[index_carte]);
-                }else
-                {
-                    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                    color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
-                    if(nb_cartes_joueur(joueurs[index_joueur]) == 0)
-                    {
-                        printf("Vous n'avez plus de cartes,");
-                        retirer_jeton(&joueurs[index_joueur]);
-                        color(ROUGE, NOIR);
-                        afficher_encadre("La manche va maintenant se terminer.");
-                    }
-                    color(BLANC, NOIR);
-                }
-                system("pause");
-
-                cartes_a_piocher--;
-            }
-        }
+            piocher(&joueurs[index_joueur], pile, index_pile, cartes_a_piocher, total_defausse);
 
         if(total_defausse >= 77)
         {
@@ -169,6 +135,44 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     joueurs[get_joueur_actuel(joueurs, nb_joueurs)].sens_jeu = 0; //Remise à zéro du sens du joueur
     vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile); //Vidage de la main des joueur_suivant
     vider_defausse(pile, defausse, index_pile, &index_defausse); //Vide la défausse avant la fin de la manche
+}
+
+void piocher(S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a_piocher, int total_defausse)
+{
+    int index_carte;
+    while(cartes_a_piocher > 0)
+    {
+        for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
+            if(joueur->cartes[i] == CARTE_VIDE)
+                index_carte = i;
+
+        color(JAUNE, NOIR); printf("\nVous avez 5 secondes pour piocher une carte en appuyant sur une touche.\n"); color(BLANC, NOIR);
+        if(attend_touche(DELAI_PIOCHE) == 1)
+        {
+            joueur->cartes[index_carte] = pile[*index_pile];
+            pile[*index_pile] = CARTE_VIDE;
+            (*index_pile)--;
+
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+            afficher_petit_encadre("Vous avez pioch\x82 la carte:");
+            afficher_carte(joueur->cartes[index_carte]);
+        }else
+        {
+            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+            color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
+            if(nb_cartes_joueur(*joueur) == 0)
+            {
+                printf("Vous n'avez plus de cartes,");
+                retirer_jeton(joueur);
+                color(ROUGE, NOIR);
+                afficher_encadre("La manche va maintenant se terminer.");
+            }
+            color(BLANC, NOIR);
+        }
+        system("pause");
+
+        cartes_a_piocher--;
+    }
 }
 
 void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse)
