@@ -49,7 +49,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
 
     initialiser_joueurs(joueurs, &nb_joueurs);
 
-    if(nb_joueurs == 8) apparence_console(18); //Dézoom si il y a beaucoup de joueurs
+    if(nb_joueurs > 5) apparence_console(18); //Dézoom si il y a beaucoup de joueurs
 
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
