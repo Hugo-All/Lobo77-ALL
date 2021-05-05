@@ -50,7 +50,7 @@ void options()
         system("cls");
         banniere();
 
-        afficher_petit_encadre("Nombre de jetons au d\x82""part:");
+        afficher_petit_encadre("Nombre de jetons au d\x82""part: (0 \x85 3)");
         sprintf(buffer, "< %d >", jetons_depart);
         afficher_bouton(buffer, curseur == 0);
 
