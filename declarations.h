@@ -51,4 +51,25 @@ int jetons_depart;
 int num_manche;
 int delai_pioche;
 
+//-------- Couleurs --------
+
+enum E_couleurs{NOIR,
+            BLEU_FONCE,
+            VERT_FONCE,
+            TURQUOISE,
+            ROUGE_FONCE,
+            VIOLET,
+            VERT_OIE,
+            GRIS_CLAIR,
+            GRIS_FONCE,
+            BLEU,
+            VERT,
+            TURQUOISE_2,
+            ROUGE,
+            VIOLET_2,
+            JAUNE,
+            BLANC
+            };
+typedef enum E_couleurs couleurs;
+
 #endif

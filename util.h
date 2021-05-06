@@ -10,25 +10,6 @@
 #include "declarations.h"
 #include "affichage.h"
 
-enum E_couleurs{NOIR,
-            BLEU_FONCE,
-            VERT_FONCE,
-            TURQUOISE,
-            ROUGE_FONCE,
-            VIOLET,
-            VERT_OIE,
-            GRIS_CLAIR,
-            GRIS_FONCE,
-            BLEU,
-            VERT,
-            TURQUOISE_2,
-            ROUGE,
-            VIOLET_2,
-            JAUNE,
-            BLANC
-            };
-typedef enum E_couleurs couleurs;
-
 void color (int couleurDuTexte, int couleurDuFond);
 
 int attend_touche(int timeout);
