@@ -13,6 +13,8 @@ int menu();
 void options();
 void regles();
 
+int choix_recommencer();
+
 void afficher_bouton(char *texte, int curseur);
 
 #endif
