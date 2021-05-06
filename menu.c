@@ -14,6 +14,7 @@ int menu() //Retourne 1 si le joueur veut quitter le jeu
             afficher_bouton("Options", curseur==1);
             afficher_bouton("R""\x8A""gles", curseur==2);
             afficher_bouton("Quitter", curseur==3);
+            afficher_petit_encadre("^ v pour naviguer puis Enter");
 
             touche = get_fleche_verticale();
             if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
@@ -61,7 +62,7 @@ void options()
         afficher_bouton(buffer, curseur == 1);
 
         barre_horizontale();
-        afficher_petit_encadre("Appuyez sur Entr\x82 pour valider");
+        afficher_petit_encadre("^ v pour naviguer puis Enter");
 
         touche = get_fleches();
 
