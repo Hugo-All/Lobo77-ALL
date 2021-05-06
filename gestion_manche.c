@@ -28,7 +28,10 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_joueur = joueur_suivant(joueurs, nb_joueurs); //Et on cherche un joueur vivant à gauche
 
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-    printf("Le donneur est: %s\nC'est le joueur \x85 gauche qui commence, donc: %s\n\n", joueurs[index_donneur].nom, joueurs[index_joueur].nom);
+    printf("Le donneur est: ");
+    color(VERT, NOIR); printf("%s", joueurs[index_donneur].nom); color(BLANC, NOIR);
+    printf("\nC'est le joueur \x85 gauche qui commence, donc: ");
+    color(JAUNE, NOIR); printf("%s\n\n", joueurs[index_joueur].nom); color(BLANC, NOIR);
     system("pause");
 
     //------------------------- Boucle de manche -------------------------
