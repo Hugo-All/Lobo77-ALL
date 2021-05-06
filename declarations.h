@@ -37,7 +37,7 @@
 ê = \x88
 */
 
-//-------------Structure---------------
+//------------- Structure ---------------
 typedef struct joueur{
     char nom[DIM_STR + 1];
     char cartes[5];
@@ -46,7 +46,7 @@ typedef struct joueur{
     char sens_jeu; //0 si le joueur n'est pas en train de jouer, SENS_HORAIRE ou SENS_ANTIHORAIRE sur le joueur courant
 } S_joueur;
 
-//--------Variables globales--------
+//-------- Variables globales --------
 int jetons_depart;
 int num_manche;
 int delai_pioche;
