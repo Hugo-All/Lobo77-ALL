@@ -140,8 +140,13 @@ void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur,
     while(cartes_a_piocher > 0)
     {
         for(int i = 0; i < DIM_main_joueur; i++) //Trouve un emplacement de carte vide
+        {
             if(joueur->cartes[i] == CARTE_VIDE)
+            {
                 index_carte = i;
+                break;
+            }
+        }
 
         color(JAUNE, NOIR); printf("\nVous avez %d secondes pour piocher une carte en appuyant sur une touche.\n", delai_pioche); color(BLANC, NOIR);
         if(attend_touche(delai_pioche) == 1)
