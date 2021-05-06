@@ -2,6 +2,23 @@
 
 void banniere() //Affichage de la bannière du jeu
 {
+    if(num_manche > 0)
+    {
+        printf("%c", 186);
+        for(int i = 0; i < LARGEUR_AFFICHAGE - 2; i++) printf(" ");
+        printf("%c\n", 186);
+
+        printf("%c", 186);
+        for(int i = 0; i < 14; i++) printf(" ");
+        printf("Manche num\x82""ro %-2d", num_manche);
+        for(int i = 0; i < 13; i++) printf(" ");
+        printf("%c\n", 186);
+        
+        printf("%c", 186);
+        for(int i = 0; i < LARGEUR_AFFICHAGE - 2; i++) printf(" ");
+        printf("%c\n", 186);
+    }
+    
     printf("%c", 200);
     for(int i = 0; i < 16; i++)
         printf("%c", 205);
@@ -88,7 +105,6 @@ void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
 
-    printf("\n");
     afficher_encadre_str("Cartes de %s", joueur.nom);
 
     //Affiche le haut de chaque cartes
@@ -211,40 +227,58 @@ void afficher_encadre_str(char format[], char donnee[])
 
 void afficher_encadre(char ligne[])
 {
-    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    char buffer[strlen(ligne) + 1];
+    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur pair, on rajoute un espace
+    {
+        strcpy(buffer, ligne);
+        strcat(buffer, " ");
+    }else{
+        strcpy(buffer, ligne);
+    }
 
-    for(int i = 0; i < marge; i++) printf(" ");
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
     printf("%c", 201);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
     printf("%c\n", 187);
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 186, ligne, 186);
+    printf("%c %s %c\n", 186, buffer, 186);
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 200);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
     printf("%c\n\n", 188);
 }
 
 void afficher_petit_encadre(char ligne[])
 {
-    int marge = (LARGEUR_AFFICHAGE - (strlen(ligne) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    char buffer[strlen(ligne) + 1];
+    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur paire, on rajoute un espace
+    {
+        strcpy(buffer, ligne);
+        strcat(buffer, " ");
+    }else{
+        strcpy(buffer, ligne);
+    }
 
-    for(int i = 0; i < marge; i++) printf(" ");
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+
+    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
     printf("%c", 218);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
     printf("%c\n", 191);
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 179, ligne, 179);
+    printf("%c %s %c\n", 179, buffer, 179);
 
     for(int i = 0; i < marge; i++) printf(" ");
     printf("%c", 192);
-    for(int i = 0; i < strlen(ligne) + 2; i++)
+    for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
     printf("%c\n\n", 217);
 }
@@ -257,16 +291,33 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
     barre_horizontale();
 }
 
-void apparence_console()
+void apparence_console(int zoom)
 {
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof cfi;
     cfi.nFont = 0;
     cfi.dwFontSize.X = 0;
-    cfi.dwFontSize.Y = 24;
+    cfi.dwFontSize.Y = zoom;
     cfi.FontFamily = FF_DONTCARE;
     cfi.FontWeight = FW_NORMAL;
 
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+}
+
+void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+{
+    char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
+    for(int i = 0; i < 11; i++)
+    {
+        system("cls");
+        afficher_joueurs(joueurs, nb_joueurs);
+        afficher_encadre_str("M\x82""lange des cartes ""\xDB""%s\xDB", animation[i % 5]);
+        usleep(300000);
+    }
+
+    system("cls");
+    afficher_joueurs(joueurs, nb_joueurs);
+    color(VERT, NOIR); afficher_encadre("M\x82""lange des cartes termin\x82"); color(BLANC, NOIR);
+    system("pause");
 }

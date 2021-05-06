@@ -23,5 +23,7 @@ void afficher_petit_encadre(char ligne[]);
 
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse);
 
-void apparence_console();
+void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+
+void apparence_console(int zoom);
 #endif

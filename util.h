@@ -10,29 +10,15 @@
 #include "declarations.h"
 #include "affichage.h"
 
-enum E_couleurs{NOIR,
-            BLEU_FONCE,
-            VERT_FONCE,
-            TURQUOISE,
-            ROUGE_FONCE,
-            VIOLET,
-            VERT_OIE,
-            GRIS_CLAIR,
-            GRIS_FONCE,
-            BLEU,
-            VERT,
-            TURQUOISE_2,
-            ROUGE,
-            VIOLET_2,
-            JAUNE,
-            BLANC
-            };
-typedef enum E_couleurs couleurs;
-
 void color (int couleurDuTexte, int couleurDuFond);
 
 int attend_touche(int timeout);
 char get_touche();
+
+char get_fleche_verticale();
+char get_fleche_horizontale();
+char get_fleches();
+
 void gets_limite(char *sortie, int limite);
 
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
@@ -47,7 +33,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
 
 int nb_cartes_joueur(S_joueur joueur);
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
-int nb_joueur_valide_avec_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
+int nb_joueur_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
 
 void retirer_jeton(S_joueur *joueur);
 

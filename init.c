@@ -15,7 +15,10 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
         for(int j=0;  j < DIM_main_joueur; j++) //Initialisation des cartes à CARTE_VIDE
             joueurs[i].cartes[j]=CARTE_VIDE;
 
-        joueurs[i].nb_jetons = 0; //Initialisation des jetons
+        joueurs[i].nb_jetons = 0;
+        joueurs[i].donneur = 0;
+        joueurs[i].sens_jeu = 0;
+        strcpy(joueurs[i].nom, ""); //Initialisation du nom
     }
 
     for(int i = 0; i < *nb_joueurs; i++)
@@ -27,7 +30,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) //So
     }
 
     afficher_joueurs(joueurs, *nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
+    color(VERT, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
     system("pause");
 }
 
@@ -66,12 +69,12 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         donneur = donneur_suivant(joueurs, nb_joueurs);
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
-        afficher_petit_encadre("Selection d'un donneur al""\x82""atoire...");
+        afficher_petit_encadre("S\x82""lection d'un donneur al""\x82""atoire...");
         usleep(300000);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_encadre_str("Le donneur s\x82lectionn\x82 est %s", joueurs[donneur].nom); color(BLANC, NOIR);
+    color(VERT, NOIR); afficher_encadre_str("Le donneur s\x82lectionn\x82 est %s", joueurs[donneur].nom); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -97,7 +100,7 @@ void distribuer_cartes(int pile[DIM_pile], int* index_pile, S_joueur joueurs[NB_
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de la distribution des cartes"); color(BLANC, NOIR);
+    color(VERT, NOIR); afficher_petit_encadre("Fin de la distribution des cartes"); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -107,7 +110,7 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
     for(int j = index_donneur + 1 ; j < index_donneur+1 + nb_joueurs; j++)
     {
-        for(int i = 0; i < NB_max_jetons; i++)
+        for(int i = 0; i < jetons_depart; i++)
         {
             if(joueurs[j % nb_joueurs].nb_jetons >= 0) //On distribue des cartes uniquement aux joueurs vivants
             {
@@ -121,6 +124,6 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
-    color(TURQUOISE_2, NOIR); afficher_petit_encadre("Fin de la distribution des jetons"); color(BLANC, NOIR);
+    color(VERT, NOIR); afficher_petit_encadre("Fin de la distribution des jetons"); color(BLANC, NOIR);
     system("pause");
 }
