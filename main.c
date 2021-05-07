@@ -19,12 +19,12 @@ int main()
     int quitter;
     int index_pile = DIM_pile-1;
     num_manche = 0;
-    jetons_depart = 3; //Max des jetons par défaut
-    delai_pioche = 5; //Temps pour piocher par défaut
+    jetons_depart = 3; // Max des jetons par défaut
+    delai_pioche = 5; // Temps pour piocher par défaut
 
     srand(time(NULL));
     color(BLANC, NOIR);
-    apparence_console(24); //Zoom sur la fenêtre
+    apparence_console(24); // Zoom sur la fenêtre
 
     initialiser_pile(pile);
 
@@ -35,7 +35,7 @@ int main()
         {
             partie(joueurs, pile, &index_pile);
         }
-    }while(quitter == 0); //Tant que le joueur ne veut pas quitter
+    }while(quitter == 0); // Tant que le joueur ne veut pas quitter
 
     return 0;
 }
@@ -49,7 +49,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
 
     initialiser_joueurs(joueurs, &nb_joueurs);
 
-    if(nb_joueurs > 5) apparence_console(18); //Dézoom si il y a beaucoup de joueurs
+    if(nb_joueurs > 5) apparence_console(18); // Dézoom si il y a beaucoup de joueurs
 
     donneur_aleatoire(joueurs, nb_joueurs);
     distribuer_jetons(joueurs, nb_joueurs);
@@ -64,9 +64,9 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
 
         manche(joueurs, nb_joueurs, pile, index_pile);
 
-        if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
+        if(nb_joueur_valide(joueurs, nb_joueurs) > 1) // Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
         {
-            donneur_suivant(joueurs, nb_joueurs); //Rotation du donneur
+            donneur_suivant(joueurs, nb_joueurs); // Rotation du donneur
 
             system("cls");
             afficher_joueurs(joueurs, nb_joueurs);
@@ -79,5 +79,5 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
     annoncer_gagnant(joueurs, nb_joueurs);
 
     system("pause");
-    num_manche = 0; //Réinitialisation du nombre de manches
+    num_manche = 0; // Réinitialisation du nombre de manches
 }

@@ -2,32 +2,32 @@
 #define INCLUDE_DECLARATIONS_H
 
 //----------------DEFINES---------------
-//Définition des dimensions des tableaux
-#define DIM_STR 10 //Taille maximum du nom d'un joueur
+// Définition des dimensions des tableaux
+#define DIM_STR 10 // Taille maximum du nom d'un joueur
 #define DIM_pile 56
 #define DIM_main_joueur 5
 #define NB_max_joueurs 8
 #define NB_max_jetons 3
 
-//Définition des cartes spéciales
+// Définition des cartes spéciales
 #define CARTE_VIDE 100
 #define CARTE_X2 101
 #define CARTE_SENS 102
 
-//Touches
+// Touches
 #define TOUCHE_DROITE 77
 #define TOUCHE_GAUCHE 75
 #define TOUCHE_HAUT 80
 #define TOUCHE_BAS 72
 #define TOUCHE_ENTER 13
 
-//Sens de jeu
+// Sens de jeu
 #define SENS_HORAIRE 1
 #define SENS_ANTIHORAIRE -1
 
 #define LARGEUR_AFFICHAGE 45
 
-#define DELAI_PIOCHE_MIN 2 //Temps minimum pour piocher une carte
+#define DELAI_PIOCHE_MIN 2 // Temps minimum pour piocher une carte
 
 /* Caractères à remplacer
 é = \x82

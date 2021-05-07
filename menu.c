@@ -1,6 +1,6 @@
 #include "menu.h"
 
-int menu() //Retourne 1 si le joueur veut quitter le jeu
+int menu() // Retourne 1 si le joueur veut quitter le jeu
 {
     char touche = 0;
     char curseur = 0;
@@ -35,10 +35,10 @@ int menu() //Retourne 1 si le joueur veut quitter le jeu
             system("cls");
             banniere();
             color(VERT, NOIR); afficher_encadre("Au revoir !"); color(BLANC, NOIR);
-            return 1; //Sort du menu et quitte le jeu
+            return 1; // Sort du menu et quitte le jeu
         }
     }while(curseur != 0);
-    return 0; //Sort du menu sans quitter le jeu
+    return 0; // Sort du menu sans quitter le jeu
 }
 
 void options()
@@ -91,7 +91,7 @@ void options()
         }
     }while(touche != TOUCHE_ENTER);
 
-    //Affichage du récapitulatif des options
+    // Affichage du récapitulatif des options
     system("cls");
     banniere();
     color(VERT, NOIR);
@@ -149,7 +149,7 @@ void regles()
                 printf("Lorsque la pioche est vide, on r\x82""cup\x8A""re la d\x82""fausse, on la m\x82""lange et on l'utilise \x85 nouveau comme pioche.\n");
                 break;
             case 2:
-                do{ //On prend une carte aléatoire qui n'est pas une carte spéciale
+                do{ // On prend une carte aléatoire qui n'est pas une carte spéciale
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
                 color(VERT, NOIR); afficher_petit_encadre("Cartes normales"); color(BLANC, NOIR);
@@ -190,7 +190,7 @@ void regles()
 void afficher_bouton(char *texte, int curseur)
 {
     char buffer[strlen(texte) + 1];
-    if(strlen(texte) % 2 == 0) //Si la ligne à afficher est de longueur paire, on rajoute un espace
+    if(strlen(texte) % 2 == 0) // Si la ligne à afficher est de longueur paire, on rajoute un espace
     {
         strcpy(buffer, texte);
         strcat(buffer, " ");
@@ -198,11 +198,11 @@ void afficher_bouton(char *texte, int curseur)
         strcpy(buffer, texte);
     }
 
-    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
 
-    if(curseur == 1) color(NOIR, TURQUOISE_2); //Si le bouton est sélectionné, on change les couleurs
+    if(curseur == 1) color(NOIR, TURQUOISE_2); // Si le bouton est sélectionné, on change les couleurs
     printf("%c", 201);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);

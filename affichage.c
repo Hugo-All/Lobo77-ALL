@@ -1,6 +1,6 @@
 #include "affichage.h"
 
-void banniere() //Affichage de la bannière du jeu
+void banniere() // Affichage de la bannière du jeu
 {
     if(num_manche > 0)
     {
@@ -28,7 +28,7 @@ void banniere() //Affichage de la bannière du jeu
     printf("%c\n\n", 188);
 }
 
-void barre_horizontale() //Affichage d'un élément esthétique pour la présentation sur la console
+void barre_horizontale() // Affichage d'un élément esthétique pour la présentation sur la console
 {
     for(int i = 0; i < LARGEUR_AFFICHAGE; i++)
         printf("%c", 205);
@@ -40,9 +40,9 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     banniere();
 
     printf("Sens  Nom        Jetons  Cartes        Donneur\n\n");
-    for(int i = 0; i < nb_joueurs; i++) //Parcours chaque joueur
+    for(int i = 0; i < nb_joueurs; i++) // Parcours chaque joueur
     {
-        if(joueurs[i].sens_jeu != 0) //Si le joueur en cours d'affichage est en train de jouer
+        if(joueurs[i].sens_jeu != 0) // Si le joueur en cours d'affichage est en train de jouer
         {
             if(joueurs[i].sens_jeu == SENS_HORAIRE)
                 printf("  v   ");
@@ -53,13 +53,13 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
             printf("      ");
         }
 
-        printf("%-10s ", joueurs[i].nom); //Affiche le nom du joueur
+        printf("%-10s ", joueurs[i].nom); // Affiche le nom du joueur
 
-        //Il faut qu'un joueur soit toujours vivant pour être affiché
+        // Il faut qu'un joueur soit toujours vivant pour être affiché
         if(joueurs[i].nb_jetons >= 0)
         {
-            //Affiche les jetons du joueur
-            color(BLEU, NOIR); //Affichage des jetons en bleu comme dans le jeu physique
+            // Affiche les jetons du joueur
+            color(BLEU, NOIR); // Affichage des jetons en bleu comme dans le jeu physique
             for(int j = 1; j <= NB_max_jetons; j++)
             {
                 if(joueurs[i].nb_jetons >= j)
@@ -69,9 +69,9 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 
             }
             printf("  ");
-            color(BLANC, NOIR); //Remise à zéro de la couleur
+            color(BLANC, NOIR); // Remise à zéro de la couleur
 
-            //Affiche des carrés à la place des cartes du joueur
+            // Affiche des carrés à la place des cartes du joueur
             for(int j = 0; j < DIM_main_joueur; j++)
             {
                 if(joueurs[i].cartes[j] == CARTE_VIDE)
@@ -83,7 +83,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
             }
             printf("   ");
 
-            //Affiche un (D) si le joueur est le donneur
+            // Affiche un (D) si le joueur est le donneur
             if(joueurs[i].donneur == 1)
             {
                 printf(" (D)    ");
@@ -107,23 +107,23 @@ void afficher_cartes(S_joueur joueur, int curseur)
 
     afficher_encadre_str("Cartes de %s", joueur.nom);
 
-    //Affiche le haut de chaque cartes
+    // Affiche le haut de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 201, 205, 205, 205, 205, 205, 205, 187);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
-    //Affiche 2 lignes intermédiaires
+    // Affiche 2 lignes intermédiaires
     sprintf(buffer_ligne, "%c      %c", 186, 186);
     for(int i = 0; i < 2; i++)
         afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
-    //Affiche la ligne contenant le type de carte
+    // Affiche la ligne contenant le type de carte
     for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++)
     {
         color(BLANC, NOIR);
-        printf(" "); //Espacement entre les cartes
+        printf(" "); // Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); // Couleurs du curseur
             switch (joueur.cartes[i_carte])
             {
                 case CARTE_SENS :
@@ -141,53 +141,53 @@ void afficher_cartes(S_joueur joueur, int curseur)
     }
     printf("\n");
 
-    //Affiche 2 lignes intermédiaires
+    // Affiche 2 lignes intermédiaires
     sprintf(buffer_ligne, "%c      %c", 186, 186);
     for(int i = 0; i < 2; i++)
         afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
-    //Affiche le bas de chaque cartes
+    // Affiche le bas de chaque cartes
     sprintf(buffer_ligne, "%c%c%c%c%c%c%c%c", 200, 205, 205, 205, 205, 205, 205, 188);
     afficher_ligne_cartes(joueur, buffer_ligne, curseur);
 
-    color(BLANC, NOIR); //Remet à 0 les couleurs
+    color(BLANC, NOIR); // Remet à 0 les couleurs
     printf("\n");
 }
 
-//Affiche une portion de chaque cartes
+// Affiche une portion de chaque cartes
 void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
 {
-    for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) //Parcours chaque cartes du joueur
+    for(int i_carte = 0; i_carte < DIM_main_joueur; i_carte++) // Parcours chaque cartes du joueur
     {
-        color(BLANC, NOIR); //Remet à 0 les couleurs
-        printf(" "); //Espacement entre les cartes
+        color(BLANC, NOIR); // Remet à 0 les couleurs
+        printf(" "); // Espacement entre les cartes
         if(joueur.cartes[i_carte] != CARTE_VIDE)
         {
-            if(i_carte == curseur) color(NOIR, TURQUOISE_2); //Couleurs du curseur
+            if(i_carte == curseur) color(NOIR, TURQUOISE_2); // Couleurs du curseur
             printf("%s", ligne);
         }
         else
-            printf("        "); //Si la carte est vide, imprimer des espaces
-        color(BLANC, NOIR); //Remet à 0 les couleurs
+            printf("        "); // Si la carte est vide, imprimer des espaces
+        color(BLANC, NOIR); // Remet à 0 les couleurs
     }
     printf("\n");
 }
 
 void afficher_carte(int carte)
 {
-    int marge = (LARGEUR_AFFICHAGE - 8)/2; //Calcul de la marge nécéssaire pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - 8)/2; // Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
-    printf("%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); //Ligne supérieure de la carte
+    for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
+    printf("%c%c%c%c%c%c%c%c\n", 201, 205, 205, 205, 205, 205, 205, 187); // Ligne supérieure de la carte
 
-    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    for(int i = 0; i < 2; i++) // Lignes intermédiaires
     {
         for(int j = 0; j < marge; j++) printf(" ");
         printf("%c      %c\n", 186, 186);
     }
 
     for(int i = 0; i < marge; i++) printf(" ");
-    switch (carte) //Ligne de texte
+    switch (carte) // Ligne de texte
     {
         case CARTE_SENS :
             printf("%c SENS %c\n", 186, 186);
@@ -199,14 +199,14 @@ void afficher_carte(int carte)
             printf("%c % 3d  %c\n", 186, carte, 186);
     }
 
-    for(int i = 0; i < 2; i++) //Lignes intermédiaires
+    for(int i = 0; i < 2; i++) // Lignes intermédiaires
     {
         for(int j = 0; j < marge; j++) printf(" ");
         printf("%c      %c\n", 186, 186);
     }
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); //Ligne inférieure de la carte
+    printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); // Ligne inférieure de la carte
 }
 
 void afficher_encadre_int(char format[], int donnee)
@@ -228,7 +228,7 @@ void afficher_encadre_str(char format[], char donnee[])
 void afficher_encadre(char ligne[])
 {
     char buffer[strlen(ligne) + 1];
-    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur pair, on rajoute un espace
+    if(strlen(ligne) % 2 == 0) // Si la ligne à afficher est de longueur pair, on rajoute un espace
     {
         strcpy(buffer, ligne);
         strcat(buffer, " ");
@@ -236,9 +236,9 @@ void afficher_encadre(char ligne[])
         strcpy(buffer, ligne);
     }
 
-    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
     printf("%c", 201);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
@@ -257,7 +257,7 @@ void afficher_encadre(char ligne[])
 void afficher_petit_encadre(char ligne[])
 {
     char buffer[strlen(ligne) + 1];
-    if(strlen(ligne) % 2 == 0) //Si la ligne à afficher est de longueur paire, on rajoute un espace
+    if(strlen(ligne) % 2 == 0) // Si la ligne à afficher est de longueur paire, on rajoute un espace
     {
         strcpy(buffer, ligne);
         strcat(buffer, " ");
@@ -265,9 +265,9 @@ void afficher_petit_encadre(char ligne[])
         strcpy(buffer, ligne);
     }
 
-    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
     printf("%c", 218);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 196);
