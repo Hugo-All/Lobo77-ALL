@@ -35,7 +35,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     system("pause");
 
     //------------------------- Boucle de manche -------------------------
-    while(total_defausse < 77 && nb_joueur_sans_cartes(joueurs, nb_joueurs) == 0 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
+    while(total_defausse < 77 && nb_joueurs_sans_cartes(joueurs, nb_joueurs) == 0 && nb_joueur_valide(joueurs, nb_joueurs) > 1)
     {
         cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);

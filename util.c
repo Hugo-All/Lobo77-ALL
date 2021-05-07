@@ -217,7 +217,7 @@ int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 }
 
 // Calcul le nombre de joueurs encore en jeu et qui possède des cartes
-int nb_joueur_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
+int nb_joueurs_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int compte_joueurs_sans_cartes = 0;
     for(int i = 0; i < nb_joueurs; i++)
