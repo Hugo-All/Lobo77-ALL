@@ -11,7 +11,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_carte, valeur_carte; //Stoke la carte sélectionnée par le joueur et sa valeur
     int joueur_suivant_x2 = 0; //Indique si le prochain joueur doit jouer 2 fois
     int carte_restant_a_jouer = 1; //Indique le nombre de cartes à jouer par le joueur
-    int cartes_a_piocher = 0;
+    int cartes_a_piocher = 0; //Indique le nombre de cartes que le joueur doit piocher en fin de tour
 
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
