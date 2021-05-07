@@ -31,7 +31,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
     printf("Il reste ");
     color(ROUGE, NOIR); printf("%d", nb_joueur_valide(joueurs, nb_joueurs)); color(BLANC, NOIR);
-    printf(" joueurs en lice\n\nLe donneur est: ");
+    printf(" joueurs en lice.\n\nLe donneur est: ");
     color(VERT, NOIR); printf("%s", joueurs[index_donneur].nom); color(BLANC, NOIR);
     printf("\nC'est le joueur \x85 gauche qui commence, donc: ");
     color(JAUNE, NOIR); printf("%s\n\n", joueurs[index_joueur].nom); color(BLANC, NOIR);

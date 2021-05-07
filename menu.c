@@ -127,7 +127,7 @@ void regles()
 
                 color(ROUGE, NOIR);
                 printf("Si un de ces principes n'est pas respect\x82"", alors vous perdez un des 3 jetons qui vous est distribu\x82 au d\x82""part.\n");
-                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur est synonyme d'\x82""limination.\n");
+                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur entra\x8C""ne une \x82""limination.\n");
                 color(BLANC, NOIR);
                 break;
             case 1:
