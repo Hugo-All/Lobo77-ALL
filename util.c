@@ -1,11 +1,13 @@
 #include "util.h"
 
+// Change la couleur de la console en fonction des couleurs définies dans declarations.h
 void color (int couleurDuTexte, int couleurDuFond)
 {
     HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
 
+// Retourne l'index du joueur actuel dans la liste de joueur
 int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     for(int i = 0; i < nb_joueurs; i++)
@@ -15,6 +17,7 @@ int get_joueur_actuel(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return -1; // Si le joueur actuel n'a pas été trouvé
 }
 
+// Retourne l'index du donneur actuel dans la liste de joueur
 int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     for(int i = 0; i < nb_joueurs; i++)
@@ -24,7 +27,7 @@ int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return -1; // Si le donneur n'a pas été trouvé
 }
 
-// Demande à l'utilisateur une chaine de charactère non-vide d'une longueur maximum "limite"
+// Demande à l'utilisateur une chaine de charactère non-vide et la tronque pour avoir "limite" caractères
 void gets_limite(char *sortie, int limite)
 {
     fflush(stdin);
@@ -57,13 +60,14 @@ int attend_touche(int timeout)
     while (time(NULL) - start < timeout)
     {
         printf("\rVous avez %d secondes...", (int) (timeout - (time(NULL) - start))); // Affichage du décompte
-        if(kbhit()!=0)
+        if(kbhit()!=0) // Vérifie si une touche a été pressée
             return 1; // Une touche a été pressée dans le temps imparti
     }
 
     return 0; // Pas de touche pressée
 }
 
+// Propose au joueur de sélectionner une carte parmi sa mains et retourne l'index de cette carte
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse)
 {
     char touche;
@@ -77,7 +81,7 @@ int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb
         }
     }
 
-    do // Tant que le joueur n'as pas appuyé sur entré
+    do // Tant que le joueur n'as pas appuyé sur enter
     {
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
         afficher_cartes(joueur, curseur);
@@ -143,7 +147,7 @@ char get_fleche_verticale()
     return touche;
 }
 
-// Attend que l'utilisateur appuie sur n'importe quelle flèche ou enter.
+// Attend que l'utilisateur appuie sur n'importe quelle flèche ou enter. Et retourne la touche appuyée
 char get_fleches()
 {
      char touche = 0;
@@ -156,19 +160,7 @@ char get_fleches()
     return touche;
 }
 
-// Retourne le nombre de carte d'un joueur
-int nb_cartes_joueur(S_joueur joueur)
-{
-    int nb_cartes = 0;
-    for(int i = 0; i < DIM_main_joueur; i++)
-    {
-        if(joueur.cartes[i] != CARTE_VIDE)
-            nb_cartes++;
-    }
-    return nb_cartes;
-}
-
-// Trouve le joueur suivant en fonction du sens du jeu et des joueurs vivants
+// Trouve un joueur vivant à gauche ou à droite (en fonction du sens de jeu) du joueur actuel et le nomme joueur actuel
 int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_joueur = get_joueur_actuel(joueurs, nb_joueurs);
@@ -189,6 +181,7 @@ int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return index_joueur;
 }
 
+// Trouve un joueur vivant à gauche du donneur actuel et le nomme donneur
 int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_donneur = get_donneur(joueurs, nb_joueurs);
@@ -201,6 +194,18 @@ int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     joueurs[index_donneur].donneur = 1;
 
     return index_donneur;
+}
+
+// Retourne le nombre de carte d'un joueur
+int nb_cartes_joueur(S_joueur joueur)
+{
+    int nb_cartes = 0;
+    for(int i = 0; i < DIM_main_joueur; i++)
+    {
+        if(joueur.cartes[i] != CARTE_VIDE)
+            nb_cartes++;
+    }
+    return nb_cartes;
 }
 
 // Calcul le nombre de joueurs encore en jeu
@@ -229,6 +234,7 @@ int nb_joueurs_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return compte_joueurs_sans_cartes;
 }
 
+// Retire un jeton à un joueur et le notifie
 void retirer_jeton(S_joueur *joueur)
 {
     joueur->nb_jetons--;
@@ -244,6 +250,7 @@ void retirer_jeton(S_joueur *joueur)
     color(BLANC, NOIR);
 }
 
+// Annonce le gagnant d'une partie
 void annoncer_gagnant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     system("cls");
