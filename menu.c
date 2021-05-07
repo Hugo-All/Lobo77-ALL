@@ -198,8 +198,8 @@ int choix_recommencer() //Propose au joueur de recommencer une partie, retourne 
         system("cls");
         banniere();
         afficher_petit_encadre("Recommencer avec les m\x88""mes joueurs ?");
-        afficher_bouton("Non", curseur == 0);
-        afficher_bouton("Oui", curseur == 1);
+        afficher_bouton("Oui", curseur == 0);
+        afficher_bouton("Non", curseur == 1);
 
         touche = get_fleche_verticale();
         if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
@@ -209,7 +209,7 @@ int choix_recommencer() //Propose au joueur de recommencer une partie, retourne 
 
     }while(touche != TOUCHE_ENTER);
     
-    return curseur; //Retourne 1 si le joueur a choisi "Oui", 0 sinon
+    return curseur == 0; //Retourne 1 si le joueur a choisi "Oui", 0 sinon
 }
 
 void afficher_bouton(char *texte, int curseur)
