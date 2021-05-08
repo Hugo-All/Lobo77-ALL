@@ -11,7 +11,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_carte, valeur_carte; //Stoke la carte sélectionnée par le joueur et sa valeur
     int joueur_suivant_x2 = 0; //Indique si le prochain joueur doit jouer 2 fois
     int carte_restant_a_jouer = 1; //Indique le nombre de cartes à jouer par le joueur
-    int cartes_a_piocher = 0;
+    int cartes_a_piocher = 0; //Indique le nombre de cartes que le joueur doit piocher en fin de tour
 
     for(int i = 0; i < DIM_pile; i++)
         defausse[i] = CARTE_VIDE; //Initialise la défausse avec des cartes vides
@@ -28,7 +28,10 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     int index_joueur = joueur_suivant(joueurs, nb_joueurs); //Et on cherche un joueur vivant à gauche
 
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-    printf("Le donneur est: ");
+
+    printf("Il reste ");
+    color(ROUGE, NOIR); printf("%d", nb_joueur_valide(joueurs, nb_joueurs)); color(BLANC, NOIR);
+    printf(" joueurs en lice.\n\nLe donneur est: ");
     color(VERT, NOIR); printf("%s", joueurs[index_donneur].nom); color(BLANC, NOIR);
     printf("\nC'est le joueur \x85 gauche qui commence, donc: ");
     color(JAUNE, NOIR); printf("%s\n\n", joueurs[index_joueur].nom); color(BLANC, NOIR);
