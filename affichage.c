@@ -1,6 +1,7 @@
 #include "affichage.h"
 
-void banniere() // Affichage de la bannière du jeu
+// Affiche une bannière avec le nom du jeu et le numéro de la manche si il est non nul
+void banniere()
 {
     if(num_manche > 0)
     {
@@ -28,13 +29,15 @@ void banniere() // Affichage de la bannière du jeu
     printf("%c\n\n", 188);
 }
 
-void barre_horizontale() // Affichage d'un élément esthétique pour la présentation sur la console
+// Affiche une barre horizontale de largeur LARGEUR_AFFICHAGE
+void barre_horizontale()
 {
     for(int i = 0; i < LARGEUR_AFFICHAGE; i++)
         printf("%c", 205);
     printf("\n\n");
 }
 
+// Affiche le sens du jeu, le nom des joueurs, leurs jetons, leurs cartes et qui est le donneur
 void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     banniere();
@@ -101,6 +104,7 @@ void afficher_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     barre_horizontale();
 }
 
+// Affiche les cartes du joueur à l'horizontal
 void afficher_cartes(S_joueur joueur, int curseur)
 {
     char buffer_ligne[9];
@@ -173,6 +177,7 @@ void afficher_ligne_cartes(S_joueur joueur, char ligne[9], int curseur)
     printf("\n");
 }
 
+// Affiche une carte
 void afficher_carte(int carte)
 {
     int marge = (LARGEUR_AFFICHAGE - 8)/2; // Calcul de la marge nécéssaire pour le centrage
@@ -187,7 +192,7 @@ void afficher_carte(int carte)
     }
 
     for(int i = 0; i < marge; i++) printf(" ");
-    switch (carte) // Ligne de texte
+    switch (carte) // Ligne de texte de la carte
     {
         case CARTE_SENS :
             printf("%c SENS %c\n", 186, 186);
@@ -209,6 +214,7 @@ void afficher_carte(int carte)
     printf("%c%c%c%c%c%c%c%c\n\n", 200, 205, 205, 205, 205, 205, 205, 188); // Ligne inférieure de la carte
 }
 
+// Affiche "format" dans un encadré centré à double bordure et remplace un %d par "donnee"
 void afficher_encadre_int(char format[], int donnee)
 {
     char ligne[30];
@@ -217,6 +223,7 @@ void afficher_encadre_int(char format[], int donnee)
     afficher_encadre(ligne);
 }
 
+// Affiche "format" dans un encadré centré à double bordure et remplace un %s par "donnee"
 void afficher_encadre_str(char format[], char donnee[])
 {
     char ligne[30];
@@ -225,7 +232,8 @@ void afficher_encadre_str(char format[], char donnee[])
     afficher_encadre(ligne);
 }
 
-void afficher_encadre(char ligne[])
+// Affiche "ligne" dans un encadré centré avec une double bordure
+void afficher_encadre(char ligne[]) 
 {
     char buffer[strlen(ligne) + 1];
     if(strlen(ligne) % 2 == 0) // Si la ligne à afficher est de longueur pair, on rajoute un espace
@@ -239,21 +247,22 @@ void afficher_encadre(char ligne[])
     int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
     for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
-    printf("%c", 201);
-    for(int i = 0; i < strlen(buffer) + 2; i++)
+    printf("%c", 201); // Affiche le coin supérieur gauche
+    for(int i = 0; i < strlen(buffer) + 2; i++) // Affiche la bordure supérieur
         printf("%c", 205);
-    printf("%c\n", 187);
+    printf("%c\n", 187); // Affiche le coin supérieur droit
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 186, buffer, 186);
+    printf("%c %s %c\n", 186, buffer, 186); // Affiche "ligne"
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c", 200);
-    for(int i = 0; i < strlen(buffer) + 2; i++)
+    printf("%c", 200); // Affiche le coin inférieur gauche
+    for(int i = 0; i < strlen(buffer) + 2; i++) // Affiche la bordure inférieure
         printf("%c", 205);
-    printf("%c\n\n", 188);
+    printf("%c\n\n", 188); // Affiche le coin inférieur droit
 }
 
+// Affiche "ligne" dans un encadré centré avec une simple bordure
 void afficher_petit_encadre(char ligne[])
 {
     char buffer[strlen(ligne) + 1];
@@ -268,21 +277,22 @@ void afficher_petit_encadre(char ligne[])
     int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
     for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
-    printf("%c", 218);
-    for(int i = 0; i < strlen(buffer) + 2; i++)
+    printf("%c", 218); // Affiche le coin supérieur gauche
+    for(int i = 0; i < strlen(buffer) + 2; i++) // Affiche la bordure supérieur
         printf("%c", 196);
-    printf("%c\n", 191);
+    printf("%c\n", 191); // Affiche le coin supérieur droit
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c %s %c\n", 179, buffer, 179);
+    printf("%c %s %c\n", 179, buffer, 179); // Affiche "ligne"
 
     for(int i = 0; i < marge; i++) printf(" ");
-    printf("%c", 192);
-    for(int i = 0; i < strlen(buffer) + 2; i++)
+    printf("%c", 192); // Affiche le coin inférieur gauche
+    for(int i = 0; i < strlen(buffer) + 2; i++) // Affiche la bordure inférieure
         printf("%c", 196);
-    printf("%c\n\n", 217);
+    printf("%c\n\n", 217); // Affiche le coin inférieur droit
 }
 
+// Affiche la bannière, les joueurs, le total de la défausse, puis une barre horizontale
 void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int total_defausse)
 {
     system("cls");
@@ -291,6 +301,7 @@ void afficher_joueurs_et_total(S_joueur joueurs[NB_max_joueurs], int nb_joueurs,
     barre_horizontale();
 }
 
+// Affiche la console en plein écran et applique un zoom de valeur "zoom"
 void apparence_console(int zoom)
 {
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
@@ -305,6 +316,7 @@ void apparence_console(int zoom)
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 }
 
+// Joue une animation qui simule le mélange d'une pile
 void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
