@@ -43,7 +43,7 @@ typedef struct joueur{
     char cartes[5];
     char nb_jetons;
     char donneur;
-    char sens_jeu; //0 si le joueur n'est pas en train de jouer, SENS_HORAIRE ou SENS_ANTIHORAIRE sur le joueur courant
+    char sens_jeu; // 0 si le joueur n'est pas en train de jouer, SENS_HORAIRE ou SENS_ANTIHORAIRE sur le joueur courant
 } S_joueur;
 
 //-------- Variables globales --------
