@@ -13,7 +13,7 @@
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs);
 
 // Place dans "pioche" les cartes du jeu
-void initialiser_pile(int pioche[DIM_pile]);
+void initialiser_pioche(int pioche[DIM_pile]);
 
 // Sélectionne un joueur vivant aléatoire et le nomme donneur. Avec une animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);

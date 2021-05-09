@@ -108,7 +108,7 @@ void regles()
     char touche;
     char buffer[20];
     int exemple_cartes[DIM_pile];
-    initialiser_pile(exemple_cartes);
+    initialiser_pioche(exemple_cartes);
     int carte_aleatoire;
 
     do{

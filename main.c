@@ -26,7 +26,7 @@ int main()
     color(BLANC, NOIR);
     apparence_console(24); // Zoom sur la fenêtre
 
-    initialiser_pile(pile);
+    initialiser_pioche(pile);
 
     do{
         quitter = menu();
