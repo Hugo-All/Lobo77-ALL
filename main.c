@@ -30,7 +30,7 @@ int main()
 
     do{
         quitter = menu();
-        
+
         if(quitter == 0) // Si le joueur n'a pas choisi de quitter
             partie(joueurs, pioche, &index_pioche);
     }while(quitter == 0); // Tant que le joueur ne veut pas quitter
@@ -63,7 +63,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pioche[DIM_pile], int *index_p
             color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
             system("pause");
 
-            manche(joueurs, nb_joueurs, pile, index_pile);
+            manche(joueurs, nb_joueurs, pioche, index_pioche);
 
             if(nb_joueur_valide(joueurs, nb_joueurs) > 1) // Trouve un nouveau donneur si il n'y a pas encore de gagnant
             {
