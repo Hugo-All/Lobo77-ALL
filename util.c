@@ -196,7 +196,7 @@ int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return index_donneur;
 }
 
-// Retourne le nombre de carte d'un joueur
+// Renvoie le nombre de carte non-vides que possède un joueur
 int nb_cartes_joueur(S_joueur joueur)
 {
     int nb_cartes = 0;
@@ -208,7 +208,7 @@ int nb_cartes_joueur(S_joueur joueur)
     return nb_cartes;
 }
 
-// Calcul le nombre de joueurs encore en jeu
+// Renvoie le nombre de joueurs vivants
 int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int compte_joueurs_valides = 0;
@@ -221,7 +221,7 @@ int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     return compte_joueurs_valides;
 }
 
-// Calcul le nombre de joueurs encore en jeu et qui possède des cartes
+// Renvoie le nombre de joueurs encore en jeu et qui ne possèdes plus de cartes
 int nb_joueurs_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int compte_joueurs_sans_cartes = 0;

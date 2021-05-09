@@ -42,8 +42,8 @@ void melanger_pile(int cartes[DIM_pile], int nb_cartes);
 int selectionner_carte(S_joueur joueurs[NB_max_joueurs], S_joueur joueur, int nb_joueurs, int total_defausse);
 
 int nb_cartes_joueur(S_joueur joueur); // Renvoie le nombre de carte non-vides que possède un joueur
-int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs); // Renvoie le nombre de joueurs qui sont vivants
-int nb_joueurs_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs); // Renvoie le nombre de joueurs qui n'ont plus de cartes
+int nb_joueur_valide(S_joueur joueurs[NB_max_joueurs], int nb_joueurs); // Renvoie le nombre de joueurs vivants
+int nb_joueurs_sans_cartes(S_joueur joueurs[NB_max_joueurs], int nb_joueurs); // Renvoie le nombre de joueurs encore en jeu et qui ne possèdes plus de cartes
 
 void retirer_jeton(S_joueur *joueur); // Retire un jeton à un joueur et le notifie
 
