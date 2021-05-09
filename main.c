@@ -28,7 +28,8 @@ int main()
     initialiser_pioche(pioche);
     int index_pioche = DIM_pile-1; // Index de la dernière carte non-vide dans la pioche
 
-    do{
+    do
+    {
         quitter = menu_principal(); // menu() renvoie 1 si le joueur veut quitter, 0 sinon
 
         if(quitter == 0) // Si le joueur n'a pas choisi de quitter

@@ -6,8 +6,10 @@ int menu_principal()
     char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;
     char nb_boutons = 4;
-    do{
-        do{
+    do
+    {
+        do
+        {
             system("cls");
             banniere();
 
@@ -24,7 +26,7 @@ int menu_principal()
                 curseur--;
 
         }while(touche != TOUCHE_ENTER);
-        
+
         if(curseur == 1)
         {
             options();
@@ -49,7 +51,8 @@ void options()
     char curseur = 0;
     char nb_boutons = 2;
     char buffer[DIM_STR];
-    do{
+    do
+    {
         system("cls");
         banniere();
 
@@ -110,7 +113,7 @@ void regles()
     char touche; // Stocke la dernière touche appuyée
     char nb_diapos = 5;
     char buffer[20]; // Stockera "Panneau curseur+1/nb_diapos" avec x la diapo affichée
-    
+
     int exemple_cartes[DIM_pile]; // Initialise une pioche-type pour afficher un exemple aléatoire de carte.
     initialiser_pioche(exemple_cartes);
     int carte_aleatoire;
@@ -142,7 +145,7 @@ void regles()
                 printf("De plus, un \"donneur\" est s\x82""lectionn\x82"", le joueur \x85 sa gauche est d\x82""finie comme premier joueur \x85 poser une carte.\n");
 
                 printf("La manche est donc lanc\x82""e, il faut maintenant respecter les 2 principes fondamentaux pour ne pas perdre de jetons.\n");
-                
+
                 color(ROUGE, NOIR);
                 printf("Mais \x82""galement ne pas oublier de piocher une carte apr\x8A""s avoir jou\x82""\n");
                 printf("sous peine d'avoir un choix plus restreint et m\x88""me de perdre un jeton lorsque votre main est vide.\n\n");
@@ -153,10 +156,11 @@ void regles()
                 printf("Lorsque la pioche est vide, on r\x82""cup\x8A""re la d\x82""fausse, on la m\x82""lange et on l'utilise \x85 nouveau comme pioche.\n");
                 break;
             case 2:
-                do{ // On prend une carte aléatoire qui n'est pas une carte spéciale
+                do // On prend une carte aléatoire qui n'est pas une carte spéciale
+                { 
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
-                
+
                 color(VERT, NOIR); afficher_petit_encadre("Cartes normales"); color(BLANC, NOIR);
                 printf("Voici les diff\x82""rentes cartes normales:\n");
                 printf("\t- 4 cartes 0\n");
@@ -195,12 +199,13 @@ void regles()
 // Propose au joueur de recommencer une partie, retourne 1 si il accepte, 0 si il refuse
 int choix_recommencer()
 {
-    
+
     char touche = 0;
     char curseur = 0;
     char nb_boutons = 2;
-    
-    do{
+
+    do
+    {
         system("cls");
         banniere();
         afficher_petit_encadre("Recommencer avec les m\x88""mes joueurs ?");
@@ -214,7 +219,7 @@ int choix_recommencer()
             curseur--;
 
     }while(touche != TOUCHE_ENTER);
-    
+
     return curseur == 0; //Retourne 1 si le joueur a choisi "Oui", 0 sinon
 }
 

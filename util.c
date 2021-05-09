@@ -31,7 +31,8 @@ int get_donneur(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 void gets_limite(char *sortie, int limite)
 {
     fflush(stdin);
-    do{
+    do
+    {
         fgets(sortie, limite + 1, stdin);
         strtok(sortie, "\n");  // Enlève le retour à la ligne à la fin du nom
     }while(strcmp(sortie, "\n") == 0); // Le joueur ne peut pas avoir un nom vide
@@ -126,7 +127,8 @@ char get_fleche_horizontale()
 {
     char touche = 0;
     fflush(stdin);
-    do{
+    do
+    {
         if(kbhit())
             touche = getch();
     }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE && touche != TOUCHE_ENTER);
@@ -169,7 +171,8 @@ int joueur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     int sens_jeu = joueurs[index_joueur].sens_jeu;
     joueurs[index_joueur].sens_jeu = 0;
 
-    do{
+    do
+    {
         index_joueur += sens_jeu; // On prend le joueur suivant en fonction du sens du jeu
 
         if(index_joueur >= nb_joueurs)
@@ -189,7 +192,8 @@ int donneur_suivant(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     int index_donneur = get_donneur(joueurs, nb_joueurs);
     joueurs[index_donneur].donneur = 0;
 
-    do{
+    do
+    {
         index_donneur = (index_donneur + 1) % nb_joueurs; // On prend le joueur suivant en fonction du sens du jeu
     }while(joueurs[index_donneur].nb_jetons < 0); // Il faut que le donneur soit vivant
 

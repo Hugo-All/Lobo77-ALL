@@ -3,7 +3,8 @@
 // Demande à l'utilisateur le nombre de joueurs et leurs noms
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // Sous-programme pour initialiser les joueurs en début de partie
 {
-    do{
+    do
+    {
         printf("Combien de joueurs autour de la table ? (2-8) ");
         scanf("%d", nb_joueurs);
         fflush(stdin);

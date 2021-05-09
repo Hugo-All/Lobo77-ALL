@@ -56,7 +56,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
         joueur_suivant_x2 = 0;
 
         system("pause");
-        do{
+        do
+        {
             if(*index_pioche == 0) // Si il ne reste plus de cartes dans la pioche
             {
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
@@ -73,7 +74,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
             }
 
             //------------------------- Selection carte -------------------------
-            do{
+            do
+            {
                 index_carte = selectionner_carte(joueurs, joueurs[index_joueur], nb_joueurs, total_defausse);
                 valeur_carte = joueurs[index_joueur].cartes[index_carte];
                 if(valeur_carte == CARTE_X2 && carte_restant_a_jouer == 2)
