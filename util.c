@@ -137,25 +137,27 @@ char get_fleche_horizontale()
 // Attend que l'utilisateur appuie sur la flèche vers le haut, vers le bas ou enter. Et retourne la touche appuyée.
 char get_fleche_verticale()
 {
-     char touche = 0;
-     fflush(stdin);
-     do{
-          if(kbhit())
-               touche = getch();
-     }while(touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
+    char touche = 0;
+    fflush(stdin);
+    do
+    {
+        if(kbhit())
+            touche = getch();
+    }while(touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
 
-    return touche;
+return touche;
 }
 
 // Attend que l'utilisateur appuie sur n'importe quelle flèche ou enter. Et retourne la touche appuyée
 char get_fleches()
 {
-     char touche = 0;
-     fflush(stdin);
-     do{
-          if(kbhit())
-               touche = getch();
-     }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE  && touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
+    char touche = 0;
+    fflush(stdin);
+    do
+    {
+        if(kbhit())
+            touche = getch();
+    }while(touche != TOUCHE_GAUCHE && touche != TOUCHE_DROITE  && touche != TOUCHE_HAUT && touche != TOUCHE_BAS && touche != TOUCHE_ENTER);
 
     return touche;
 }
