@@ -14,6 +14,9 @@ int menu();
 void options(); // Affiche et gère les options
 void regles(); // Affiche les règles
 
+// Propose au joueur de recommencer une partie, retourne 1 si il accepte, 0 si il refuse
+int choix_recommencer();
+
 // Affiche "texte" dans un encadré centré à double bordure. Avec un fond turquoise si curseur==0
 void afficher_bouton(char *texte, int curseur);
 

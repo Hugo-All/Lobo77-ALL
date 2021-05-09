@@ -131,7 +131,7 @@ void regles()
 
                 color(ROUGE, NOIR);
                 printf("Si un de ces principes n'est pas respect\x82"", alors vous perdez un des 3 jetons qui vous est distribu\x82 au d\x82""part.\n");
-                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur est synonyme d'\x82""limination.\n");
+                printf("Lorsque vous perdez vos 3 jetons vous \"nagez\" et la prochaine erreur entra\x8C""ne une \x82""limination.\n");
                 color(BLANC, NOIR);
                 break;
             case 1:
@@ -190,6 +190,32 @@ void regles()
         else if(touche == TOUCHE_GAUCHE && curseur - 1 >= 0)
             curseur--;
     }
+}
+
+// Propose au joueur de recommencer une partie, retourne 1 si il accepte, 0 si il refuse
+int choix_recommencer()
+{
+    
+    char touche = 0;
+    char curseur = 0;
+    char nb_boutons = 2;
+    
+    do{
+        system("cls");
+        banniere();
+        afficher_petit_encadre("Recommencer avec les m\x88""mes joueurs ?");
+        afficher_bouton("Oui", curseur == 0);
+        afficher_bouton("Non", curseur == 1);
+
+        touche = get_fleche_verticale();
+        if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
+            curseur++;
+        else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
+            curseur--;
+
+    }while(touche != TOUCHE_ENTER);
+    
+    return curseur == 0; //Retourne 1 si le joueur a choisi "Oui", 0 sinon
 }
 
 // Affiche "texte" dans un encadré centré à double bordure. Avec un fond turquoise si curseur==0
