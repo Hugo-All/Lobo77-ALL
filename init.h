@@ -12,8 +12,8 @@
 // Demande à l'utilisateur le nombre de joueurs et leurs noms
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs);
 
-// Place dans "pile" les cartes du jeu
-void initialiser_pile(int pile[DIM_pile]);
+// Place dans "pioche" les cartes du jeu
+void initialiser_pile(int pioche[DIM_pile]);
 
 // Sélectionne un joueur vivant aléatoire et le nomme donneur. Avec une animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs);
