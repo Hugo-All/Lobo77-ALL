@@ -10,14 +10,14 @@
 #include "debug.h"
 #include "menu.h"
 
-void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile);
+void partie(S_joueur joueurs[NB_max_joueurs], int pioche[DIM_pile], int *index_pioche);
 
 int main()
 {
-    int pile[DIM_pile];
+    int pioche[DIM_pile];
     S_joueur joueurs[NB_max_joueurs];
     int quitter;
-    int index_pile = DIM_pile-1;
+    int index_pioche = DIM_pile-1;
     num_manche = 0;
     jetons_depart = 3; // Max des jetons par défaut
     delai_pioche = 5; // Temps pour piocher par défaut
@@ -26,21 +26,20 @@ int main()
     color(BLANC, NOIR);
     apparence_console(24); // Zoom sur la fenêtre
 
-    initialiser_pioche(pile);
+    initialiser_pioche(pioche);
 
     do{
         quitter = menu();
         
-        if(quitter == 0)
-        {
-            partie(joueurs, pile, &index_pile);
-        }
+        if(quitter == 0) // Si le joueur n'a pas choisi de quitter
+            partie(joueurs, pioche, &index_pioche);
     }while(quitter == 0); // Tant que le joueur ne veut pas quitter
 
     return 0;
 }
 
-void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile)
+// Joue une partie. A la fin d'une partie propose de recommencer avec les mêmes joueurs
+void partie(S_joueur joueurs[NB_max_joueurs], int pioche[DIM_pile], int *index_pioche)
 {
     int nb_joueurs;
     system("cls");
@@ -62,9 +61,9 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
         color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
         system("pause");
 
-        manche(joueurs, nb_joueurs, pile, index_pile);
+        manche(joueurs, nb_joueurs, pioche, index_pioche);
 
-        if(nb_joueur_valide(joueurs, nb_joueurs) > 1) // Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
+        if(nb_joueur_valide(joueurs, nb_joueurs) > 1) // Trouve un nouveau donneur si il n'y a pas de gagnant
         {
             donneur_suivant(joueurs, nb_joueurs); // Rotation du donneur
 
@@ -74,7 +73,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
             color(JAUNE, NOIR); printf("Le nouveau donneur est %s\n\n", joueurs[get_donneur(joueurs, nb_joueurs)].nom); color(BLANC, NOIR);
             system("pause");
         }
-    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1);
+    } while (nb_joueur_valide(joueurs, nb_joueurs) > 1); //Tant qu'il y a plus d'un joueur vivant
 
     annoncer_gagnant(joueurs, nb_joueurs);
 
