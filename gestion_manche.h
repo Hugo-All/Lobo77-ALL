@@ -10,7 +10,7 @@
 #include "util.h"
 #include "init.h"
 
-void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueursw, int pile[DIM_pile], int *index_pile);
+void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile);
 
 void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse);
 void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile);
