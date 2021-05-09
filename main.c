@@ -16,9 +16,8 @@ int main()
 {
     int pioche[DIM_pile];
     S_joueur joueurs[NB_max_joueurs];
-    int quitter;
-    int index_pioche = DIM_pile-1;
-    num_manche = 0;
+    int quitter; // Stocke si le joueur veut quitter le programme ou non
+    num_manche = 0; // Stocke numéro de la manche en cours
     jetons_depart = 3; // Max des jetons par défaut
     delai_pioche = 5; // Temps pour piocher par défaut
 
@@ -27,6 +26,7 @@ int main()
     apparence_console(24); // Zoom sur la fenêtre
 
     initialiser_pioche(pioche);
+    int index_pioche = DIM_pile-1; // Index de la dernière carte non-vide dans la pioche
 
     do{
         quitter = menu_principal(); // menu() renvoie 1 si le joueur veut quitter, 0 sinon
