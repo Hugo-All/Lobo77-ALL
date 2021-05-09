@@ -1,7 +1,7 @@
 #include "gestion_manche.h"
 
 // Programme général de gestion d'une manche
-void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile)
+void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pile], int *index_pioche)
 {
     //------------------------- Initialisation de la manche -------------------------
     system("cls");
@@ -19,8 +19,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         defausse[i] = CARTE_VIDE; // Initialise la défausse avec des cartes vides
 
     animation_melanger_pile(joueurs, nb_joueurs);
-    melanger_pile(pile, *index_pile);
-    distribuer_cartes(pile, index_pile, joueurs, nb_joueurs);
+    melanger_pile(pioche, *index_pioche);
+    distribuer_cartes(pioche, index_pioche, joueurs, nb_joueurs);
 
     for(int i = 0; i < nb_joueurs; i++) // Remise à 0 du sens du jeu et du joueur actuel
         joueurs[i].sens_jeu = 0;
@@ -57,18 +57,18 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
 
         system("pause");
         do{
-            if(*index_pile == 0) // Si il ne reste plus de cartes dans la pile
+            if(*index_pioche == 0) // Si il ne reste plus de cartes dans la pioche
             {
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                afficher_petit_encadre("Il n'y a plus de cartes dans la pile");
+                afficher_petit_encadre("Il n'y a plus de cartes dans la pioche");
                 system("pause");
 
-                vider_defausse(pile, defausse, index_pile, &index_defausse);
+                vider_defausse(pioche, defausse, index_pioche, &index_defausse);
                 animation_melanger_pile(joueurs, nb_joueurs);
-                melanger_pile(pile, *index_pile);
+                melanger_pile(pioche, *index_pioche);
 
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                printf("La d""\x82""fausse a \x82""t\x82 rajout\x82""e \x85 la pile et m\x82""lang""\x82""e.\n\n");
+                printf("La d""\x82""fausse a \x82""t\x82 rajout\x82""e \x85 la pioche et m\x82""lang""\x82""e.\n\n");
                 system("pause");
             }
 
@@ -125,7 +125,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
         //------------------------- Pioche -------------------------
         // Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
-            piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pile, index_pile, cartes_a_piocher, total_defausse);
+            piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pioche, index_pioche, cartes_a_piocher, total_defausse);
 
         if(total_defausse >= 77)
         {
@@ -138,12 +138,12 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile]
     }
     //------------------------- Fin de manche -------------------------
     joueurs[get_joueur_actuel(joueurs, nb_joueurs)].sens_jeu = 0; // Remise à zéro du sens du joueur
-    vider_main_joueurs(joueurs, nb_joueurs, pile, index_pile); // Vidage de la main des joueur_suivant
-    vider_defausse(pile, defausse, index_pile, &index_defausse); // Vide la défausse avant la fin de la manche
+    vider_main_joueurs(joueurs, nb_joueurs, pioche, index_pioche); // Vidage de la main des joueur_suivant
+    vider_defausse(pioche, defausse, index_pioche, &index_defausse); // Vide la défausse avant la fin de la manche
 }
 
 // Propose à un joueur de piocher un nombre "cartes_a_piocher" de cartes
-void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pile[DIM_pile], int *index_pile, int cartes_a_piocher, int total_defausse)
+void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pioche[DIM_pile], int *index_pioche, int cartes_a_piocher, int total_defausse)
 {
     int index_carte = 0;
     while(cartes_a_piocher > 0)
@@ -160,9 +160,9 @@ void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur,
         color(JAUNE, NOIR); printf("\nVous avez %d secondes pour piocher une carte en appuyant sur une touche.\n", delai_pioche); color(BLANC, NOIR);
         if(attend_touche(delai_pioche) == 1)
         {
-            joueur->cartes[index_carte] = pile[*index_pile];
-            pile[*index_pile] = CARTE_VIDE;
-            (*index_pile)--;
+            joueur->cartes[index_carte] = pioche[*index_pioche];
+            pioche[*index_pioche] = CARTE_VIDE;
+            (*index_pioche)--;
 
             afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
             afficher_petit_encadre("Vous avez pioch\x82 la carte:");
@@ -187,20 +187,20 @@ void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur,
 }
 
 // Vide la défausse, la place au dessus de la pioche puis mélange la pioche
-void vider_defausse(int pile[DIM_pile], int defausse[DIM_pile], int *index_pile, int *index_defausse)
+void vider_defausse(int pioche[DIM_pile], int defausse[DIM_pile], int *index_pioche, int *index_defausse)
 {
     for(int i = *index_defausse; i >= 0; i--)
     {
-        (*index_pile)++; // Incrémente le nombre de carte dans la pile
+        (*index_pioche)++; // Incrémente le nombre de carte dans la pioche
         (*index_defausse)--; // Décrémente le nombre de carte dans la défausse
 
-        pile[*index_pile] = defausse[i]; // Transfère la carte de la défausse vers la pile
+        pioche[*index_pioche] = defausse[i]; // Transfère la carte de la défausse vers la pioche
         defausse[i] = CARTE_VIDE; // Remplace la carte transférée par la carte vide
     }
 }
 
-// Vide la main des joueurs dans la pile. Avec une animation
-void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pile[DIM_pile], int *index_pile)
+// Vide la main des joueurs dans la pioche. Avec une animation
+void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pile], int *index_pioche)
 {
     for(int i = DIM_main_joueur - 1; i >= 0; i--)
     {
@@ -212,8 +212,8 @@ void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pi
         {
             if(joueurs[j].cartes[i] != CARTE_VIDE)
             {
-                (*index_pile)++;
-                pile[*index_pile] = joueurs[j].cartes[i];
+                (*index_pioche)++;
+                pioche[*index_pioche] = joueurs[j].cartes[i];
                 joueurs[j].cartes[i] = CARTE_VIDE;
             }
         }
