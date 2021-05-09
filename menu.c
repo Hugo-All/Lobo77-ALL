@@ -1,8 +1,9 @@
 #include "menu.h"
 
-int menu() // Retourne 1 si le joueur veut quitter le jeu
+// Affiche le menu principal. Retourne 1 si le joueur souhaite quitter, 0 sinon
+int menu()
 {
-    char touche = 0;
+    char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;
     char nb_boutons = 4;
     do{
@@ -41,9 +42,10 @@ int menu() // Retourne 1 si le joueur veut quitter le jeu
     return 0; // Sort du menu sans quitter le jeu
 }
 
+// Affiche et gère les options
 void options()
 {
-    char touche = 0;
+    char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;
     char nb_boutons = 2;
     char buffer[DIM_STR];
@@ -101,21 +103,23 @@ void options()
     system("pause");
 }
 
+// Affiche les règles
 void regles()
 {
-    char nb_diapos = 5;
     char curseur = 0;
-    char touche;
-    char buffer[20];
-    int exemple_cartes[DIM_pile];
+    char touche; // Stocke la dernière touche appuyée
+    char nb_diapos = 5;
+    char buffer[20]; // Stockera "Panneau curseur+1/nb_diapos" avec x la diapo affichée
+    
+    int exemple_cartes[DIM_pile]; // Initialise une pioche-type pour afficher un exemple aléatoire de carte.
     initialiser_pioche(exemple_cartes);
     int carte_aleatoire;
 
-    do{
+    while(touche != TOUCHE_ENTER){ // Tant que l'utilisateur n'as pas appuyé sur Enter
         system("cls");
         banniere();
         sprintf(buffer, "Panneau %d/%d", curseur + 1, nb_diapos);
-        afficher_encadre(buffer);
+        afficher_encadre(buffer); // Affiche l'en-tête
         switch (curseur)
         {
             case 0:
@@ -152,6 +156,7 @@ void regles()
                 do{ // On prend une carte aléatoire qui n'est pas une carte spéciale
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
+                
                 color(VERT, NOIR); afficher_petit_encadre("Cartes normales"); color(BLANC, NOIR);
                 printf("Voici les diff\x82""rentes cartes normales:\n");
                 printf("\t- 4 cartes 0\n");
@@ -184,9 +189,10 @@ void regles()
             curseur++;
         else if(touche == TOUCHE_GAUCHE && curseur - 1 >= 0)
             curseur--;
-    }while(touche != TOUCHE_ENTER);
+    }
 }
 
+// Affiche "texte" dans un encadré centré à double bordure. Avec un fond turquoise si curseur==0
 void afficher_bouton(char *texte, int curseur)
 {
     char buffer[strlen(texte) + 1];
