@@ -82,15 +82,15 @@ void options()
                     curseur--;
                 break;
             case TOUCHE_DROITE:
-                if(curseur == 0 && jetons_depart + 1 <= NB_max_jetons)
+                if(curseur == 0 && jetons_depart + 1 <= NB_max_jetons) // Si le curseur est sur le nombre de jeton
                     jetons_depart++;
-                else if(curseur == 1)
+                else if(curseur == 1) // Si le curseur est sur le nombre de secondes pour piocher
                     delai_pioche++;
                 break;
             case TOUCHE_GAUCHE:
-                if(curseur == 0 && jetons_depart - 1 >= 0)
+                if(curseur == 0 && jetons_depart - 1 >= 0) // Si le curseur est sur le nombre de jeton
                     jetons_depart--;
-                else if(curseur == 1 && delai_pioche - 1 >= DELAI_PIOCHE_MIN)
+                else if(curseur == 1 && delai_pioche - 1 >= DELAI_PIOCHE_MIN) // Si le curseur est sur le nombre de secondes pour piocher
                     delai_pioche--;
                 break;
         }
@@ -123,7 +123,7 @@ void regles()
         banniere();
         sprintf(buffer, "Panneau %d/%d", curseur + 1, nb_diapos);
         afficher_encadre(buffer); // Affiche l'en-tête
-        switch (curseur)
+        switch (curseur) // Affiche la diapo numéro "curseur"
         {
             case 0:
                 color(VERT, NOIR); afficher_petit_encadre("R\x8A""gles du jeu LOBO77:"); color(BLANC, NOIR);
