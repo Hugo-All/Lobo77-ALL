@@ -1,7 +1,7 @@
 #include "menu.h"
 
 // Affiche le menu principal. Retourne 1 si le joueur souhaite quitter, 0 sinon
-int menu()
+int menu_principal()
 {
     char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;

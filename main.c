@@ -29,7 +29,7 @@ int main()
     initialiser_pioche(pioche);
 
     do{
-        quitter = menu();
+        quitter = menu_principal(); // menu() renvoie 1 si le joueur veut quitter, 0 sinon
 
         if(quitter == 0) // Si le joueur n'a pas choisi de quitter
             partie(joueurs, pioche, &index_pioche);

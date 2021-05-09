@@ -10,7 +10,7 @@
 #include "init.h"
 
 // Affiche le menu principal. Retourne 1 si le joueur souhaite quitter, 0 sinon
-int menu();
+int menu_principal();
 void options(); // Affiche et gère les options
 void regles(); // Affiche les règles
 
