@@ -1,5 +1,6 @@
 #include "init.h"
 
+// Demande à l'utilisateur le nombre de joueurs et leurs noms
 void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // Sous-programme pour initialiser les joueurs en début de partie
 {
     do{
@@ -34,6 +35,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // S
     system("pause");
 }
 
+// Place dans "pioche" les cartes du jeu
 void initialiser_pioche(int pioche[DIM_pile])
 {
     for(int i = 0; i < 4; i++) // 4 cartes 0
@@ -59,6 +61,7 @@ void initialiser_pioche(int pioche[DIM_pile])
     pioche[55] = 76;
 }
 
+// Sélectionne un joueur vivant aléatoire et le nomme donneur. Avec une animation
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = 0;
@@ -78,6 +81,7 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
     system("pause");
 }
 
+// Distribue aux joueurs vivants 5 cartes à partir de la pioche. Avec une animation
 void distribuer_cartes(int pioche[DIM_pile], int* index_pioche, S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_donneur = get_donneur(joueurs, nb_joueurs);
@@ -104,6 +108,7 @@ void distribuer_cartes(int pioche[DIM_pile], int* index_pioche, S_joueur joueurs
     system("pause");
 }
 
+// Distribue au joueurs un nombre "jetons_depart" (variable globale) de jetons. Avec une animation
 void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int index_donneur = get_donneur(joueurs, nb_joueurs);
