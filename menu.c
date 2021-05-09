@@ -18,9 +18,9 @@ int menu_principal()
             afficher_petit_encadre("^ v pour naviguer puis Enter");
 
             touche = get_fleche_verticale();
-            if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
+            if(touche == TOUCHE_BAS && curseur + 1 < nb_boutons)
                 curseur++;
-            else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
+            else if(touche == TOUCHE_HAUT && curseur - 1 >= 0)
                 curseur--;
 
         }while(touche != TOUCHE_ENTER);
@@ -70,11 +70,11 @@ void options()
 
         switch (touche)
         {
-            case TOUCHE_HAUT:
+            case TOUCHE_BAS:
                 if(curseur + 1 < nb_boutons)
                     curseur++;
                 break;
-            case TOUCHE_BAS:
+            case TOUCHE_HAUT:
                 if(curseur - 1 >= 0)
                     curseur--;
                 break;
@@ -208,9 +208,9 @@ int choix_recommencer()
         afficher_bouton("Non", curseur == 1);
 
         touche = get_fleche_verticale();
-        if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
+        if(touche == TOUCHE_BAS && curseur + 1 < nb_boutons)
             curseur++;
-        else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
+        else if(touche == TOUCHE_HAUT && curseur - 1 >= 0)
             curseur--;
 
     }while(touche != TOUCHE_ENTER);
