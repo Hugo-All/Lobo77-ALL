@@ -1,3 +1,9 @@
+/*
+    Projet d'algorithmique et programmation de première année à l'ESTACA
+    Portage numérique du jeu de cartes LOBO77
+    Réalisé par Hugo ALLAIRE et Tom ALLARD
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
