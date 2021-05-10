@@ -56,7 +56,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
         else
         {
             carte_restant_a_jouer = 2;
-            color(ROUGE, NOIR); afficher_petit_encadre("Vous devez jouer 2 cartes."); color(BLANC, NOIR);
+            color(ROUGE, NOIR); afficher_petit_encadre("Vous devez jouer 2 cartes de suite !"); color(BLANC, NOIR);
         }
         joueur_suivant_x2 = 0;
 
