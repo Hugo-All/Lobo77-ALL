@@ -103,7 +103,7 @@ void options()
     afficher_encadre_int("%d jeton(s) par joueur au d\x82""part", jetons_depart);
     afficher_encadre_int("%d secondes maximum pour piocher", delai_pioche);
     color(BLANC, NOIR);
-    afficher_petit_encadre("Ces param\x8A""tres ont \x82""t\x82 enregistr\x82""s");
+    afficher_petit_encadre("Param\x8A""tres enregistr\x82""s");
     system("pause");
 }
 
