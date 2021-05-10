@@ -5,7 +5,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // S
 {
     do
     {
-        printf("Combien de joueurs autour de la table ? (2-8) ");
+        printf("Combien de joueurs autour de la table ? (2-8) _\b");
         scanf("%d", nb_joueurs);
         fflush(stdin);
     }while(*nb_joueurs < 2 || *nb_joueurs > NB_max_joueurs); // Recommence si le joueur n'écris pas un nombre dans l'intervale souhaité
@@ -26,7 +26,9 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // S
     for(int i = 0; i < *nb_joueurs; i++)
     {
         afficher_joueurs(joueurs, *nb_joueurs);
-        printf("Veuillez entrer le nom du joueur %d (max %d caract\x8Ares):\n", i+1, DIM_STR); // attribution du nom des joueurs
+        printf("Veuillez entrer le nom du joueur %d (max %d caract\x8Ares): ", i+1, DIM_STR); // attribution du nom des joueurs
+        for (int j = 0; j < 10; j++) printf("_"); // Affiche 10 caractères _
+        for (int j = 0; j < 10; j++) printf("\b"); // Ramène le curseur 10 caractères en arrière
         gets_limite(joueurs[i].nom, DIM_STR);
         system("cls");
     }
