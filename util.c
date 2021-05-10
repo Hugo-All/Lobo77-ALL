@@ -254,6 +254,7 @@ void retirer_jeton(S_joueur *joueur)
     else
         printf("vous nagiez.\nVous \x88tes donc maintenant \x82limin\x82.\n\n");
     color(BLANC, NOIR);
+    system("pause");
 }
 
 // Annonce le gagnant d'une partie

@@ -104,28 +104,32 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 color(VERT, NOIR); printf("Le sens de jeu a \x82t\x82 invers\x82.\n\n"); color(BLANC, NOIR);
                 carte_restant_a_jouer--;
+                system("pause");
             }else if(valeur_carte == CARTE_X2) // Le prochain joueur doit jouer
             {
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 joueur_suivant_x2 = 1;
                 color(VERT, NOIR); printf("Le prochain joueur devra jouer 2 cartes\n\n"); color(BLANC, NOIR);
                 carte_restant_a_jouer--;
+                system("pause");
             }else // La carte a donc une valeur numérique
             {
                 total_defausse += valeur_carte;
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
                 color(VERT, NOIR); printf("La carte %d a ""\x82""t\x82 ajout""\x82""e au total qui atteint donc: %d\n\n", valeur_carte, total_defausse); color(BLANC, NOIR);
+                carte_restant_a_jouer--;
 
                 // Si le total atteint un multiple de 11, le joueur perd un jeton. Ne retire pas de jeton si le joueur vient de poser une carte sans valeur numérique
                 if(total_defausse%11 == 0 && total_defausse != 0 && total_defausse < 77 && valeur_carte != 0 && valeur_carte < 77)
                 {
                     color(ROUGE, NOIR); printf("\nLe total est un multiple de 11"); color(BLANC, NOIR);
                     retirer_jeton(&joueurs[index_joueur]);
-                    if(carte_restant_a_jouer == 0 || joueurs[index_joueur].nb_jetons < 0) system("pause"); // Pause si le joueur vient d'être éliminé ou que c'est la fin de son tour
+                    system("cls");
+                    afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+                }else{
+                    system("pause");
                 }
-                carte_restant_a_jouer--;
             }
-            if(carte_restant_a_jouer > 0) system("pause"); // Si c'est sa dernière carte à jouer, on passe directement à la pioche
         }while(carte_restant_a_jouer > 0 && joueurs[index_joueur].nb_jetons >= 0 && nb_cartes_joueur(joueurs[index_joueur]) > 0 && total_defausse < 77);
 
         //------------------------- Pioche -------------------------
