@@ -140,7 +140,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
             while(cartes_a_piocher > 0)
             {
                 afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-                piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pioche, index_pioche, cartes_a_piocher, total_defausse);
+                piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pioche, index_pioche, total_defausse);
                 cartes_a_piocher--;
             }
         }
@@ -196,8 +196,6 @@ void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur,
         color(BLANC, NOIR);
     }
     system("pause");
-
-    cartes_a_piocher--;
 }
 
 // Vide la défausse, la place au dessus de la pioche puis mélange la pioche
