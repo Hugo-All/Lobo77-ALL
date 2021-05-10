@@ -319,11 +319,13 @@ void apparence_console(int zoom)
 // Joue une animation qui simule le mélange d'une pile
 void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
-    char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"};
+    char *animation[5] = {"    ", "\xDB   ", " \xDB  ", "  \xDB ", "   \xDB"}; // Animation d'une carte qui passe d'un côté à l'autre
     for(int i = 0; i < 16; i++)
     {
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
+
+        // Affiche les 2 piles sur les côtés et l'animation de la carte qui passe d'une pile à l'autre
         afficher_encadre_str("M\x82""lange des cartes ""\xDB""%s\xDB", animation[i % 5]);
         Sleep(300);
     }
