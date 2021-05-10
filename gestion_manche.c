@@ -131,7 +131,14 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
         //------------------------- Pioche -------------------------
         // Proposer au joueur de piocher si il est toujours vivant et que le total est inférieur à 77
         if(joueurs[index_joueur].nb_jetons >= 0 && total_defausse < 77)
-            piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pioche, index_pioche, cartes_a_piocher, total_defausse);
+        {
+            while(cartes_a_piocher > 0)
+            {
+                afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+                piocher(joueurs, nb_joueurs, &joueurs[index_joueur], pioche, index_pioche, cartes_a_piocher, total_defausse);
+                cartes_a_piocher--;
+            }
+        }
 
         if(total_defausse >= 77)
         {
@@ -148,48 +155,45 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
     vider_defausse(pioche, defausse, index_pioche, &index_defausse); // Vide la défausse avant la fin de la manche
 }
 
-// Propose à un joueur de piocher un nombre "cartes_a_piocher" de cartes
-void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pioche[DIM_pile], int *index_pioche, int cartes_a_piocher, int total_defausse)
+// Propose à un joueur de piocher une carte
+void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pioche[DIM_pile], int *index_pioche, int total_defausse)
 {
     int index_carte = 0;
-    while(cartes_a_piocher > 0)
+    for(int i = 0; i < DIM_main_joueur; i++) // Trouve un emplacement de carte vide
     {
-        for(int i = 0; i < DIM_main_joueur; i++) // Trouve un emplacement de carte vide
+        if(joueur->cartes[i] == CARTE_VIDE)
         {
-            if(joueur->cartes[i] == CARTE_VIDE)
-            {
-                index_carte = i;
-                break;
-            }
+            index_carte = i;
+            break;
         }
-
-        color(JAUNE, NOIR); printf("\nVous avez %d secondes pour piocher une carte en appuyant sur une touche.\n", delai_pioche); color(BLANC, NOIR);
-        if(attend_touche(delai_pioche) == 1)
-        {
-            joueur->cartes[index_carte] = pioche[*index_pioche];
-            pioche[*index_pioche] = CARTE_VIDE;
-            (*index_pioche)--;
-
-            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-            afficher_petit_encadre("Vous avez pioch\x82 la carte:");
-            afficher_carte(joueur->cartes[index_carte]);
-        }else
-        {
-            afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-            color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
-            if(nb_cartes_joueur(*joueur) == 0)
-            {
-                printf("Vous n'avez plus de cartes,");
-                retirer_jeton(joueur);
-                color(ROUGE, NOIR);
-                afficher_encadre("La manche va maintenant se terminer.");
-            }
-            color(BLANC, NOIR);
-        }
-        system("pause");
-
-        cartes_a_piocher--;
     }
+
+    color(JAUNE, NOIR); printf("Vous avez %d secondes pour piocher une carte en appuyant sur une touche.\n", delai_pioche); color(BLANC, NOIR);
+    if(attend_touche(delai_pioche) == 1)
+    {
+        joueur->cartes[index_carte] = pioche[*index_pioche];
+        pioche[*index_pioche] = CARTE_VIDE;
+        (*index_pioche)--;
+
+        afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+        afficher_petit_encadre("Vous avez pioch\x82 la carte:");
+        afficher_carte(joueur->cartes[index_carte]);
+    }else
+    {
+        afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+        color(ROUGE, NOIR); printf("Vous n'avez pas pioch\x82 de carte.\n\n");
+        if(nb_cartes_joueur(*joueur) == 0)
+        {
+            printf("Vous n'avez plus de cartes,");
+            retirer_jeton(joueur);
+            color(ROUGE, NOIR);
+            afficher_encadre("La manche va maintenant se terminer.");
+        }
+        color(BLANC, NOIR);
+    }
+    system("pause");
+
+    cartes_a_piocher--;
 }
 
 // Vide la défausse, la place au dessus de la pioche puis mélange la pioche
