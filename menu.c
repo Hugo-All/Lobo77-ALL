@@ -67,7 +67,7 @@ void options()
         afficher_bouton(buffer, curseur == 1);
 
         barre_horizontale();
-        afficher_petit_encadre("^ v pour naviguer puis Enter");
+        afficher_petit_encadre("^ v et < > puis Enter");
 
         touche = get_fleches();
 
