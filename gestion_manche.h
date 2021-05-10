@@ -11,7 +11,7 @@
 #include "init.h"
 
 // Programme général de gestion d'une manche
-void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueursw, int pioche[DIM_pile], int *index_pioche);
+void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pile], int *index_pioche);
 
 // Propose à un joueur de piocher une carte
 void piocher(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, S_joueur *joueur, int pioche[DIM_pile], int *index_pioche, int total_defausse);
