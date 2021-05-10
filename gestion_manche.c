@@ -31,9 +31,13 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
 
     afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
 
-    printf("Il reste ");
-    color(ROUGE, NOIR); printf("%d", nb_joueur_valide(joueurs, nb_joueurs)); color(BLANC, NOIR);
-    printf(" joueurs en lice.\n\nLe donneur est: ");
+    if(num_manche > 1) // On n'affiche pas le nombre de joueurs restant si c'est la première manche
+    {
+        printf("Il reste ");
+        color(ROUGE, NOIR); printf("%d", nb_joueur_valide(joueurs, nb_joueurs)); color(BLANC, NOIR);
+        printf(" joueurs en lice.\n\n");
+    }
+    printf("Le donneur est: ");
     color(VERT, NOIR); printf("%s", joueurs[index_donneur].nom); color(BLANC, NOIR);
     printf("\nC'est le joueur \x85 gauche du donneur qui commence, donc: ");
     color(JAUNE, NOIR); printf("%s\n\n", joueurs[index_joueur].nom); color(BLANC, NOIR);
