@@ -48,6 +48,7 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
     { // Tant que la défausse est inférieur à 77, qu'il n'y a aucun joueurs sans carte et qu'il reste plus d'un joueur vivant
         cartes_a_piocher = 0;
         afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
+        color(ROUGE, NOIR); printf("Les cartes de %s vont \x88""tres affich\x82""es !\n\n", joueurs[index_joueur].nom); color(BLANC, NOIR);
         color(JAUNE, NOIR); afficher_encadre_str("Laissez le clavier \x85 %s", joueurs[index_joueur].nom); color(BLANC, NOIR);
 
         if(joueur_suivant_x2 == 0) // Si le joueur précédent a joué une carte x2
@@ -147,9 +148,8 @@ void manche(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pioche[DIM_pil
         if(total_defausse >= 77)
         {
             afficher_joueurs_et_total(joueurs, nb_joueurs, total_defausse);
-            color(ROUGE, NOIR); printf("Vous avez fait d""\x82""passer la d""\x82""fausse au dessus de 76");
+            color(ROUGE, NOIR); printf("Vous avez fait d""\x82""passer le total au dessus de 76");
             retirer_jeton(&joueurs[index_joueur]); color(BLANC, NOIR);
-            system("pause");
         }else
             index_joueur = joueur_suivant(joueurs, nb_joueurs); // On passe au joueur suivant si la défausse n'a pas atteint 77
     }

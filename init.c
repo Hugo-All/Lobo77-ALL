@@ -68,7 +68,7 @@ void initialiser_pioche(int pioche[DIM_pile])
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = 0;
-    int nombre_aleatoire = (rand() % nb_joueurs*2) + nb_joueurs; // Au minimum un tour complet et au max 3
+    int nombre_aleatoire = (rand() % nb_joueurs*2) + nb_joueurs*2; // Au minimum 2 tours complets et au max 4
 
     for(int i = 0; i < nombre_aleatoire; i++)
     {

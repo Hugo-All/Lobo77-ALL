@@ -100,9 +100,10 @@ void options()
     system("cls");
     banniere();
     color(VERT, NOIR);
-    afficher_encadre_int("%d jeton(s) au d\x82""part", jetons_depart);
-    afficher_encadre_int("%d secondes pour piocher", delai_pioche);
+    afficher_encadre_int("%d jeton(s) par joueur au d\x82""part", jetons_depart);
+    afficher_encadre_int("%d secondes maximum pour piocher", delai_pioche);
     color(BLANC, NOIR);
+    afficher_petit_encadre("Ces param\x8A""tres ont \x82""t\x82 enregistr\x82""s");
     system("pause");
 }
 
@@ -157,7 +158,7 @@ void regles()
                 break;
             case 2:
                 do // On prend une carte aléatoire qui n'est pas une carte spéciale
-                { 
+                {
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
 
