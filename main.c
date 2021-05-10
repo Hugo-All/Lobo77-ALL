@@ -10,37 +10,37 @@
 #include "debug.h"
 #include "menu.h"
 
-void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile);
+void partie(S_joueur joueurs[NB_max_joueurs], int pioche[DIM_pile], int *index_pioche);
 
 int main()
 {
-    int pile[DIM_pile];
+    int pioche[DIM_pile];
     S_joueur joueurs[NB_max_joueurs];
-    int quitter;
-    int index_pile = DIM_pile-1;
-    num_manche = 0;
-    jetons_depart = 3; //Max des jetons par défaut
-    delai_pioche = 5; //Temps pour piocher par défaut
+    int quitter; // Stocke si le joueur veut quitter le programme ou non
+    num_manche = 0; // Stocke numéro de la manche en cours
+    jetons_depart = 3; // Max des jetons par défaut
+    delai_pioche = 5; // Temps pour piocher par défaut
 
     srand(time(NULL));
     color(BLANC, NOIR);
-    apparence_console(24); //Zoom sur la fenêtre
+    apparence_console(24); // Zoom sur la fenêtre
 
-    initialiser_pile(pile);
+    initialiser_pioche(pioche);
+    int index_pioche = DIM_pile-1; // Index de la dernière carte non-vide dans la pioche
 
-    do{
-        quitter = menu();
-        
-        if(quitter == 0)
-        {
-            partie(joueurs, pile, &index_pile);
-        }
-    }while(quitter == 0); //Tant que le joueur ne veut pas quitter
+    do
+    {
+        quitter = menu_principal(); // menu() renvoie 1 si le joueur veut quitter, 0 sinon
+
+        if(quitter == 0) // Si le joueur n'a pas choisi de quitter
+            partie(joueurs, pioche, &index_pioche);
+    }while(quitter == 0); // Tant que le joueur ne veut pas quitter
 
     return 0;
 }
 
-void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pile)
+// Joue une partie. A la fin d'une partie propose de recommencer avec les mêmes joueurs
+void partie(S_joueur joueurs[NB_max_joueurs], int pioche[DIM_pile], int *index_pioche)
 {
     int nb_joueurs;
     system("cls");
@@ -49,14 +49,14 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
 
     initialiser_joueurs(joueurs, &nb_joueurs);
 
-    if(nb_joueurs > 5) apparence_console(18); //Dézoom si il y a beaucoup de joueurs
+    if(nb_joueurs > 5) apparence_console(18); // Dézoom si il y a beaucoup de joueurs
 
-    do //Tant que le joueur veut recommencer avec les mêmes joueurs
+    do // Tant que le joueur veut recommencer avec les mêmes joueurs
     {
         donneur_aleatoire(joueurs, nb_joueurs);
         distribuer_jetons(joueurs, nb_joueurs);
 
-        do //Boucle de manches
+        do // Boucle de manches
         {
             num_manche++;
             system("cls");
@@ -64,11 +64,11 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
             color(VERT, NOIR); afficher_encadre_int("D\x82""but de la manche %d", num_manche); color(BLANC, NOIR);
             system("pause");
 
-            manche(joueurs, nb_joueurs, pile, index_pile);
+            manche(joueurs, nb_joueurs, pioche, index_pioche);
 
-            if(nb_joueur_valide(joueurs, nb_joueurs) > 1) //Pas besoin de trouver un nouveau donneur si il y a déjà un gagnant
+            if(nb_joueur_valide(joueurs, nb_joueurs) > 1) // Trouve un nouveau donneur si il n'y a pas encore de gagnant
             {
-                donneur_suivant(joueurs, nb_joueurs); //Rotation du donneur
+                donneur_suivant(joueurs, nb_joueurs); // Rotation du donneur
 
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
@@ -80,8 +80,7 @@ void partie(S_joueur joueurs[NB_max_joueurs], int pile[DIM_pile], int *index_pil
 
         annoncer_gagnant(joueurs, nb_joueurs);
         system("pause");
-
-        for(int i = 0; i < nb_joueurs; i++) joueurs[i].nb_jetons = 0; //Réinitialisation des jetons des joueurs
-        num_manche = 0; //Réinitialisation du nombre de manches
-    }while(choix_recommencer() == 1); //Demande au joueur si il veut recommencer une partie avec les mêmes joueurs
+        for(int i = 0; i < nb_joueurs; i++) joueurs[i].nb_jetons = 0; // Réinitialisation des jetons des joueurs
+        num_manche = 0; // Réinitialisation du nombre de manches
+    }while(choix_recommencer() == 1); // Demande au joueur si il veut recommencer une partie avec les mêmes joueurs
 }

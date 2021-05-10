@@ -1,12 +1,15 @@
 #include "menu.h"
 
-int menu() //Retourne 1 si le joueur veut quitter le jeu
+// Affiche le menu principal. Retourne 1 si le joueur souhaite quitter, 0 sinon
+int menu_principal()
 {
-    char touche = 0;
+    char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;
     char nb_boutons = 4;
-    do{
-        do{
+    do
+    {
+        do
+        {
             system("cls");
             banniere();
 
@@ -17,13 +20,13 @@ int menu() //Retourne 1 si le joueur veut quitter le jeu
             afficher_petit_encadre("^ v pour naviguer puis Enter");
 
             touche = get_fleche_verticale();
-            if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
+            if(touche == TOUCHE_BAS && curseur + 1 < nb_boutons)
                 curseur++;
-            else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
+            else if(touche == TOUCHE_HAUT && curseur - 1 >= 0)
                 curseur--;
 
         }while(touche != TOUCHE_ENTER);
-        
+
         if(curseur == 1)
         {
             options();
@@ -35,19 +38,21 @@ int menu() //Retourne 1 si le joueur veut quitter le jeu
             system("cls");
             banniere();
             color(VERT, NOIR); afficher_encadre("Au revoir !"); color(BLANC, NOIR);
-            return 1; //Sort du menu et quitte le jeu
+            return 1; // Sort du menu et quitte le jeu
         }
     }while(curseur != 0);
-    return 0; //Sort du menu sans quitter le jeu
+    return 0; // Sort du menu sans quitter le jeu
 }
 
+// Affiche et gère les options
 void options()
 {
-    char touche = 0;
+    char touche = 0; // Stocke la dernière touche appuyée
     char curseur = 0;
     char nb_boutons = 2;
     char buffer[DIM_STR];
-    do{
+    do
+    {
         system("cls");
         banniere();
 
@@ -62,61 +67,64 @@ void options()
         afficher_bouton(buffer, curseur == 1);
 
         barre_horizontale();
-        afficher_petit_encadre("^ v pour naviguer puis Enter");
+        afficher_petit_encadre("^ v et < > puis Enter");
 
         touche = get_fleches();
 
         switch (touche)
         {
-            case TOUCHE_HAUT:
+            case TOUCHE_BAS:
                 if(curseur + 1 < nb_boutons)
                     curseur++;
                 break;
-            case TOUCHE_BAS:
+            case TOUCHE_HAUT:
                 if(curseur - 1 >= 0)
                     curseur--;
                 break;
             case TOUCHE_DROITE:
-                if(curseur == 0 && jetons_depart + 1 <= NB_max_jetons)
+                if(curseur == 0 && jetons_depart + 1 <= NB_max_jetons) // Si le curseur est sur le nombre de jeton
                     jetons_depart++;
-                else if(curseur == 1)
+                else if(curseur == 1) // Si le curseur est sur le nombre de secondes pour piocher
                     delai_pioche++;
                 break;
             case TOUCHE_GAUCHE:
-                if(curseur == 0 && jetons_depart - 1 >= 0)
+                if(curseur == 0 && jetons_depart - 1 >= 0) // Si le curseur est sur le nombre de jeton
                     jetons_depart--;
-                else if(curseur == 1 && delai_pioche - 1 >= DELAI_PIOCHE_MIN)
+                else if(curseur == 1 && delai_pioche - 1 >= DELAI_PIOCHE_MIN) // Si le curseur est sur le nombre de secondes pour piocher
                     delai_pioche--;
                 break;
         }
     }while(touche != TOUCHE_ENTER);
 
-    //Affichage du récapitulatif des options
+    // Affichage du récapitulatif des options
     system("cls");
     banniere();
     color(VERT, NOIR);
-    afficher_encadre_int("%d jeton(s) au d\x82""part", jetons_depart);
-    afficher_encadre_int("%d secondes pour piocher", delai_pioche);
+    afficher_encadre_int("%d jeton(s) par joueur au d\x82""part", jetons_depart);
+    afficher_encadre_int("%d secondes maximum pour piocher", delai_pioche);
     color(BLANC, NOIR);
+    afficher_petit_encadre("Param\x8A""tres enregistr\x82""s");
     system("pause");
 }
 
+// Affiche les règles
 void regles()
 {
-    char nb_diapos = 5;
     char curseur = 0;
-    char touche;
-    char buffer[20];
-    int exemple_cartes[DIM_pile];
-    initialiser_pile(exemple_cartes);
+    char touche; // Stocke la dernière touche appuyée
+    char nb_diapos = 5;
+    char buffer[20]; // Stockera "Panneau curseur+1/nb_diapos" avec x la diapo affichée
+
+    int exemple_cartes[DIM_pile]; // Initialise une pioche-type pour afficher un exemple aléatoire de carte.
+    initialiser_pioche(exemple_cartes);
     int carte_aleatoire;
 
-    do{
+    while(touche != TOUCHE_ENTER){ // Tant que l'utilisateur n'as pas appuyé sur Enter
         system("cls");
         banniere();
         sprintf(buffer, "Panneau %d/%d", curseur + 1, nb_diapos);
-        afficher_encadre(buffer);
-        switch (curseur)
+        afficher_encadre(buffer); // Affiche l'en-tête
+        switch (curseur) // Affiche la diapo numéro "curseur"
         {
             case 0:
                 color(VERT, NOIR); afficher_petit_encadre("R\x8A""gles du jeu LOBO77:"); color(BLANC, NOIR);
@@ -138,7 +146,7 @@ void regles()
                 printf("De plus, un \"donneur\" est s\x82""lectionn\x82"", le joueur \x85 sa gauche est d\x82""finie comme premier joueur \x85 poser une carte.\n");
 
                 printf("La manche est donc lanc\x82""e, il faut maintenant respecter les 2 principes fondamentaux pour ne pas perdre de jetons.\n");
-                
+
                 color(ROUGE, NOIR);
                 printf("Mais \x82""galement ne pas oublier de piocher une carte apr\x8A""s avoir jou\x82""\n");
                 printf("sous peine d'avoir un choix plus restreint et m\x88""me de perdre un jeton lorsque votre main est vide.\n\n");
@@ -149,9 +157,11 @@ void regles()
                 printf("Lorsque la pioche est vide, on r\x82""cup\x8A""re la d\x82""fausse, on la m\x82""lange et on l'utilise \x85 nouveau comme pioche.\n");
                 break;
             case 2:
-                do{ //On prend une carte aléatoire qui n'est pas une carte spéciale
+                do // On prend une carte aléatoire qui n'est pas une carte spéciale
+                {
                     carte_aleatoire = exemple_cartes[rand() % DIM_pile];
                 }while(carte_aleatoire == CARTE_SENS || carte_aleatoire == CARTE_X2);
+
                 color(VERT, NOIR); afficher_petit_encadre("Cartes normales"); color(BLANC, NOIR);
                 printf("Voici les diff\x82""rentes cartes normales:\n");
                 printf("\t- 4 cartes 0\n");
@@ -184,17 +194,19 @@ void regles()
             curseur++;
         else if(touche == TOUCHE_GAUCHE && curseur - 1 >= 0)
             curseur--;
-    }while(touche != TOUCHE_ENTER);
+    }
 }
 
-int choix_recommencer() //Propose au joueur de recommencer une partie, retourne 1 si il accepte, 0 si il refuse
+// Propose au joueur de recommencer une partie, retourne 1 si il accepte, 0 si il refuse
+int choix_recommencer()
 {
-    
+
     char touche = 0;
     char curseur = 0;
     char nb_boutons = 2;
-    
-    do{
+
+    do
+    {
         system("cls");
         banniere();
         afficher_petit_encadre("Recommencer avec les m\x88""mes joueurs ?");
@@ -202,20 +214,21 @@ int choix_recommencer() //Propose au joueur de recommencer une partie, retourne 
         afficher_bouton("Non", curseur == 1);
 
         touche = get_fleche_verticale();
-        if(touche == TOUCHE_HAUT && curseur + 1 < nb_boutons)
+        if(touche == TOUCHE_BAS && curseur + 1 < nb_boutons)
             curseur++;
-        else if(touche == TOUCHE_BAS && curseur - 1 >= 0)
+        else if(touche == TOUCHE_HAUT && curseur - 1 >= 0)
             curseur--;
 
     }while(touche != TOUCHE_ENTER);
-    
+
     return curseur == 0; //Retourne 1 si le joueur a choisi "Oui", 0 sinon
 }
 
+// Affiche "texte" dans un encadré centré à double bordure. Avec un fond turquoise si curseur==0
 void afficher_bouton(char *texte, int curseur)
 {
     char buffer[strlen(texte) + 1];
-    if(strlen(texte) % 2 == 0) //Si la ligne à afficher est de longueur paire, on rajoute un espace
+    if(strlen(texte) % 2 == 0) // Si la ligne à afficher est de longueur paire, on rajoute un espace
     {
         strcpy(buffer, texte);
         strcat(buffer, " ");
@@ -223,11 +236,11 @@ void afficher_bouton(char *texte, int curseur)
         strcpy(buffer, texte);
     }
 
-    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; //Calcul de la marge nécéssaire pour le centrage
+    int marge = (LARGEUR_AFFICHAGE - (strlen(buffer) + 4))/2; // Calcul de la marge nécéssaire pour le centrage
 
-    for(int i = 0; i < marge; i++) printf(" "); //Affichage de la marge
+    for(int i = 0; i < marge; i++) printf(" "); // Affichage de la marge
 
-    if(curseur == 1) color(NOIR, TURQUOISE_2); //Si le bouton est sélectionné, on change les couleurs
+    if(curseur == 1) color(NOIR, TURQUOISE_2); // Si le bouton est sélectionné, on change les couleurs
     printf("%c", 201);
     for(int i = 0; i < strlen(buffer) + 2; i++)
         printf("%c", 205);
