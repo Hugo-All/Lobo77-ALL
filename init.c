@@ -34,7 +34,7 @@ void initialiser_joueurs(S_joueur joueurs[NB_max_joueurs], int *nb_joueurs) // S
     }
 
     afficher_joueurs(joueurs, *nb_joueurs);
-    color(VERT, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR); 
+    color(VERT, NOIR); afficher_petit_encadre("Fin de l'initialisation des joueurs"); color(BLANC, NOIR);
     system("pause");
 }
 
@@ -68,7 +68,7 @@ void initialiser_pioche(int pioche[DIM_pile])
 void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
 {
     int donneur = 0;
-    int nombre_aleatoire = (rand() % nb_joueurs*2) + nb_joueurs*2; // Au minimum 2 tours complets et au max 4
+    int nombre_aleatoire = (rand() % 8) + nb_joueurs*2; // Au minimum 8 tirages et au max 8 + nb_joueurs*2
 
     for(int i = 0; i < nombre_aleatoire; i++)
     {
