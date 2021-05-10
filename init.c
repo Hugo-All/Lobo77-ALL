@@ -76,7 +76,7 @@ void donneur_aleatoire(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         afficher_petit_encadre("Tirage au sort du donneur...");
-        usleep(300000);
+        Sleep(300);
     }
     system("cls");
     afficher_joueurs(joueurs, nb_joueurs);
@@ -98,7 +98,7 @@ void distribuer_cartes(int pioche[DIM_pile], int* index_pioche, S_joueur joueurs
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
                 afficher_petit_encadre("Distribution des cartes par le donneur...");
-                usleep(250000);
+                Sleep(250);
                 joueurs[j % nb_joueurs].cartes[i] = pioche[*index_pioche];
                 pioche[*index_pioche] = CARTE_VIDE;
                 (*index_pioche)--;
@@ -125,7 +125,7 @@ void distribuer_jetons(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
                 system("cls");
                 afficher_joueurs(joueurs, nb_joueurs);
                 afficher_petit_encadre("Distribution des jetons par le donneur...");
-                usleep(250000);
+                Sleep(250);
                 joueurs[j % nb_joueurs].nb_jetons++;
             }
         }

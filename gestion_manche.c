@@ -219,7 +219,7 @@ void vider_main_joueurs(S_joueur joueurs[NB_max_joueurs], int nb_joueurs, int pi
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         printf("Vidage des mains des joueurs...");
-        usleep(400000);
+        Sleep(400);
         for(int j = 0; j < nb_joueurs; j++)
         {
             if(joueurs[j].cartes[i] != CARTE_VIDE)

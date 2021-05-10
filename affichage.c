@@ -325,7 +325,7 @@ void animation_melanger_pile(S_joueur joueurs[NB_max_joueurs], int nb_joueurs)
         system("cls");
         afficher_joueurs(joueurs, nb_joueurs);
         afficher_encadre_str("M\x82""lange des cartes ""\xDB""%s\xDB", animation[i % 5]);
-        usleep(300000);
+        Sleep(300);
     }
 
     system("cls");
